@@ -80,5 +80,5 @@
 - [x] Update GitHub Pages, verify the new logo, and retry the project checkpoint.
 - [x] Upload the optimized supplied logo to persistent web storage for Manus hosting.
 - [x] Redeploy and verify the logo on Manus and GitHub Pages, then save a final checkpoint.
-- [ ] Extract the compact emblem and set it as the website favicon.
-- [ ] Add a Home link to the shared and homepage navigation menus, then verify the update.
+- [x] Extract the compact emblem and set it as the website favicon.
+- [x] Add a Home link to the shared and homepage navigation menus, then verify the update.
