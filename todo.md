@@ -167,3 +167,10 @@
 - [x] Verify the field on desktop and mobile and confirm type checking/build output.
 - [ ] Save a checkpoint for the delivery-location calculator update.
 
+
+- [x] Add delivery-zone presets to the Packs & Pricing calculator.
+- [x] Preserve an Other / Custom Location fallback for non-preset destinations.
+- [x] Include the selected preset or custom location in the WhatsApp enquiry message.
+- [x] Verify the selector and calculator layout on desktop and mobile.
+- [ ] Save a checkpoint for the delivery-zone preset update.
+

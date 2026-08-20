@@ -1,9 +1,9 @@
 /**
  * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator
- * with delivery location input, enquiry-based commercial guidance, and SEO metadata.
+ * with delivery zone presets and custom location input, enquiry guidance, and SEO metadata.
  */
 import { useState, useMemo } from "react";
-import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin } from "lucide-react";
+import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -25,6 +25,18 @@ const packNames: Record<PackKey, string> = {
   "25L": "25L Wholesale container",
 };
 
+const deliveryPresets = [
+  "Isolo, Lagos (Depot)",
+  "Ikeja / Oshodi, Lagos",
+  "Lekki / Victoria Island, Lagos",
+  "Surulere / Yaba, Lagos",
+  "Ajah / Epe, Lagos",
+  "Ikorodu / Ojota, Lagos",
+  "Abuja (FCT) / Interstate Depot",
+  "Port Harcourt / Rivers State",
+  "Other / Custom Location",
+];
+
 export default function PacksPricing() {
   const [quantities, setQuantities] = useState<Record<PackKey, number>>({
     "1L": 0,
@@ -32,7 +44,8 @@ export default function PacksPricing() {
     "5L": 0,
     "25L": 0,
   });
-  const [deliveryLocation, setDeliveryLocation] = useState<string>("Isolo, Lagos");
+  const [selectedPreset, setSelectedPreset] = useState<string>("Isolo, Lagos (Depot)");
+  const [customLocation, setCustomLocation] = useState<string>("");
 
   const handleQtyChange = (key: PackKey, val: string) => {
     const num = parseInt(val, 10);
@@ -41,6 +54,13 @@ export default function PacksPricing() {
       [key]: isNaN(num) || num < 0 ? 0 : num,
     }));
   };
+
+  const effectiveLocation = useMemo(() => {
+    if (selectedPreset === "Other / Custom Location") {
+      return customLocation.trim() || "Custom Delivery Location";
+    }
+    return selectedPreset;
+  }, [selectedPreset, customLocation]);
 
   const { totalUnits, totalPrice, whatsAppMessage } = useMemo(() => {
     let units = 0;
@@ -57,20 +77,18 @@ export default function PacksPricing() {
       }
     });
 
-    const locText = deliveryLocation.trim() ? deliveryLocation.trim() : "Lagos / Nigeria";
-
     const msg = summaryParts.length > 0
-      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\nDelivery Location: ${locText}\n\nPlease confirm availability, shipping/delivery cost to this location, and final payment details.`
-      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Delivery Location: ${locText}. Please share availability and delivery options.`;
+      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\nDelivery Destination: ${effectiveLocation}\n\nPlease confirm availability, shipping/delivery cost to this destination, and final payment details.`
+      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Delivery Destination: ${effectiveLocation}. Please share availability and delivery options.`;
 
     return { totalUnits: units, totalPrice: price, whatsAppMessage: msg };
-  }, [quantities, deliveryLocation]);
+  }, [quantities, effectiveLocation]);
 
   return (
     <SiteLayout activePath="/packs-pricing">
       <SEOHead
         title="Pack Sizes & Wholesale Price Guide with Cost Calculator"
-        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Include delivery location and enquire via WhatsApp."
+        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Select delivery zones and enquire via WhatsApp."
         path="/packs-pricing"
       />
       <main>
@@ -123,7 +141,7 @@ export default function PacksPricing() {
               <div className="pack-calculator-header">
                 <p className="eyebrow"><Calculator size={14} /> Multi-pack cost estimator</p>
                 <h3>Calculate your order in seconds</h3>
-                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, add your delivery location, and send the breakdown directly to our sales desk on WhatsApp.</p>
+                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, select your delivery zone, and send the breakdown directly to our sales desk on WhatsApp.</p>
               </div>
 
               <div className="pack-calculator-grid">
@@ -155,26 +173,50 @@ export default function PacksPricing() {
                 })}
               </div>
 
-              {/* Delivery Location Field */}
+              {/* Delivery Zone Presets & Custom Location */}
               <div className="pack-calculator-location">
-                <label htmlFor="calc-delivery-location">
-                  <MapPin size={14} /> Delivery Destination / Area (e.g. Isolo, Ikeja, Lekki, Abuja)
-                </label>
-                <input
-                  id="calc-delivery-location"
-                  type="text"
-                  value={deliveryLocation}
-                  onChange={(e) => setDeliveryLocation(e.target.value)}
-                  placeholder="Enter your town, city, or delivery depot"
-                  aria-label="Delivery Destination"
-                />
+                <div className="pack-calculator-location__row">
+                  <div>
+                    <label htmlFor="calc-delivery-preset">
+                      <Truck size={14} /> Select Delivery Zone / Area
+                    </label>
+                    <select
+                      id="calc-delivery-preset"
+                      value={selectedPreset}
+                      onChange={(e) => setSelectedPreset(e.target.value)}
+                      aria-label="Delivery Zone Preset"
+                    >
+                      {deliveryPresets.map((preset) => (
+                        <option key={preset} value={preset}>
+                          {preset}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {selectedPreset === "Other / Custom Location" && (
+                  <div className="pack-calculator-custom-input">
+                    <label htmlFor="calc-custom-location">
+                      <MapPin size={14} /> Enter Specific Town, Street or Landmark
+                    </label>
+                    <input
+                      id="calc-custom-location"
+                      type="text"
+                      value={customLocation}
+                      onChange={(e) => setCustomLocation(e.target.value)}
+                      placeholder="e.g. Festac Town, Lagos or Asaba, Delta State"
+                      aria-label="Custom Delivery Location"
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="pack-calculator-summary">
                 <div className="pack-calculator-totals">
                   <span>Estimated order breakdown</span>
                   <strong>₦{totalPrice.toLocaleString()}</strong>
-                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected · Delivering to: {deliveryLocation.trim() || "Lagos"}</small>
+                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected · Destination: {effectiveLocation}</small>
                 </div>
                 <a
                   className="button button--crimson"
