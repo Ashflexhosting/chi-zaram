@@ -1044,3 +1044,17 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .category-grid__footer p { font-size: 12px; }
   .category-grid__footer .button { width: 100%; justify-content: center; }
 }
+
+/* Product category accents: colour-coded edge and label details make the card family easier to scan without numeric markers. */
+.portfolio-section .category-card { border-top: 4px solid var(--category-accent, #c99a4a) !important; }
+.portfolio-section .category-card__label { display: inline-flex; align-items: center; gap: 8px; }
+.portfolio-section .category-card__label::before { display: inline-block; width: 24px; height: 3px; background: var(--category-accent, #c99a4a); content: ""; }
+.portfolio-section .category-card--palm { --category-accent: #c85a3b; }
+.portfolio-section .category-card--vegetable { --category-accent: #d6aa45; }
+.portfolio-section .category-card--yellow-garri { --category-accent: #f0c34d; }
+.portfolio-section .category-card--fabric { --category-accent: #5c7890; }
+.portfolio-section .category-card--home { --category-accent: #b47962; }
+@media (max-width: 760px) {
+  .portfolio-section .category-card { border-top-width: 3px !important; }
+  .portfolio-section .category-card__label::before { width: 19px; height: 2px; }
+}

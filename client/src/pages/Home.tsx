@@ -28,54 +28,49 @@ const whatsappNumber = "2348092192180";
 
 const categories = [
   {
-    number: "01",
     title: "Red Palm Oil",
     label: "CHI-ZARAM FOODS",
     copy: "Our flagship red palm oil, presented in family and bulk sizes for authentic Nigerian cooking.",
     details: "100% pure, fresh, and natural red palm oil extracted from premium palm fruits. Hygienically processed with no artificial additives or preservatives, rich in natural vitamins A and E.",
     specs: ["Available sizes: 1L, 2L, 3L, 4L, 5L & Bulk Jerrycans", "100% natural red palm oil with rich aroma", "Ideal for soups, stews, and traditional dishes", "Family-size value and bulk supply available"],
     image: "/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg",
-    className: "category-card category-card--large",
+    className: "category-card category-card--large category-card--palm",
   },
   {
-    number: "02",
     title: "Vegetable Oil & More",
     label: "CHI-ZARAM FOODS",
     copy: "Pure Nigerian vegetable oil, groundnut oil, and pantry staples for healthy daily meals.",
     details: "Premium vegetable and cooking oils filtered for purity and clean taste. Perfect for frying, general cooking, and wholesome family nutrition.",
     specs: ["Available in 1L, 3L, 5L and wholesale cartons", "Pure, natural, and nutrient-rich", "Great for frying, baking, and all cooking", "Affordable price with trusted quality"],
     image: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg",
-    className: "category-card category-card--cleaning",
+    className: "category-card category-card--cleaning category-card--vegetable",
   },
   {
-    number: "03",
     title: "Delta State Yellow Garri",
     label: "CHI-ZARAM FOODS",
     copy: "Golden yellow garri sourced from Delta State for quick family meals, snacks, and everyday pantry value.",
     details: "A clean, bright, and versatile cassava staple with the familiar texture and sunny colour that belongs in every well-stocked Nigerian pantry.",
     specs: ["Retail, family, and bulk formats available on enquiry", "Sourced from Delta State", "Ideal for soaking, garri eba, and pantry use", "Current pricing and delivery confirmed via WhatsApp"],
     image: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
-    className: "category-card category-card--garri",
+    className: "category-card category-card--garri category-card--yellow-garri",
   },
   {
-    number: "04",
     title: "Fabrics Collection",
     label: "CHI-ZARAM FABRICS",
     copy: "Expertly tailored premium denim jeans and fabrics with durable stitching and lasting comfort.",
     details: "An exclusive collection of blue and black denim jeans designed for timeless style, superior durability, and everyday comfort.",
     specs: ["Premium denim and cotton fabrics", "Expert tailoring with durable stitching", "Modern fit for lasting comfort", "Available in blue and black styles"],
     image: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg",
-    className: "category-card category-card--fabrics",
+    className: "category-card category-card--fabrics category-card--fabric",
   },
   {
-    number: "05",
     title: "Cleaning Essentials & Fragrance",
     label: "CHI-ZARAM HOME & FRAGRANCE",
     copy: "Practical home care essentials and concentrated oil perfumes for daily lifestyle needs.",
     details: "Dependable household helpers and long-lasting oil perfumes selected for freshness, quality, and everyday value.",
     specs: ["Home care and cleaning essentials", "Concentrated oil perfumes / fragrances", "Great for personal use and gifting", "Wholesale reselling options available"],
     image: "/manus-storage/chi-zaram-gen-home_7c839812.jpg",
-    className: "category-card category-card--wide category-card--fragrance",
+    className: "category-card category-card--wide category-card--fragrance category-card--home",
   },
 ];
 
@@ -329,7 +324,7 @@ export default function Home() {
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
                   <div className="category-card__overlay" />
                   <img className="category-card__mark" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" />
-                  <div className="category-card__content"><span className="category-card__number">{category.number}</span><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">View product details <ArrowUpRight size={16} /></span></div>
+                  <div className="category-card__content"><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">View product details <ArrowUpRight size={16} /></span></div>
                 </button>
               ))}
             </div>
@@ -503,7 +498,6 @@ export default function Home() {
               <span className="product-modal__badge">{activeCategory.label}</span>
             </div>
             <div className="product-modal__body">
-              <span className="product-modal__number">{activeCategory.number}</span>
               <h3>{activeCategory.title}</h3>
               <p className="product-modal__desc">{activeCategory.details}</p>
               <div className="product-modal__specs-title">Key Specifications &amp; Offerings</div>
