@@ -796,3 +796,12 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .accessibility-panel { left: 0; width: min(282px, calc(100vw - 28px)); }
   .site-footer__bottom { row-gap: 10px; }
 }
+
+/* Quality Guarantee on the catalogue page: warm charcoal field with readable light type. */
+.catalogue-trust { background: #292a25; color: #fffaf3; }
+.catalogue-trust .section-heading h2 { color: #fffaf3; }
+.catalogue-trust .section-heading > p:not(.eyebrow), .catalogue-trust .section-heading p:last-child { color: #e5ddd1; }
+.catalogue-trust .catalogue-trust__card { background: #39463c; border-color: #e0b45f; box-shadow: 0 14px 30px rgba(0,0,0,0.16); }
+.catalogue-trust .catalogue-trust__card svg { color: #e0b45f; }
+.catalogue-trust .catalogue-trust__card h3 { color: #fffaf3; }
+.catalogue-trust .catalogue-trust__card p { color: #e5ddd1; }

@@ -27,6 +27,8 @@
 - [x] Add the supplied Facebook link to the shared footer social links.
 - [x] Add the Ashflex Web Design footer credit and website link.
 - [x] Test responsive accessibility behavior and save a checkpoint.
+- [x] Apply a dark background and light text to the Quality Guarantee section.
+- [x] Verify contrast and responsive rendering, then save a checkpoint.
 - [x] Generate and integrate 1L, 3L, 5L, and bulk pack visuals in product modals.
 - [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
 - [x] Apply the generated brand pattern to pricing and footer sections.
