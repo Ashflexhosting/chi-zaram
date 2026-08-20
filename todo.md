@@ -64,3 +64,5 @@
 - [x] Verify the centered header on desktop and mobile, then save a checkpoint.
 - [x] Add Delta State yellow garri to the product list and catalogue surfaces.
 - [x] Add yellow garri enquiry messaging and verify responsive product presentation.
+- [x] Align the homepage What We Carry image cards and improve responsive cropping.
+- [x] Verify the updated card grid on desktop and mobile, then save a checkpoint.

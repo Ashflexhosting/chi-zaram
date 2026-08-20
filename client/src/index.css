@@ -1005,3 +1005,23 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 .category-card--garri .category-card__image img { object-position: center; }
 .catalogue-product--yellow-garri { border-top-color: #d7a62a; }
 .catalogue-product--yellow-garri .catalogue-product__meta { color: #a87912; }
+
+/* What We Carry alignment refinement: a two-row editorial composition on desktop, with consistent card heights and calmer mobile crops. */
+@media (min-width: 981px) {
+  .portfolio-section .category-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(250px, auto)); grid-auto-rows: unset; gap: 18px; }
+  .portfolio-section .category-card--large { grid-column: 1 / span 5; grid-row: 1 / span 2; min-height: 518px; }
+  .portfolio-section .category-card--cleaning { grid-column: 6 / span 3; grid-row: 1; min-height: 250px; }
+  .portfolio-section .category-card--fabrics { grid-column: 9 / span 4; grid-row: 1; min-height: 250px; }
+  .portfolio-section .category-card--wide { grid-column: 6 / span 4; grid-row: 2; min-height: 250px; }
+  .portfolio-section .category-card--garri { grid-column: 10 / span 3; grid-row: 2; min-height: 250px; }
+}
+.category-card--garri h3 { font-size: clamp(1.7rem, 2.55vw, 2.55rem); }
+.category-card--garri p { font-size: 11px; }
+@media (max-width: 760px) {
+  .portfolio-section .category-card--cleaning,
+  .portfolio-section .category-card--fabrics,
+  .portfolio-section .category-card--garri { min-height: 390px; }
+  .portfolio-section .category-card--large { min-height: 495px; }
+  .portfolio-section .category-card__image img { object-position: center; }
+  .portfolio-section .category-card--large .category-card__image img { object-position: 54% center; }
+}
