@@ -6,6 +6,7 @@
 import { ArrowUpRight, ChevronUp, Instagram, Menu, MessageCircle, X } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 import type { ReactNode } from "react";
 
 const whatsappNumber = "2348092192180";
@@ -66,6 +67,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
         </div>
       </header>
       {children}
+      <AccessibilityWidget />
       <BackToTop />
       <footer className="site-footer page-footer">
         <div className="container site-footer__top">
@@ -74,9 +76,9 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
             <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
           </Link>
           <div className="footer-tagline">Good things are<br /><em>worth sharing.</em></div>
-          <div className="footer-contact"><span>Start a conversation</span><a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a></div>
+          <div className="footer-contact"><span>Start a conversation</span><a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer"><Instagram size={15} /> Facebook</a></div>
         </div>
-        <div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><Link href="/contact">Talk to the team <ArrowUpRight size={14} /></Link></div>
+        <div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><Link href="/contact">Talk to the team <ArrowUpRight size={14} /></Link></div>
       </footer>
     </div>
   );

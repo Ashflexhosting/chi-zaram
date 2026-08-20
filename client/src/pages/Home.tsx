@@ -22,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { BackToTop } from "@/components/SiteLayout";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const whatsappNumber = "2348092192180";
 
@@ -524,8 +525,9 @@ export default function Home() {
         </div>
       )}
 
+      <AccessibilityWidget />
       <BackToTop />
-      <footer className="site-footer"><div className="container site-footer__top"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
+      <footer className="site-footer"><div className="container site-footer__top"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer"><Instagram size={15} /> Facebook</a></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
       <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
     </div>

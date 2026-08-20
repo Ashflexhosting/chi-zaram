@@ -23,6 +23,10 @@
 - [x] Add a review-ready testimonial placeholder section to the homepage.
 - [x] Implement a sticky Back to Top control across the multi-page site.
 - [x] Test responsive behavior and save a checkpoint.
+- [x] Add persistent font-size controls and a high-contrast accessibility mode.
+- [x] Add the supplied Facebook link to the shared footer social links.
+- [x] Add the Ashflex Web Design footer credit and website link.
+- [x] Test responsive accessibility behavior and save a checkpoint.
 - [x] Generate and integrate 1L, 3L, 5L, and bulk pack visuals in product modals.
 - [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
 - [x] Apply the generated brand pattern to pricing and footer sections.
