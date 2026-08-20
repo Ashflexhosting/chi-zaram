@@ -8,3 +8,6 @@
 - [x] Include product name and selected quantity in WhatsApp messages.
 - [x] Add configurable red palm oil and vegetable oil wholesale discount tiers.
 - [x] Test the new commerce interactions and save a checkpoint.
+- [ ] Replace uploaded visuals with custom-generated Harvest Editorial assets.
+- [ ] Verify generated visual crops on desktop and mobile.
+- [ ] Save a checkpoint for the generated-visual refresh.
