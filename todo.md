@@ -135,3 +135,5 @@
 - [x] Verify preview, clipboard copy, and email options on desktop and mobile, then save a checkpoint.
 - [x] Add a white oblong background behind the shared footer logo.
 - [x] Verify the footer logo treatment on desktop and mobile, then save a checkpoint.
+- [x] Fix mobile visibility and overflow for all homepage pack-sizes cards.
+- [x] Verify the pack-sizes cards on mobile and desktop, then save a checkpoint.

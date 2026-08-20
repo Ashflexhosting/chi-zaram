@@ -1599,3 +1599,24 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     padding: 7px 14px 7px 11px;
   }
 }
+
+/* Mobile pack-size cards: stack every commercial card in a readable full-width flow instead of squeezing three columns into the viewport. */
+@media (max-width: 760px) {
+  .commercial-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .commercial-card {
+    min-width: 0;
+    padding: 27px 20px 22px;
+  }
+  .commercial-card__desc,
+  .commercial-specs li {
+    overflow-wrap: anywhere;
+  }
+  .commercial-specs {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+}
