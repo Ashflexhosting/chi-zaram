@@ -64,6 +64,20 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: 4,
+    title: "Delta State Yellow Garri",
+    category: "Yellow Garri",
+    caption: "Golden yellow garri sourced from Delta State, styled as a versatile pantry staple for family meals, soaking, and garri eba.",
+    src: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
+    mobileSrc: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
+    commercial: {
+      packSize: "Retail pouch, family pack, or bulk sack",
+      priceGuide: "Product-specific quote",
+      orderRange: "Confirm on enquiry",
+      note: "Share your preferred quantity and destination for the current yellow garri price and delivery options.",
+    },
+  },
+  {
+    id: 5,
     title: "Premium Denim & Tailored Fabrics",
     category: "Fabrics",
     caption: "Durable indigo denim jeans and tailored apparel from our lifestyle collection.",
@@ -77,7 +91,7 @@ const galleryItems: GalleryItem[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     title: "Home Fragrance & Cleaning Essentials",
     category: "Home & Fragrance",
     caption: "Amber glass home care bottles, soy candles, and concentrated oil perfumes for daily living.",
@@ -91,7 +105,7 @@ const galleryItems: GalleryItem[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     title: "1-Litre Retail Bottle Format",
     category: "Palm Oil",
     caption: "Convenient tamper-evident retail bottle format for family kitchens and household cooking.",
@@ -105,7 +119,7 @@ const galleryItems: GalleryItem[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     title: "3-Litre Family Pack Format",
     category: "Palm Oil",
     caption: "Mid-size family pack offering exceptional value for regular cooking needs.",
@@ -119,7 +133,7 @@ const galleryItems: GalleryItem[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     title: "5-Litre Jerrycan Format",
     category: "Palm Oil",
     caption: "Robust 5L jerrycan with secure handle for extended home use and food service caterers.",
@@ -133,7 +147,7 @@ const galleryItems: GalleryItem[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     title: "Wholesale Bulk Container & Carton Supply",
     category: "Bulk Supply",
     caption: "Commercial wholesale container and carton packaging built for distributors and resellers.",
@@ -148,7 +162,7 @@ const galleryItems: GalleryItem[] = [
   },
 ];
 
-const categories = ["All", "Palm Oil", "Vegetable Oil", "Fabrics", "Home & Fragrance", "Bulk Supply", "Brand Story"];
+const categories = ["All", "Palm Oil", "Vegetable Oil", "Yellow Garri", "Fabrics", "Home & Fragrance", "Bulk Supply", "Brand Story"];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -207,7 +221,7 @@ export default function Gallery() {
     <SiteLayout>
       <SEOHead
         title="Photo Gallery"
-        description="Explore the complete photo gallery of CHI-ZARAM products, packaging formats, bulk supply cartons, and brand storytelling."
+        description="Explore the complete photo gallery of CHI-ZARAM products, Delta State yellow garri, packaging formats, bulk supply cartons, and brand storytelling."
         path="/gallery"
       />
       <main className="gallery-page">
@@ -215,7 +229,7 @@ export default function Gallery() {
           <span className="eyebrow">Visual Archive</span>
           <h1>Products &amp; Gallery</h1>
           <p className="page-header__lead">
-            Explore our complete collection of red palm oil formats, vegetable oils, denim fabrics, home fragrances, and bulk supply cartons. Click any image to view in high resolution.
+            Explore our complete collection of red palm oil formats, Delta State yellow garri, vegetable oils, denim fabrics, home fragrances, and bulk supply cartons. Click any image to view in high resolution.
           </p>
         </header>
 

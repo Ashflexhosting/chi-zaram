@@ -1000,3 +1000,8 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .site-header__inner { position: relative; }
   .site-header .main-nav { position: absolute; left: 50%; margin-left: 0; transform: translateX(-50%); white-space: nowrap; }
 }
+
+/* Yellow garri product treatment: warm Delta State pantry colour inside the Harvest Editorial palette. */
+.category-card--garri .category-card__image img { object-position: center; }
+.catalogue-product--yellow-garri { border-top-color: #d7a62a; }
+.catalogue-product--yellow-garri .catalogue-product__meta { color: #a87912; }

@@ -62,3 +62,5 @@
 - [x] Include commercial context in lightbox WhatsApp messages and verify responsive display.
 - [x] Center the desktop primary navigation while preserving mobile menu behavior.
 - [x] Verify the centered header on desktop and mobile, then save a checkpoint.
+- [x] Add Delta State yellow garri to the product list and catalogue surfaces.
+- [x] Add yellow garri enquiry messaging and verify responsive product presentation.

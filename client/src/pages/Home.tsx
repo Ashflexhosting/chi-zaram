@@ -49,6 +49,16 @@ const categories = [
   },
   {
     number: "03",
+    title: "Delta State Yellow Garri",
+    label: "CHI-ZARAM FOODS",
+    copy: "Golden yellow garri sourced from Delta State for quick family meals, snacks, and everyday pantry value.",
+    details: "A clean, bright, and versatile cassava staple with the familiar texture and sunny colour that belongs in every well-stocked Nigerian pantry.",
+    specs: ["Retail, family, and bulk formats available on enquiry", "Sourced from Delta State", "Ideal for soaking, garri eba, and pantry use", "Current pricing and delivery confirmed via WhatsApp"],
+    image: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
+    className: "category-card category-card--garri",
+  },
+  {
+    number: "04",
     title: "Fabrics Collection",
     label: "CHI-ZARAM FABRICS",
     copy: "Expertly tailored premium denim jeans and fabrics with durable stitching and lasting comfort.",
@@ -58,7 +68,7 @@ const categories = [
     className: "category-card category-card--fabrics",
   },
   {
-    number: "04",
+    number: "05",
     title: "Cleaning Essentials & Fragrance",
     label: "CHI-ZARAM HOME & FRAGRANCE",
     copy: "Practical home care essentials and concentrated oil perfumes for daily lifestyle needs.",
@@ -71,8 +81,9 @@ const categories = [
 
 const galleryImages = [
   { title: "Red Palm Oil", src: "/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg", desc: "Warm, natural product storytelling for the flagship line" },
-  { title: "Vegetable Oil", src: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg", desc: "Clean golden pantry styling for everyday meals" },
-  { title: "Fabrics Collection", src: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg", desc: "Indigo denim and textured fabric direction" },
+      { title: "Vegetable Oil", src: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg", desc: "Clean golden pantry styling for everyday meals" },
+  { title: "Delta State Yellow Garri", src: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg", desc: "Golden cassava staple sourced from Delta State" },
+    { title: "Fabrics Collection", src: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg", desc: "Indigo denim and textured fabric direction" },
   { title: "Home & Fragrance", src: "/manus-storage/chi-zaram-gen-home_7c839812.jpg", desc: "Warm shelf-life styling for home essentials" },
   { title: "The CHI-ZARAM World", src: "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg", desc: "The brand's natural, editorial point of view" },
 ];
@@ -175,7 +186,7 @@ export default function Home() {
     openWhatsApp(message);
   };
 
-  const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : ["1 unit", "5 units", "Wholesale carton"];
+  const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : activeCategory?.title === "Delta State Yellow Garri" ? ["Retail pouch", "5kg family pack", "Bulk sack", "Wholesale quantity"] : ["1 unit", "5 units", "Wholesale carton"];
 
   return (
     <div className="site-shell">
@@ -312,7 +323,7 @@ export default function Home() {
                   type="button"
                   className={category.className}
                   key={category.title}
-                  onClick={() => { setSelectedQuantity(category.title === "Red Palm Oil" ? "5L family pack" : "1 unit"); setActivePackVariant(packVariants[2]); setActiveCategory(category); }}
+                  onClick={() => { setSelectedQuantity(category.title === "Red Palm Oil" ? "5L family pack" : category.title === "Delta State Yellow Garri" ? "5kg family pack" : "1 unit"); setActivePackVariant(packVariants[2]); setActiveCategory(category); }}
                   style={{ textAlign: "left", border: 0, padding: 0 }}
                 >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
@@ -445,7 +456,7 @@ export default function Home() {
         <section className="supply-section section-pad" id="supply">
           <div className="container supply-section__inner">
             <div className="supply-section__copy"><div className="section-kicker"><span className="section-kicker__number">03</span><span>Retail &amp; bulk supply</span></div><p className="eyebrow">For the home, shop, or growing business</p><h2>Need more<br /><em>to go around?</em></h2><p className="body-copy">Buying for resale, a food business, or larger household needs? Tell us what you need, the quantity, and your location. Our team can confirm current availability and supply options.</p><div className="supply-feature"><div className="supply-feature__icon"><Truck size={20} /></div><div><strong>Quality + value + convenience</strong><span>A direct path from enquiry to dispatch.</span></div></div></div>
-            <form className="enquiry-card" onSubmit={handleSubmit}><div className="enquiry-card__top"><span className="enquiry-card__label">Wholesale desk</span><span className="enquiry-card__status"><i /> WhatsApp first</span></div><h3>Start an enquiry</h3><p>Share the basics. We’ll take it from there.</p><label>What are you looking for?<select name="product" defaultValue="Palm Oil"><option>Palm Oil</option><option>Cleaning Essentials</option><option>Fabrics Collections</option><option>Oil Perfume</option><option>Multiple categories</option></select></label><label>Estimated quantity<input name="quantity" placeholder="e.g. 20 units / 2 cartons" /></label><label>Delivery location<input name="location" placeholder="City or area" required /></label><button className="button button--crimson button--full" type="submit">{submitted ? "Opening WhatsApp…" : "Send enquiry on WhatsApp"}<ArrowUpRight size={17} /></button><span className="enquiry-card__fineprint">No fixed prices are published here — live availability and logistics are confirmed directly.</span></form>
+            <form className="enquiry-card" onSubmit={handleSubmit}><div className="enquiry-card__top"><span className="enquiry-card__label">Wholesale desk</span><span className="enquiry-card__status"><i /> WhatsApp first</span></div><h3>Start an enquiry</h3><p>Share the basics. We’ll take it from there.</p><label>What are you looking for?<select name="product" defaultValue="Palm Oil"><option>Palm Oil</option><option>Vegetable Oil</option><option>Delta State Yellow Garri</option><option>Cleaning Essentials</option><option>Fabrics Collections</option><option>Oil Perfume</option><option>Multiple categories</option></select></label><label>Estimated quantity<input name="quantity" placeholder="e.g. 20 units / 2 cartons" /></label><label>Delivery location<input name="location" placeholder="City or area" required /></label><button className="button button--crimson button--full" type="submit">{submitted ? "Opening WhatsApp…" : "Send enquiry on WhatsApp"}<ArrowUpRight size={17} /></button><span className="enquiry-card__fineprint">No fixed prices are published here — live availability and logistics are confirmed directly.</span></form>
           </div>
         </section>
 
