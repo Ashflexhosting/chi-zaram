@@ -1091,3 +1091,18 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .footer-enquiry__row { grid-template-columns: 1fr; }
   .footer-enquiry { padding: 16px; }
 }
+
+/* Supplied CHI-ZARAM horizontal wordmark: preserve the full logo while keeping the header and footer compact. */
+.brand-lockup__mark { width: 210px; height: 60px; object-fit: contain; object-position: left center; }
+.brand-lockup__type { display: none; }
+.brand-lockup--footer .brand-lockup__mark { width: 240px; height: 72px; }
+.category-card__mark { width: 44px; height: 44px; object-fit: contain; }
+.palm-section__brand-stamp { object-fit: contain; }
+@media (max-width: 980px) {
+  .brand-lockup__mark { width: 168px; height: 52px; }
+  .brand-lockup--footer .brand-lockup__mark { width: 210px; height: 62px; }
+}
+@media (max-width: 760px) {
+  .brand-lockup__mark { width: 148px; height: 48px; }
+  .brand-lockup--footer .brand-lockup__mark { width: 190px; height: 56px; }
+}

@@ -74,5 +74,7 @@
 - [x] Verify the pushed branch and commit on GitHub.
 - [x] Add an accessible contact form to the shared website footer.
 - [x] Add social media links and verify footer submission behavior on desktop and mobile.
-- [ ] Configure GitHub Pages deployment for Ashflexhosting/chi-zaram.
-- [ ] Push the Pages workflow and verify the resulting deployment status and URL.
+- [x] Configure GitHub Pages deployment for Ashflexhosting/chi-zaram.
+- [x] Push the Pages workflow and verify the resulting deployment status and URL.
+- [ ] Replace the current logo with the supplied chizaramlogo.png and optimize it for checkpoint storage.
+- [ ] Update GitHub Pages, verify the new logo, and retry the project checkpoint.
