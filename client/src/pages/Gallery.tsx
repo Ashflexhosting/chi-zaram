@@ -2,7 +2,7 @@
  * CHI-ZARAM Photo Gallery page: displays the supplied product, packaging,
  * brand, and lifestyle imagery with category filtering and interactive lightbox browsing.
  */
-import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, Share2, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, RotateCcw, Share2, X, ZoomIn, ZoomOut } from "lucide-react";
 import { TouchEvent as ReactTouchEvent, useEffect, useRef, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
@@ -88,6 +88,7 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [shareFeedback, setShareFeedback] = useState(false);
+  const [zoom, setZoom] = useState(1);
   const touchStartX = useRef<number | null>(null);
 
   const filteredItems = activeCategory === "All"
@@ -95,8 +96,19 @@ export default function Gallery() {
     : galleryItems.filter((item) => item.category === activeCategory);
 
   const activeLightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
-  const showNext = () => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : 0));
-  const showPrevious = () => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : 0));
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setZoom(1);
+    setShareFeedback(false);
+  };
+  const showNext = () => {
+    setZoom(1);
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : 0));
+  };
+  const showPrevious = () => {
+    setZoom(1);
+    setLightboxIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : 0));
+  };
   const handleTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
     touchStartX.current = event.touches[0]?.clientX ?? null;
   };
@@ -165,8 +177,8 @@ export default function Gallery() {
                 className="gallery-card"
                 role="button"
                 tabIndex={0}
-                onClick={() => setLightboxIndex(index)}
-                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setLightboxIndex(index); }}
+                onClick={() => openLightbox(index)}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") openLightbox(index); }}
               >
                 <div className="gallery-card__media">
                   <img src={item.src} srcSet={`${item.mobileSrc} 480w, ${item.src} 960w`} sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
@@ -206,7 +218,13 @@ export default function Gallery() {
                     <ChevronLeft size={24} />
                   </button>
                   <div className="lightbox-media-box" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                    <img src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/hero-960_46c9d711.jpg"; }} />
+                    <div className="lightbox-zoom-controls" aria-label="Image zoom controls">
+                      <button type="button" onClick={() => setZoom((value) => Math.max(1, Number((value - 0.2).toFixed(1))))} disabled={zoom <= 1} aria-label="Zoom out"><ZoomOut size={15} /></button>
+                      <span>{Math.round(zoom * 100)}%</span>
+                      <button type="button" onClick={() => setZoom((value) => Math.min(2.4, Number((value + 0.2).toFixed(1))))} disabled={zoom >= 2.4} aria-label="Zoom in"><ZoomIn size={15} /></button>
+                      <button type="button" onClick={() => setZoom(1)} disabled={zoom === 1} aria-label="Reset zoom"><RotateCcw size={14} /></button>
+                    </div>
+                    <img className="lightbox-image" src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" style={{ transform: `scale(${zoom})` }} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/hero-960_46c9d711.jpg"; }} />
                   </div>
                   <button
                     className="lightbox-nav-btn lightbox-next"
@@ -227,9 +245,9 @@ export default function Gallery() {
                       href={whatsappHref(`Hello CHI-ZARAM, I am enquiring about ${activeLightboxItem.title} (${activeLightboxItem.category}) seen in your photo gallery.`)}
                       target="_blank"
                       rel="noreferrer"
-                    >
-                      Enquire about this item <ArrowUpRight size={15} />
-                    </a>
+                      >
+                        Enquire about this product <ArrowUpRight size={15} />
+                      </a>
                     <button
                       className="button button--outline lightbox-share-btn"
                       type="button"

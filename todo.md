@@ -55,3 +55,6 @@
 - [x] Place the opened gallery image and descriptive panel side by side on desktop lightbox view.
 - [x] Preserve the stacked lightbox layout on mobile and verify both breakpoints.
 - [ ] Save a checkpoint for the lightbox layout refinement.
+- [x] Add desktop lightbox zoom controls with reset behavior.
+- [x] Place a direct product enquiry button beside the lightbox description.
+- [x] Verify desktop and mobile lightbox behavior, then save a checkpoint.

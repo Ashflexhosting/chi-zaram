@@ -949,3 +949,21 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .lightbox-stage .lightbox-media-box { min-height: 320px; padding: 24px 52px; }
   .lightbox-caption { min-height: 0; border-top: 1px solid #3d3b34; border-left: 0; }
 }
+
+/* Lightbox zoom tools and direct product enquiry treatment. */
+.lightbox-media-box { overflow: hidden; }
+.lightbox-image { cursor: zoom-in; transition: transform 220ms var(--ease-out); will-change: transform; }
+.lightbox-zoom-controls { position: absolute; z-index: 6; top: 18px; right: 18px; display: inline-flex; align-items: center; gap: 5px; padding: 5px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: rgba(20,21,18,0.76); color: #fffaf3; backdrop-filter: blur(8px); }
+.lightbox-zoom-controls button { display: inline-grid; width: 30px; height: 30px; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #fffaf3; cursor: pointer; transition: background 160ms ease-out, color 160ms ease-out; }
+.lightbox-zoom-controls button:hover:not(:disabled) { background: #9f2f2a; color: #fffaf3; }
+.lightbox-zoom-controls button:disabled { cursor: not-allowed; opacity: 0.35; }
+.lightbox-zoom-controls span { min-width: 43px; color: #e0b45f; font-size: 10px; font-weight: 800; text-align: center; }
+.lightbox-caption .lightbox-actions { display: grid; gap: 10px; }
+.lightbox-caption .lightbox-actions .button { justify-content: center; width: 100%; }
+@media (max-width: 960px) {
+  .lightbox-zoom-controls { top: 12px; right: 12px; }
+  .lightbox-image { max-width: 100%; max-height: 52vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image { transition: none; }
+}
