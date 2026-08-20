@@ -25,44 +25,57 @@ const whatsappNumber = "2348092192180";
 const categories = [
   {
     number: "01",
-    title: "Palm Oil",
+    title: "Red Palm Oil",
     label: "CHI-ZARAM FOODS",
-    copy: "Our flagship red palm oil, presented for everyday cooking, family value, and larger supply needs.",
-    details: "Pure red palm oil with rich natural flavor and nutrients. Hygienically processed without artificial additives or preservatives, designed for households and bulk commercial buyers.",
-    specs: ["Primary pack: 5 Litres family size", "Bulk jerrycans & cartons available", "Rich in natural vitamins & flavor", "Ideal for retail & food service"],
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1200&q=85",
+    copy: "Our flagship red palm oil, presented in family and bulk sizes for authentic Nigerian cooking.",
+    details: "100% pure, fresh, and natural red palm oil extracted from premium palm fruits. Hygienically processed with no artificial additives or preservatives, rich in natural vitamins A and E.",
+    specs: ["Available sizes: 1L, 2L, 3L, 4L, 5L & Bulk Jerrycans", "100% natural red palm oil with rich aroma", "Ideal for soups, stews, and traditional dishes", "Family-size value and bulk supply available"],
+    image: "/home/ubuntu/upload/1.jpeg",
     className: "category-card category-card--large",
   },
   {
     number: "02",
-    title: "Cleaning Essentials",
-    label: "CHI-ZARAM HOME",
-    copy: "Practical, dependable everyday helpers for homes, offices, and businesses.",
-    details: "Carefully curated household and commercial cleaning essentials designed for superior effectiveness, value, and reliable daily upkeep.",
-    specs: ["High-performance cleaning aids", "Suitable for homes & offices", "Bulk quantities for commercial buyers", "Dependable quality standards"],
-    image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=85",
+    title: "Vegetable Oil & More",
+    label: "CHI-ZARAM FOODS",
+    copy: "Pure Nigerian vegetable oil, groundnut oil, and pantry staples for healthy daily meals.",
+    details: "Premium vegetable and cooking oils filtered for purity and clean taste. Perfect for frying, general cooking, and wholesome family nutrition.",
+    specs: ["Available in 1L, 3L, 5L and wholesale cartons", "Pure, natural, and nutrient-rich", "Great for frying, baking, and all cooking", "Affordable price with trusted quality"],
+    image: "/home/ubuntu/upload/12.jpeg",
     className: "category-card category-card--cleaning",
   },
   {
     number: "03",
-    title: "Fabrics Collections",
+    title: "Fabrics Collection",
     label: "CHI-ZARAM FABRICS",
-    copy: "A growing edit of texture, colour, and pieces made to be discovered directly.",
-    details: "An exquisite selection of fabrics and fashion collections showcasing rich textures, vibrant colors, and timeless appeal for discerning buyers.",
-    specs: ["Premium fabric textures", "Curated colorways & patterns", "Direct wholesale & retail ordering", "Suitable for custom tailoring"],
-    image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85",
+    copy: "Expertly tailored premium denim jeans and fabrics with durable stitching and lasting comfort.",
+    details: "An exclusive collection of blue and black denim jeans designed for timeless style, superior durability, and everyday comfort.",
+    specs: ["Premium denim and cotton fabrics", "Expert tailoring with durable stitching", "Modern fit for lasting comfort", "Available in blue and black styles"],
+    image: "/home/ubuntu/upload/7.jpeg",
     className: "category-card category-card--fabrics",
   },
   {
     number: "04",
-    title: "Oil Perfume",
-    label: "CHI-ZARAM FRAGRANCE",
-    copy: "Small moments of scent, selected for personal style and easy everyday gifting.",
-    details: "Long-lasting concentrated oil perfumes offering sophisticated scent profiles, skin-friendly formulations, and great value for personal use or gifting.",
-    specs: ["Concentrated fragrance oils", "Long-lasting scent projection", "Portable bottle sizes", "Ideal for retail reselling"],
-    image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1200&q=85",
+    title: "Cleaning Essentials & Fragrance",
+    label: "CHI-ZARAM HOME & FRAGRANCE",
+    copy: "Practical home care essentials and concentrated oil perfumes for daily lifestyle needs.",
+    details: "Dependable household helpers and long-lasting oil perfumes selected for freshness, quality, and everyday value.",
+    specs: ["Home care and cleaning essentials", "Concentrated oil perfumes / fragrances", "Great for personal use and gifting", "Wholesale reselling options available"],
+    image: "/home/ubuntu/upload/5.jpeg",
     className: "category-card category-card--wide category-card--fragrance",
   },
+];
+
+const galleryImages = [
+  { title: "5L Flagship Palm Oil", src: "/home/ubuntu/upload/1.jpeg", desc: "Pure goodness, naturally better packaging" },
+  { title: "Family Value Packs", src: "/home/ubuntu/upload/2.jpeg", desc: "Multiple 5L containers ready for dispatch" },
+  { title: "Brand Presentation", src: "/home/ubuntu/upload/3.jpeg", desc: "Our team showcasing verified pack sizes" },
+  { title: "Refill Pouch Format", src: "/home/ubuntu/upload/4.jpeg", desc: "Stand-up pouch packaging option" },
+  { title: "1 Litre Retail Bottles", src: "/home/ubuntu/upload/5.jpeg", desc: "Handy retail size for everyday cooking" },
+  { title: "3 Litre Palm Oil Pack", src: "/home/ubuntu/upload/6.jpeg", desc: "Compact family jerrycan presentation" },
+  { title: "Premium Denim Jeans", src: "/home/ubuntu/upload/8.jpeg", desc: "Showroom display of tailored jeans" },
+  { title: "Blue & Black Denim", src: "/home/ubuntu/upload/9.jpeg", desc: "Classic colors with durable stitching" },
+  { title: "Vegetable Oil 5L", src: "/home/ubuntu/upload/12.jpeg", desc: "Pure golden vegetable oil for healthy meals" },
+  { title: "Master Brand Roundel", src: "/home/ubuntu/upload/15.jpeg", desc: "Palm oil, vegetable oil, grains & more" },
 ];
 
 const supplySteps = [
@@ -180,12 +193,38 @@ export default function Home() {
               <p className="eyebrow">A brand with room to grow</p>
               <h2>Quality everyday goods, <em>closer to home.</em></h2>
               <div className="story-section__lower">
-                <p className="body-copy">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers. Our portfolio currently spans palm oil, cleaning essentials, fabrics collections, and oil perfumes.</p>
+                <p className="body-copy">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers. Our product portfolio spans red palm oil, pure vegetable oil, fabrics, cleaning essentials, and oil perfumes.</p>
                 <div className="story-callout"><Sparkles size={19} /><span>One master brand.<br /><strong>Many ways to live well.</strong></span></div>
               </div>
               <a className="text-link" href="#portfolio">Explore our collection <ArrowUpRight size={17} /></a>
             </div>
             <div className="story-section__side-note"><span>CHI-ZARAM</span><p>Pure goodness.<br /><em>Naturally better.</em></p></div>
+          </div>
+        </section>
+
+        <section className="brand-showcase section-pad">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div>
+                <p className="eyebrow">The CHI-ZARAM standard</p>
+                <h2>From nature's source<br /><em>to your family table.</em></h2>
+              </div>
+              <p className="section-heading__aside">Every CHI-ZARAM product is selected and packaged with care. Whether you are buying single retail units or wholesale bulk supplies, our commitment to purity and value remains constant.</p>
+            </div>
+            <div className="brand-showcase__grid">
+              <div className="brand-showcase__card">
+                <img src="/home/ubuntu/upload/3.jpeg" alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
+                <div className="brand-showcase__tag">Direct Representation</div>
+                <h4>Trusted quality from our hands to yours</h4>
+                <p>We take pride in transparent presentation, consistent pack sizes, and direct customer engagement.</p>
+              </div>
+              <div className="brand-showcase__card">
+                <img src="/home/ubuntu/upload/15.jpeg" alt="CHI-ZARAM Palm Oil and More roundel" loading="lazy" />
+                <div className="brand-showcase__tag">Palm Oil &amp; More</div>
+                <h4>A growing pantry and lifestyle ecosystem</h4>
+                <p>From palm and vegetable oils to groundnut oil, grains, and fabrics — explore our complete range.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -216,8 +255,29 @@ export default function Home() {
 
         <section className="palm-section section-pad" id="palm-oil">
           <div className="container palm-section__inner">
-            <div className="palm-section__visual"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1200&q=85" alt="A natural oil bottle with a bowl and palm-inspired warm tones" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
-            <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our 5-litre hero pack is presented for family use and value, with retail and bulk enquiries available directly through WhatsApp.</p><div className="palm-points"><span><Check size={16} /> Everyday cooking</span><span><Check size={16} /> Family-size value</span><span><Check size={16} /> Retail or bulk supply</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about the 5-litre palm oil pack. Please share current price, availability and delivery options.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
+            <div className="palm-section__visual"><img src="/home/ubuntu/upload/1.jpeg" alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
+            <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our red palm oil is available in 1L, 2L, 3L, 4L, and 5L containers as well as bulk jerrycans. Rich in vitamins A and E with no artificial additives.</p><div className="palm-points"><span><Check size={16} /> 100% pure &amp; natural red palm oil</span><span><Check size={16} /> Multiple pack sizes (1L to 5L &amp; Bulk)</span><span><Check size={16} /> Hygienically processed for soups &amp; stews</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about palm oil pack sizes (1L to 5L and bulk). Please share current pricing and availability.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
+          </div>
+        </section>
+
+        <section className="gallery-section section-pad">
+          <div className="container">
+            <div className="section-heading section-heading--center">
+              <p className="eyebrow">Visual Catalogue</p>
+              <h2>Explore our packages &amp; products.</h2>
+              <p>A closer look at our certified pack sizes, fabric collections, and everyday essentials.</p>
+            </div>
+            <div className="gallery-grid">
+              {galleryImages.map((item, idx) => (
+                <div className="gallery-card" key={idx}>
+                  <div className="gallery-card__img"><img src={item.src} alt={item.title} loading="lazy" /></div>
+                  <div className="gallery-card__info">
+                    <strong>{item.title}</strong>
+                    <span>{item.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

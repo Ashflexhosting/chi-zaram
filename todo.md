@@ -1,0 +1,6 @@
+- [ ] Review and classify all 15 supplied images for palm oil, people, pack sizes, and brand-story use.
+- [ ] Save image review findings with source filenames for later reference.
+- [ ] Prepare selected uploaded assets for website use and map them to expanded sections.
+- [ ] Expand the website with richer product details, gallery content, and stronger brand storytelling.
+- [ ] Test the updated experience on desktop and mobile.
+- [ ] Save a new checkpoint and report the expanded website changes.
