@@ -49,7 +49,7 @@ export default function Story() {
         <section className="story-human section-pad">
           <div className="container story-human__grid">
             <div className="story-human__visual">
-              <img src={assetPath("/manus-storage/story-team-palm-oil_de9bf780.jpeg")} alt="CHI-ZARAM team member presenting palm oil pack sizes alongside retail and bulk containers" loading="lazy" />
+              <img src={assetPath("/manus-storage/story-team-palm-oil-sharp_103a02c5.jpeg")} alt="CHI-ZARAM team member presenting palm oil pack sizes alongside retail and bulk containers" loading="lazy" />
               <span className="story-human__tag">The people behind the source</span>
             </div>
             <div className="story-human__copy">
