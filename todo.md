@@ -4,3 +4,7 @@
 - [ ] Expand the website with richer product details, gallery content, and stronger brand storytelling.
 - [ ] Test the updated experience on desktop and mobile.
 - [ ] Save a new checkpoint and report the expanded website changes.
+- [x] Add swipeable lightbox controls for the visual gallery.
+- [x] Include product name and selected quantity in WhatsApp messages.
+- [x] Add configurable red palm oil and vegetable oil wholesale discount tiers.
+- [x] Test the new commerce interactions and save a checkpoint.

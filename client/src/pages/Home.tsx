@@ -3,8 +3,10 @@
  * warm natural imagery, DM Serif Display headlines, and Manrope utility copy.
  * This page is the public-facing brand narrative and WhatsApp-first conversion path.
  */
-import { FormEvent, useState } from "react";
+import { FormEvent, TouchEvent as ReactTouchEvent, useEffect, useRef, useState } from "react";
 import {
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Check,
   ChevronDown,
@@ -30,7 +32,7 @@ const categories = [
     copy: "Our flagship red palm oil, presented in family and bulk sizes for authentic Nigerian cooking.",
     details: "100% pure, fresh, and natural red palm oil extracted from premium palm fruits. Hygienically processed with no artificial additives or preservatives, rich in natural vitamins A and E.",
     specs: ["Available sizes: 1L, 2L, 3L, 4L, 5L & Bulk Jerrycans", "100% natural red palm oil with rich aroma", "Ideal for soups, stews, and traditional dishes", "Family-size value and bulk supply available"],
-    image: "/home/ubuntu/upload/1.jpeg",
+    image: "/manus-storage/1_d714c4dd.jpeg",
     className: "category-card category-card--large",
   },
   {
@@ -40,7 +42,7 @@ const categories = [
     copy: "Pure Nigerian vegetable oil, groundnut oil, and pantry staples for healthy daily meals.",
     details: "Premium vegetable and cooking oils filtered for purity and clean taste. Perfect for frying, general cooking, and wholesome family nutrition.",
     specs: ["Available in 1L, 3L, 5L and wholesale cartons", "Pure, natural, and nutrient-rich", "Great for frying, baking, and all cooking", "Affordable price with trusted quality"],
-    image: "/home/ubuntu/upload/12.jpeg",
+    image: "/manus-storage/12_a87b412f.jpeg",
     className: "category-card category-card--cleaning",
   },
   {
@@ -50,7 +52,7 @@ const categories = [
     copy: "Expertly tailored premium denim jeans and fabrics with durable stitching and lasting comfort.",
     details: "An exclusive collection of blue and black denim jeans designed for timeless style, superior durability, and everyday comfort.",
     specs: ["Premium denim and cotton fabrics", "Expert tailoring with durable stitching", "Modern fit for lasting comfort", "Available in blue and black styles"],
-    image: "/home/ubuntu/upload/7.jpeg",
+    image: "/manus-storage/7_7c72cdae.jpeg",
     className: "category-card category-card--fabrics",
   },
   {
@@ -60,22 +62,29 @@ const categories = [
     copy: "Practical home care essentials and concentrated oil perfumes for daily lifestyle needs.",
     details: "Dependable household helpers and long-lasting oil perfumes selected for freshness, quality, and everyday value.",
     specs: ["Home care and cleaning essentials", "Concentrated oil perfumes / fragrances", "Great for personal use and gifting", "Wholesale reselling options available"],
-    image: "/home/ubuntu/upload/5.jpeg",
+    image: "/manus-storage/5_5328941b.jpeg",
     className: "category-card category-card--wide category-card--fragrance",
   },
 ];
 
 const galleryImages = [
-  { title: "5L Flagship Palm Oil", src: "/home/ubuntu/upload/1.jpeg", desc: "Pure goodness, naturally better packaging" },
-  { title: "Family Value Packs", src: "/home/ubuntu/upload/2.jpeg", desc: "Multiple 5L containers ready for dispatch" },
-  { title: "Brand Presentation", src: "/home/ubuntu/upload/3.jpeg", desc: "Our team showcasing verified pack sizes" },
-  { title: "Refill Pouch Format", src: "/home/ubuntu/upload/4.jpeg", desc: "Stand-up pouch packaging option" },
-  { title: "1 Litre Retail Bottles", src: "/home/ubuntu/upload/5.jpeg", desc: "Handy retail size for everyday cooking" },
-  { title: "3 Litre Palm Oil Pack", src: "/home/ubuntu/upload/6.jpeg", desc: "Compact family jerrycan presentation" },
-  { title: "Premium Denim Jeans", src: "/home/ubuntu/upload/8.jpeg", desc: "Showroom display of tailored jeans" },
-  { title: "Blue & Black Denim", src: "/home/ubuntu/upload/9.jpeg", desc: "Classic colors with durable stitching" },
-  { title: "Vegetable Oil 5L", src: "/home/ubuntu/upload/12.jpeg", desc: "Pure golden vegetable oil for healthy meals" },
-  { title: "Master Brand Roundel", src: "/home/ubuntu/upload/15.jpeg", desc: "Palm oil, vegetable oil, grains & more" },
+  { title: "5L Flagship Palm Oil", src: "/manus-storage/1_d714c4dd.jpeg", desc: "Pure goodness, naturally better packaging" },
+  { title: "Family Value Packs", src: "/manus-storage/2_dfef99bf.jpeg", desc: "Multiple 5L containers ready for dispatch" },
+  { title: "Brand Presentation", src: "/manus-storage/3_77d90d18.jpeg", desc: "Our team showcasing verified pack sizes" },
+  { title: "Refill Pouch Format", src: "/manus-storage/4_76dbd260.jpeg", desc: "Stand-up pouch packaging option" },
+  { title: "1 Litre Retail Bottles", src: "/manus-storage/5_5328941b.jpeg", desc: "Handy retail size for everyday cooking" },
+  { title: "3 Litre Palm Oil Pack", src: "/manus-storage/6_69268a3a.jpeg", desc: "Compact family jerrycan presentation" },
+  { title: "Premium Denim Jeans", src: "/manus-storage/8_72ec1914.jpeg", desc: "Showroom display of tailored jeans" },
+  { title: "Blue & Black Denim", src: "/manus-storage/9_6f88b692.jpeg", desc: "Classic colors with durable stitching" },
+  { title: "Vegetable Oil 5L", src: "/manus-storage/12_a87b412f.jpeg", desc: "Pure golden vegetable oil for healthy meals" },
+  { title: "Master Brand Roundel", src: "/manus-storage/15_43135c83.jpeg", desc: "Palm oil, vegetable oil, grains & more" },
+];
+
+const pricingTiers = [
+  { tier: "Retail", volume: "1–4 units", redPalm: "Standard rate", vegetable: "Standard rate", note: "Single-unit household orders" },
+  { tier: "Reseller", volume: "5–19 units", redPalm: "Volume rate", vegetable: "Volume rate", note: "For shops, vendors & small resellers" },
+  { tier: "Wholesale", volume: "20–49 units", redPalm: "Preferred rate", vegetable: "Preferred rate", note: "Best value for regular bulk buyers", featured: true },
+  { tier: "Distributor", volume: "50+ units", redPalm: "Custom quote", vegetable: "Custom quote", note: "Dedicated pricing & logistics" },
 ];
 
 const supplySteps = [
@@ -88,9 +97,55 @@ export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<typeof categories[0] | null>(null);
+  const [selectedQuantity, setSelectedQuantity] = useState("5L family pack");
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState<number | null>(null);
+  const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
+  const [pricingVolume, setPricingVolume] = useState("20–49 units");
+  const lightboxTouchStart = useRef<number | null>(null);
 
   const openWhatsApp = (message: string) => {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  };
+
+  const openProductWhatsApp = (product: string, quantity: string) => {
+    openWhatsApp(`Hello CHI-ZARAM, I would like to enquire about the following product.\n\n• Product: ${product}\n• Selected Quantity: ${quantity}\n\nPlease share the current price, availability, and delivery options.`);
+  };
+
+  const shiftGallery = (direction: number) => {
+    setActiveGalleryIndex((current) => {
+      if (current === null) return current;
+      return (current + direction + galleryImages.length) % galleryImages.length;
+    });
+  };
+
+  useEffect(() => {
+    if (activeGalleryIndex === null && activeCategory === null) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveGalleryIndex(null);
+        setActiveCategory(null);
+      }
+      if (activeGalleryIndex !== null && event.key === "ArrowRight") shiftGallery(1);
+      if (activeGalleryIndex !== null && event.key === "ArrowLeft") shiftGallery(-1);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeGalleryIndex, activeCategory]);
+
+  const handleLightboxTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    lightboxTouchStart.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleLightboxTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (lightboxTouchStart.current === null) return;
+    const endX = event.changedTouches[0]?.clientX ?? lightboxTouchStart.current;
+    const distance = endX - lightboxTouchStart.current;
+    if (Math.abs(distance) > 45) shiftGallery(distance < 0 ? 1 : -1);
+    lightboxTouchStart.current = null;
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -213,13 +268,13 @@ export default function Home() {
             </div>
             <div className="brand-showcase__grid">
               <div className="brand-showcase__card">
-                <img src="/home/ubuntu/upload/3.jpeg" alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
+                <img src="/manus-storage/3_77d90d18.jpeg" alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
                 <div className="brand-showcase__tag">Direct Representation</div>
                 <h4>Trusted quality from our hands to yours</h4>
                 <p>We take pride in transparent presentation, consistent pack sizes, and direct customer engagement.</p>
               </div>
               <div className="brand-showcase__card">
-                <img src="/home/ubuntu/upload/15.jpeg" alt="CHI-ZARAM Palm Oil and More roundel" loading="lazy" />
+                <img src="/manus-storage/15_43135c83.jpeg" alt="CHI-ZARAM Palm Oil and More roundel" loading="lazy" />
                 <div className="brand-showcase__tag">Palm Oil &amp; More</div>
                 <h4>A growing pantry and lifestyle ecosystem</h4>
                 <p>From palm and vegetable oils to groundnut oil, grains, and fabrics — explore our complete range.</p>
@@ -240,7 +295,7 @@ export default function Home() {
                   type="button"
                   className={category.className}
                   key={category.title}
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => { setSelectedQuantity(category.title === "Red Palm Oil" ? "5L family pack" : "1 unit"); setActiveCategory(category); }}
                   style={{ textAlign: "left", border: 0, padding: 0 }}
                 >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
@@ -255,7 +310,7 @@ export default function Home() {
 
         <section className="palm-section section-pad" id="palm-oil">
           <div className="container palm-section__inner">
-            <div className="palm-section__visual"><img src="/home/ubuntu/upload/1.jpeg" alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
+            <div className="palm-section__visual"><img src="/manus-storage/1_d714c4dd.jpeg" alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
             <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our red palm oil is available in 1L, 2L, 3L, 4L, and 5L containers as well as bulk jerrycans. Rich in vitamins A and E with no artificial additives.</p><div className="palm-points"><span><Check size={16} /> 100% pure &amp; natural red palm oil</span><span><Check size={16} /> Multiple pack sizes (1L to 5L &amp; Bulk)</span><span><Check size={16} /> Hygienically processed for soups &amp; stews</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about palm oil pack sizes (1L to 5L and bulk). Please share current pricing and availability.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
           </div>
         </section>
@@ -280,6 +335,19 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {activeGalleryIndex !== null && (
+          <div className="lightbox-backdrop" onClick={() => setActiveGalleryIndex(null)}>
+            <div className="lightbox" onClick={(e) => e.stopPropagation()} onTouchStart={handleLightboxTouchStart} onTouchEnd={handleLightboxTouchEnd}>
+              <button className="lightbox__close" type="button" onClick={() => setActiveGalleryIndex(null)} aria-label="Close image gallery"><X size={22} /></button>
+              <button className="lightbox__arrow lightbox__arrow--left" type="button" onClick={() => shiftGallery(-1)} aria-label="Previous image"><ArrowLeft size={24} /></button>
+              <div className="lightbox__media"><img src={galleryImages[activeGalleryIndex].src} alt={galleryImages[activeGalleryIndex].title} /></div>
+              <button className="lightbox__arrow lightbox__arrow--right" type="button" onClick={() => shiftGallery(1)} aria-label="Next image"><ArrowRight size={24} /></button>
+              <div className="lightbox__caption"><strong>{galleryImages[activeGalleryIndex].title}</strong><span>{galleryImages[activeGalleryIndex].desc}</span><small>{activeGalleryIndex + 1} / {galleryImages.length}</small></div>
+              <div className="lightbox__dots" aria-label="Gallery image selector">{galleryImages.map((item, index) => <button key={item.title} className={index === activeGalleryIndex ? "is-active" : ""} type="button" onClick={() => setActiveGalleryIndex(index)} aria-label={`View ${item.title}`} />)}</div>
+            </div>
+          </div>
+        )}
 
         <section className="commercial-section section-pad" id="commercial">
           <div className="container">
@@ -337,6 +405,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="pricing-section section-pad" id="pricing">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div><p className="eyebrow">Wholesale price guide</p><h2>More volume,<br /><em>better value.</em></h2></div>
+              <p className="section-heading__aside">Choose a product to view the supply tiers. Final rates are confirmed on enquiry because pack availability, location, and logistics can affect the delivered price.</p>
+            </div>
+            <div className="pricing-switcher" role="tablist" aria-label="Wholesale product selector">
+              <button className={pricingProduct === "redPalm" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("redPalm")} role="tab" aria-selected={pricingProduct === "redPalm"}>Red Palm Oil</button>
+              <button className={pricingProduct === "vegetable" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("vegetable")} role="tab" aria-selected={pricingProduct === "vegetable"}>Vegetable Oil</button>
+            </div>
+            <div className="pricing-table-wrap">
+              <table className="pricing-table">
+                <thead><tr><th>Supply Tier</th><th>Order Volume</th><th>{pricingProduct === "redPalm" ? "Red Palm Oil" : "Vegetable Oil"}</th><th>What it suits</th><th /></tr></thead>
+                <tbody>{pricingTiers.map((tier) => <tr className={`${tier.featured ? "is-featured" : ""} ${pricingVolume === tier.volume ? "is-selected" : ""}`} key={tier.tier} onClick={() => setPricingVolume(tier.volume)}><td><strong>{tier.tier}</strong>{tier.featured && <span className="pricing-table__badge">Best value</span>}</td><td>{tier.volume}</td><td><span className="pricing-table__rate">{pricingProduct === "redPalm" ? tier.redPalm : tier.vegetable}</span><small>Confirm on WhatsApp</small></td><td>{tier.note}</td><td><button className="pricing-table__cta" type="button" onClick={(e) => { e.stopPropagation(); openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", tier.volume); }}>Enquire <ArrowUpRight size={14} /></button></td></tr>)}</tbody>
+              </table>
+            </div>
+            <div className="pricing-note"><span><Check size={16} /> Selected tier: <strong>{pricingVolume}</strong></span><button className="text-link" type="button" onClick={() => openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", pricingVolume)}>Request this tier on WhatsApp <ArrowUpRight size={16} /></button></div>
+          </div>
+        </section>
+
         <section className="supply-section section-pad" id="supply">
           <div className="container supply-section__inner">
             <div className="supply-section__copy"><div className="section-kicker"><span className="section-kicker__number">03</span><span>Retail &amp; bulk supply</span></div><p className="eyebrow">For the home, shop, or growing business</p><h2>Need more<br /><em>to go around?</em></h2><p className="body-copy">Buying for resale, a food business, or larger household needs? Tell us what you need, the quantity, and your location. Our team can confirm current availability and supply options.</p><div className="supply-feature"><div className="supply-feature__icon"><Truck size={20} /></div><div><strong>Quality + value + convenience</strong><span>A direct path from enquiry to dispatch.</span></div></div></div>
@@ -377,12 +465,17 @@ export default function Home() {
                   <li key={i}><Check size={14} /> {spec}</li>
                 ))}
               </ul>
+              <label className="product-modal__quantity">Select quantity
+                <select value={selectedQuantity} onChange={(e) => setSelectedQuantity(e.target.value)}>
+                  {activeCategory.title === "Red Palm Oil" ? <><option>1L retail pack</option><option>3L family pack</option><option>5L family pack</option><option>Bulk jerrycan / carton</option></> : activeCategory.title === "Vegetable Oil & More" ? <><option>1L retail pack</option><option>3L family pack</option><option>5L family pack</option><option>Wholesale carton</option></> : <><option>1 unit</option><option>5 units</option><option>Wholesale carton</option></>}
+                </select>
+              </label>
               <div className="product-modal__actions">
                 <button
                   className="button button--crimson button--full"
                   type="button"
                   onClick={() => {
-                    const msg = `Hello CHI-ZARAM, I am interested in ${activeCategory.title} (${activeCategory.label}). Please share current pricing, pack sizes, and availability details.`;
+                    const msg = `Hello CHI-ZARAM, I am interested in ${activeCategory.title} (${activeCategory.label}).\n\n• Selected Quantity: ${selectedQuantity}\n\nPlease share current pricing, pack sizes, and availability details.`;
                     setActiveCategory(null);
                     openWhatsApp(msg);
                   }}
