@@ -65,6 +65,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
             <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
           </Link>
           <nav className={`main-nav page-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
+            <Link onClick={() => setMobileOpen(false)} className={activePath === "/" ? "is-active" : ""} href="/">Home</Link>
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/story" ? "is-active" : ""} href="/story">Our story</Link>
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/catalogue" ? "is-active" : ""} href="/catalogue">What we carry</Link>
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/packs-pricing" ? "is-active" : ""} href="/packs-pricing">Packs &amp; Pricing</Link>

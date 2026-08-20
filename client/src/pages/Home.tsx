@@ -215,6 +215,7 @@ export default function Home() {
           </a>
 
             <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
+            <a href={`${siteBase}/`} onClick={() => setMobileOpen(false)}>Home</a>
             <a href={`${siteBase}/story`} onClick={() => setMobileOpen(false)}>Our story</a>
             <a href={`${siteBase}/catalogue`} onClick={() => setMobileOpen(false)}>What we carry</a>
             <a href={`${siteBase}/packs-pricing`} onClick={() => setMobileOpen(false)}>Packs &amp; Pricing</a>
