@@ -1164,3 +1164,36 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .story-editorial__seal { right: 1%; bottom: 30px; width: 98px; height: 98px; }
   .story-editorial__seal strong { font-size: 15px; }
 }
+
+/* Harvest Editorial Catalogue feature: a tactile 3L family-pack spotlight with quote-led pricing and a direct WhatsApp path. */
+.catalogue-feature { display: grid; grid-template-columns: minmax(360px, 0.9fr) 1.1fr; margin-bottom: 24px; border-top: 3px solid #9f2f2a; background: #e9dfd2; }
+.catalogue-feature__image { min-height: 510px; overflow: hidden; background: #c99a4a; }
+.catalogue-feature__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 54%; transition: transform 650ms var(--ease-out); }
+.catalogue-feature:hover .catalogue-feature__image img { transform: scale(1.035); }
+.catalogue-feature__body { display: flex; flex-direction: column; justify-content: center; padding: 48px 55px; }
+.catalogue-feature__meta { display: flex; align-items: center; gap: 15px; color: #9f2f2a; }
+.catalogue-feature__meta span { font-family: var(--serif); font-size: 29px; line-height: 0.8; }
+.catalogue-feature__meta small { font-size: 9px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+.catalogue-feature h2 { max-width: 590px; margin: 14px 0 14px; color: #292a25; font-family: var(--serif); font-size: clamp(2.6rem, 4.4vw, 4.8rem); font-weight: 400; letter-spacing: -0.05em; line-height: 0.94; }
+.catalogue-feature__body > p { max-width: 590px; margin: 0; color: #746f64; font-size: 16px; line-height: 1.68; }
+.catalogue-feature__details { display: grid; gap: 8px; margin: 22px 0 25px; padding: 0; color: #5f5a51; font-size: 13px; list-style: none; }
+.catalogue-feature__details li { display: flex; gap: 9px; align-items: center; }
+.catalogue-feature__details svg { color: #9f2f2a; flex: none; }
+.catalogue-feature__pricing { margin: 0 0 28px; padding: 17px 18px 18px; background: #fffaf3; border-left: 2px solid #c99a4a; }
+.catalogue-feature__pricing-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+.catalogue-feature__pricing-head span { color: #435847; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.catalogue-feature__pricing-head small { color: #746f64; font-size: 10px; }
+.catalogue-feature__pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #ded2c0; }
+.catalogue-feature__pricing-grid > div { display: grid; gap: 5px; min-height: 78px; padding: 12px 10px; background: #fffaf3; }
+.catalogue-feature__pricing-grid strong { color: #9f2f2a; font-size: 11px; }
+.catalogue-feature__pricing-grid span, .catalogue-feature__pricing-grid em { color: #746f64; font-size: 10px; font-style: normal; line-height: 1.35; }
+@media (max-width: 760px) {
+  .catalogue-feature { display: flex; flex-direction: column; }
+  .catalogue-feature__image { min-height: 0; height: 300px; }
+  .catalogue-feature__image img { object-position: center 55%; }
+  .catalogue-feature__body { padding: 29px 22px 32px; }
+  .catalogue-feature h2 { font-size: 3rem; }
+  .catalogue-feature__pricing-head { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .catalogue-feature__pricing-grid { grid-template-columns: 1fr; }
+  .catalogue-feature__pricing-grid > div { min-height: 0; }
+}

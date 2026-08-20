@@ -8,6 +8,19 @@ import { Link } from "wouter";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
 
+const featuredPalmOil = {
+  title: "CHI-ZARAM Red Palm Oil — 3L Family Pack",
+  label: "Featured pack · CHI-ZARAM FOODS",
+  copy: "A generous family-size pack of pure, richly coloured palm oil for soups, stews, traditional dishes, and small food businesses. The 3L format balances everyday value with an easy-to-handle size.",
+  image: assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg"),
+  details: ["3L family-size bottle", "Pure, fresh, and naturally rich in flavour", "Suitable for household kitchens and small food businesses"],
+  pricing: [
+    { tier: "Retail", volume: "1–4 units", rate: "Standard rate" },
+    { tier: "Reseller", volume: "5–19 units", rate: "Volume rate" },
+    { tier: "Wholesale", volume: "20+ units", rate: "Preferred / custom quote" },
+  ],
+};
+
 const products = [
   { number: "01", title: "Red Palm Oil", label: "CHI-ZARAM FOODS", copy: "Our flagship red palm oil for soups, stews, traditional dishes, family kitchens, and bulk supply.", image: assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg"), details: ["1L, 3L, 5L, and bulk formats", "Pure, fresh, and natural product line", "Retail, reseller, and wholesale enquiries"], accent: "crimson" },
   { number: "02", title: "Vegetable Oil & More", label: "CHI-ZARAM FOODS", copy: "Vegetable oil, groundnut oil, and pantry staples for frying, baking, everyday cooking, and food businesses.", image: assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg"), details: ["Retail and carton quantities", "Everyday cooking and food-service use", "Availability confirmed on enquiry"], accent: "gold" },
@@ -45,6 +58,20 @@ export default function Catalogue() {
               <p className="eyebrow">The catalogue</p>
               <p>Our product family is intentionally broad, but the buying experience stays simple. Select a category, review the available formats, and message the team for current stock, pricing, and delivery options.</p>
             </div>
+            <article className="catalogue-feature catalogue-feature--palm">
+              <div className="catalogue-feature__image"><img src={featuredPalmOil.image} alt="CHI-ZARAM 3L palm oil bottles with palm fruits and product backdrop" loading="lazy" /></div>
+              <div className="catalogue-feature__body">
+                <div className="catalogue-feature__meta"><span>01</span><small>{featuredPalmOil.label}</small></div>
+                <h2>{featuredPalmOil.title}</h2>
+                <p>{featuredPalmOil.copy}</p>
+                <ul className="catalogue-feature__details">{featuredPalmOil.details.map((detail) => <li key={detail}><Check size={14} />{detail}</li>)}</ul>
+                <div className="catalogue-feature__pricing" aria-label="3L palm oil pricing guide">
+                  <div className="catalogue-feature__pricing-head"><span>Pricing guide</span><small>Current price confirmed on enquiry</small></div>
+                  <div className="catalogue-feature__pricing-grid">{featuredPalmOil.pricing.map((tier) => <div key={tier.tier}><strong>{tier.tier}</strong><span>{tier.volume}</span><em>{tier.rate}</em></div>)}</div>
+                </div>
+                <div className="catalogue-product__actions"><a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM, I would like to enquire about the 3L Red Palm Oil Family Pack. Please share the current retail, reseller, and wholesale pricing, availability, and delivery options.")} target="_blank" rel="noreferrer"><MessageCircle size={16} /> Enquire about 3L Palm Oil</a><Link className="text-link" href="/packs-pricing">See all pack sizes <ArrowUpRight size={16} /></Link></div>
+              </div>
+            </article>
             <div className="catalogue-list">
               {products.map((product) => (
                 <article className={`catalogue-product catalogue-product--${product.accent}`} key={product.title}>

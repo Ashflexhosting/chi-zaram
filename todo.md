@@ -95,3 +95,6 @@
 - [x] Verify icon assets, metadata, hosting paths, and save a checkpoint.
 - [x] Replace the second brand-story image with the supplied palm-oil product photo.
 - [x] Verify the replacement image on desktop and mobile, then save a checkpoint.
+- [x] Feature the supplied 3L palm-oil image on the main Catalogue page with description and pricing details.
+- [x] Replace the favicon background with transparency and increase its visible emblem size.
+- [x] Verify Catalogue and favicon changes on desktop and mobile, then save a checkpoint.
