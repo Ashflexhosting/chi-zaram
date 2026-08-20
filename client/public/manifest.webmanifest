@@ -1,0 +1,25 @@
+{
+  "name": "CHI-ZARAM Palm Oil & More Enterprises",
+  "short_name": "CHI-ZARAM",
+  "description": "Pure goodness from nature, with retail and bulk supply for everyday needs.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4efe6",
+  "theme_color": "#435847",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

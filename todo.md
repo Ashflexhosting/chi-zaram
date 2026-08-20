@@ -90,3 +90,6 @@
 - [ ] Verify the redesigned brand-story section on desktop and mobile, then save a checkpoint.
 - [x] Improve favicon visibility with a clearer compact emblem variant.
 - [x] Verify favicon metadata and hosting paths, then save a checkpoint.
+- [x] Use the supplied palm-fruit emblem for the favicon and generate 180x180 and 512x512 app icons.
+- [x] Update the social sharing preview image and add the branded web app manifest.
+- [x] Verify icon assets, metadata, hosting paths, and save a checkpoint.

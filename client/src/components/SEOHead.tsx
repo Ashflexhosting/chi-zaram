@@ -12,7 +12,7 @@ interface SEOProps {
   image?: string;
 }
 
-export default function SEOHead({ title, description, path, image = assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg") }: SEOProps) {
+export default function SEOHead({ title, description, path, image = "/social-preview.png?v=1" }: SEOProps) {
   useEffect(() => {
     document.title = `${title} | CHI-ZARAM Palm Oil & More Enterprises`;
 
@@ -31,12 +31,16 @@ export default function SEOHead({ title, description, path, image = assetPath("/
     setMeta("property", "og:description", description);
     setMeta("property", "og:type", "website");
     setMeta("property", "og:url", window.location.origin + routePath(path));
-    setMeta("property", "og:image", window.location.origin + assetPath(image));
+    const socialImage = window.location.origin + assetPath(image);
+    setMeta("property", "og:image", socialImage);
+    setMeta("property", "og:image:alt", "CHI-ZARAM palm-fruit emblem with the message Pure goodness. Naturally better.");
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
 
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", `${title} | CHI-ZARAM`);
     setMeta("name", "twitter:description", description);
-    setMeta("name", "twitter:image", window.location.origin + assetPath(image));
+    setMeta("name", "twitter:image", socialImage);
 
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
