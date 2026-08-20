@@ -174,3 +174,10 @@
 - [x] Verify the selector and calculator layout on desktop and mobile.
 - [ ] Save a checkpoint for the delivery-zone preset update.
 
+
+- [x] Add phone-number format validation to the Packs & Pricing estimator.
+- [x] Show an inline accessible validation error for invalid phone input.
+- [x] Block direct and summary WhatsApp submission until the phone number is valid.
+- [x] Verify valid/invalid phone states and responsive layout on desktop and mobile.
+- [ ] Save a checkpoint for the phone validation update.
+

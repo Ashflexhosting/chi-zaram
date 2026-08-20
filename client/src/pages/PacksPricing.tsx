@@ -1,9 +1,9 @@
 /**
  * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator
- * with customer contact fields, zone-based delivery fee calculation, printable order summary, and WhatsApp export.
+ * with customer contact fields, phone validation, zone-based delivery fees, printable order summary, and WhatsApp export.
  */
 import { useState, useMemo } from "react";
-import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck, User, Phone, Printer, FileText, X } from "lucide-react";
+import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck, User, Phone, Printer, FileText, X, AlertCircle } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -48,6 +48,7 @@ export default function PacksPricing() {
   const [customLocation, setCustomLocation] = useState<string>("");
   const [customerName, setCustomerName] = useState<string>("");
   const [customerPhone, setCustomerPhone] = useState<string>("");
+  const [phoneTouched, setPhoneTouched] = useState<boolean>(false);
   const [showSummaryModal, setShowSummaryModal] = useState<boolean>(false);
 
   const handleQtyChange = (key: PackKey, val: string) => {
@@ -68,6 +69,12 @@ export default function PacksPricing() {
   const deliveryFee = useMemo(() => {
     return deliveryZones[selectedPreset]?.fee || 3000;
   }, [selectedPreset]);
+
+  // Phone validation: allows Nigerian numbers (0803..., +234..., 10-11 digits) or general phone strings >= 7 digits
+  const isPhoneValid = useMemo(() => {
+    const clean = customerPhone.replace(/[\s\-\(\)\+]/g, "");
+    return clean.length >= 7 && /^\d+$/.test(clean);
+  }, [customerPhone]);
 
   const { totalUnits, itemsTotal, appliedDeliveryFee, finalTotal, whatsAppMessage } = useMemo(() => {
     let units = 0;
@@ -98,6 +105,14 @@ export default function PacksPricing() {
     return { totalUnits: units, itemsTotal: sub, appliedDeliveryFee: appliedFee, finalTotal: total, whatsAppMessage: msg };
   }, [quantities, effectiveLocation, deliveryFee, customerName, customerPhone]);
 
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setPhoneTouched(true);
+    if (!isPhoneValid) {
+      e.preventDefault();
+      alert("Please enter a valid phone number (at least 7 digits) before submitting your WhatsApp enquiry.");
+    }
+  };
+
   const handlePrintSummary = () => {
     window.print();
   };
@@ -106,7 +121,7 @@ export default function PacksPricing() {
     <SiteLayout activePath="/packs-pricing">
       <SEOHead
         title="Pack Sizes & Wholesale Price Guide with Cost Calculator"
-        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk), calculate custom order estimates with automatic delivery fees, review printable summaries, and order via WhatsApp."
+        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk), calculate custom order estimates with automatic delivery fees and phone validation, and order via WhatsApp."
         path="/packs-pricing"
       />
       <main>
@@ -159,7 +174,7 @@ export default function PacksPricing() {
               <div className="pack-calculator-header">
                 <p className="eyebrow"><Calculator size={14} /> Multi-pack cost estimator</p>
                 <h3>Calculate your order in seconds</h3>
-                <p>Enter your desired quantities for each pack size below, add your contact details and delivery zone for automatic shipping calculations, and review your order summary before submitting via WhatsApp.</p>
+                <p>Enter your desired quantities for each pack size below, add your contact details (with phone verification) and delivery zone for automatic shipping calculations, and review your order summary before submitting via WhatsApp.</p>
               </div>
 
               {/* Customer Contact Inputs */}
@@ -179,16 +194,26 @@ export default function PacksPricing() {
                 </div>
                 <div className="pack-calc-field">
                   <label htmlFor="calc-customer-phone">
-                    <Phone size={14} /> Phone Number (WhatsApp / Mobile)
+                    <Phone size={14} /> Phone Number (WhatsApp / Mobile) *
                   </label>
                   <input
                     id="calc-customer-phone"
                     type="tel"
                     value={customerPhone}
-                    onChange={(e) => setCustomerPhone(e.target.value)}
-                    placeholder="e.g. 0803 000 0000"
+                    onChange={(e) => {
+                      setCustomerPhone(e.target.value);
+                      if (!phoneTouched) setPhoneTouched(true);
+                    }}
+                    onBlur={() => setPhoneTouched(true)}
+                    placeholder="e.g. 0803 736 5227"
                     aria-label="Phone Number"
+                    className={phoneTouched && !isPhoneValid ? "input-error" : ""}
                   />
+                  {phoneTouched && !isPhoneValid && (
+                    <small className="field-error-text">
+                      <AlertCircle size={12} /> Please enter a valid phone number (at least 7 digits).
+                    </small>
+                  )}
                 </div>
               </div>
 
@@ -277,10 +302,11 @@ export default function PacksPricing() {
                     <FileText size={16} /> Review Order Summary
                   </button>
                   <a
-                    className="button button--crimson"
+                    className={`button button--crimson ${!isPhoneValid ? "button--disabled" : ""}`}
                     href={whatsappHref(whatsAppMessage)}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={handleWhatsAppClick}
                   >
                     <MessageCircle size={16} /> Submit via WhatsApp
                   </a>
@@ -319,7 +345,7 @@ export default function PacksPricing() {
                       <strong>Customer:</strong> {customerName.trim() || "Valued Customer"}
                     </div>
                     <div>
-                      <strong>Phone:</strong> {customerPhone.trim() || "Provided on WhatsApp"}
+                      <strong>Phone:</strong> {customerPhone.trim() || "Not provided"}
                     </div>
                     <div>
                       <strong>Destination:</strong> {effectiveLocation}
@@ -380,11 +406,19 @@ export default function PacksPricing() {
                   <Printer size={16} /> Print / Save PDF
                 </button>
                 <a
-                  className="button button--crimson"
+                  className={`button button--crimson ${!isPhoneValid ? "opacity-60" : ""}`}
                   href={whatsappHref(whatsAppMessage)}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={() => setShowSummaryModal(false)}
+                  onClick={(e) => {
+                    setPhoneTouched(true);
+                    if (!isPhoneValid) {
+                      e.preventDefault();
+                      alert("Please enter a valid phone number before submitting your WhatsApp enquiry.");
+                      return;
+                    }
+                    setShowSummaryModal(false);
+                  }}
                 >
                   <MessageCircle size={16} /> Send This Summary via WhatsApp
                 </a>
