@@ -120,9 +120,11 @@ export default function Home() {
   const [pricingVolume, setPricingVolume] = useState("20–49 units");
   const [rateCardOpen, setRateCardOpen] = useState(false);
   const [rateCardSuccess, setRateCardSuccess] = useState(false);
-  const [rateCardCountdown, setRateCardCountdown] = useState(2);
+  const [rateCardCountdown, setRateCardCountdown] = useState(3);
   const [rateCardErrors, setRateCardErrors] = useState<{ [key: string]: string }>({});
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [generatedMessage, setGeneratedMessage] = useState("");
+  const [copiedClipboard, setCopiedClipboard] = useState(false);
   const [rateCardValues, setRateCardValues] = useState({ name: "", email: "", company: "", buyerType: "Retail Household", product: "Palm Oil", quantity: "", location: "", message: "" });
   const lightboxTouchStart = useRef<number | null>(null);
 
@@ -156,7 +158,9 @@ export default function Home() {
         setActiveCategory(null);
         setRateCardOpen(false);
         setRateCardSuccess(false);
-        setRateCardCountdown(2);
+        setRateCardCountdown(3);
+        setGeneratedMessage("");
+        setCopiedClipboard(false);
       }
       if (activeGalleryIndex !== null && event.key === "ArrowRight") shiftGallery(1);
       if (activeGalleryIndex !== null && event.key === "ArrowLeft") shiftGallery(-1);
@@ -240,8 +244,10 @@ export default function Home() {
       return;
     }
 
+    const msg = `Hello CHI-ZARAM, I would like to request the current rate card.\n\n• Name: ${name}\n• Company: ${company}\n• Buyer Type: ${buyerType}\n• Email: ${email || "Not provided"}\n• Product focus: ${product}\n• Estimated quantity: ${quantity}\n• Delivery location: ${location}\n• Enquiry: ${message}\n\nPlease share current retail, reseller, and wholesale pricing with delivery options.`;
+    setGeneratedMessage(msg);
     setRateCardSuccess(true);
-    setRateCardCountdown(2);
+    setRateCardCountdown(3);
 
     const timer = setInterval(() => {
       setRateCardCountdown((prev) => {
@@ -256,9 +262,23 @@ export default function Home() {
     setTimeout(() => {
       setRateCardOpen(false);
       setRateCardSuccess(false);
-      setRateCardCountdown(2);
-      openWhatsApp(`Hello CHI-ZARAM, I would like to request the current rate card.\n\n• Name: ${name}\n• Company: ${company}\n• Buyer Type: ${buyerType}\n• Email: ${email || "Not provided"}\n• Product focus: ${product}\n• Estimated quantity: ${quantity}\n• Delivery location: ${location}\n• Enquiry: ${message}\n\nPlease share current retail, reseller, and wholesale pricing with delivery options.`);
-    }, 2000);
+      setRateCardCountdown(3);
+      openWhatsApp(msg);
+    }, 3000);
+  };
+
+  const handleCopyClipboard = () => {
+    navigator.clipboard.writeText(generatedMessage).then(() => {
+      setCopiedClipboard(true);
+      setToastMessage("Enquiry copied to clipboard! You can paste it anywhere.");
+      setTimeout(() => setToastMessage(null), 3500);
+    });
+  };
+
+  const handleSendEmail = () => {
+    const subject = encodeURIComponent("CHI-ZARAM Rate Card Enquiry");
+    const body = encodeURIComponent(generatedMessage);
+    window.open(`mailto:chizarampalmoil@gmail.com?subject=${subject}&body=${body}`, "_blank");
   };
 
   const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : activeCategory?.title === "Delta State Yellow Garri" ? ["Retail pouch", "5kg family pack", "Bulk sack", "Wholesale quantity"] : ["1 unit", "5 units", "Wholesale carton"];
@@ -654,7 +674,24 @@ export default function Home() {
                 <div className="rate-card-success-icon"><Check size={32} /></div>
                 <h3>Rate card ready</h3>
                 <p>Opening WhatsApp in <strong>{rateCardCountdown}</strong> second{rateCardCountdown === 1 ? "" : "s"}…</p>
-                <div className="rate-card-countdown-bar" style={{ width: `${(rateCardCountdown / 2) * 100}%` }} />
+                <div className="rate-card-countdown-bar" style={{ width: `${(rateCardCountdown / 3) * 100}%` }} />
+                
+                <div className="rate-card-preview">
+                  <span>Generated Message Preview:</span>
+                  <pre>{generatedMessage}</pre>
+                </div>
+
+                <div className="rate-card-success-actions">
+                  <button className="button button--crimson" type="button" onClick={() => openWhatsApp(generatedMessage)}>
+                    Open WhatsApp Now <ArrowUpRight size={15} />
+                  </button>
+                  <button className="button button--quiet" type="button" onClick={handleCopyClipboard}>
+                    {copiedClipboard ? "Copied to Clipboard!" : "Copy to Clipboard"}
+                  </button>
+                  <button className="button button--quiet" type="button" onClick={handleSendEmail}>
+                    Send via Email
+                  </button>
+                </div>
               </div>
             ) : (
               <>

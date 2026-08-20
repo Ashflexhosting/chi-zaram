@@ -130,3 +130,6 @@
 - [x] Verify countdown timer, toasts, and mobile responsiveness, then save a checkpoint.
 - [x] Confirm Buyer Type and Company Name are included in the redirected WhatsApp message.
 - [x] Run build validation and save a checkpoint.
+- [x] Add a generated WhatsApp message preview and copy-to-clipboard fallback.
+- [x] Add a Send via Email alternative option in the rate-card popup.
+- [x] Verify preview, clipboard copy, and email options on desktop and mobile, then save a checkpoint.
