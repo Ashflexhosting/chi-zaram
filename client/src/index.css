@@ -1578,3 +1578,24 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     width: 100%;
   }
 }
+
+/* Footer logo oblong: a clean white plate keeps the supplied wordmark legible against the textured dark footer. */
+.brand-lockup--footer {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 9px 18px 9px 14px;
+  border: 1px solid rgba(224,180,95,0.34);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.16);
+}
+.brand-lockup--footer .brand-lockup__mark {
+  display: block;
+  object-fit: contain;
+}
+@media (max-width: 760px) {
+  .brand-lockup--footer {
+    padding: 7px 14px 7px 11px;
+  }
+}

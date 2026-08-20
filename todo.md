@@ -133,3 +133,5 @@
 - [x] Add a generated WhatsApp message preview and copy-to-clipboard fallback.
 - [x] Add a Send via Email alternative option in the rate-card popup.
 - [x] Verify preview, clipboard copy, and email options on desktop and mobile, then save a checkpoint.
+- [x] Add a white oblong background behind the shared footer logo.
+- [x] Verify the footer logo treatment on desktop and mobile, then save a checkpoint.
