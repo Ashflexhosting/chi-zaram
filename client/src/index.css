@@ -1223,3 +1223,9 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .story-human__copy h2 { margin-top: 18px; }
   .story-human__copy .body-copy { margin-top: 22px; }
 }
+
+/* Story founder card styling: warm editorial leadership quote block with serif emphasis. */
+.story-founder-card { margin-top: 24px; padding: 24px 26px; background: #f4efe6; border-left: 3px solid #9f2f2a; border-top: 1px solid #ded2c0; border-right: 1px solid #ded2c0; border-bottom: 1px solid #ded2c0; }
+.story-founder-card__role { color: #9f2f2a; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+.story-founder-card h3 { margin: 0 0 10px; color: #292a25; font-family: var(--serif); font-size: 21px; font-weight: 400; line-height: 1.25; }
+.story-founder-card p { margin: 0; color: #746f64; font-size: 14px; line-height: 1.65; font-style: italic; }

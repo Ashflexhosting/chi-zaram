@@ -100,3 +100,5 @@
 - [x] Verify Catalogue and favicon changes on desktop and mobile, then save a checkpoint.
 - [x] Add the supplied team-and-product image to a suitable Story page trust section.
 - [x] Verify the Story page image placement on desktop and mobile, then save a checkpoint.
+- [x] Add a short founder introduction beside the new image on the Story page.
+- [x] Verify the Story page founder introduction on desktop and mobile, then save a checkpoint.

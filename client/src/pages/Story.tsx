@@ -57,6 +57,11 @@ export default function Story() {
               <p className="eyebrow">Good products need good people</p>
               <h2>There is a face behind <em>every good order.</em></h2>
               <p className="body-copy">From family bottles to larger supply formats, CHI-ZARAM is built around real conversations with the people who cook, sell, share, and grow with our products. This is the human side of a brand made to stay close to everyday life.</p>
+              <div className="story-founder-card">
+                <div className="story-founder-card__role">Founder &amp; Principal</div>
+                <h3>Led by commitment to quality and community trust.</h3>
+                <p>“We started CHI-ZARAM to ensure that every household and business looking for pure palm oil and everyday essentials has a direct, reliable partner they can trust.”</p>
+              </div>
               <p className="story-human__note">Retail, reseller, and bulk enquiries are welcomed directly on WhatsApp.</p>
               <Link className="text-link" href="/bulk-supply">Talk to the supply team <ArrowUpRight size={17} /></Link>
             </div>
