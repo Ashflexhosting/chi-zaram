@@ -15,8 +15,9 @@ import BulkSupply from "./pages/BulkSupply";
 import Contact from "@/pages/Contact";
 import Gallery from "@/pages/Gallery";
 import NotFound from "./pages/NotFound";
+import { siteBase } from "@/lib/sitePaths";
 
-const routerBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
+const routerBase = siteBase;
 
 function AppRouter() {
   return (

@@ -2,7 +2,10 @@
  * Harvest Editorial deployment paths: keep Manus root hosting and the GitHub Pages
  * repository subpath in sync for internal routes, asset URLs, and social previews.
  */
-export const siteBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
+const configuredBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
+const browserBase = typeof window !== "undefined" && window.location.pathname.startsWith("/chi-zaram") ? "/chi-zaram" : "";
+
+export const siteBase = browserBase || configuredBase;
 
 export function assetPath(path: string) {
   return `${siteBase}${path.startsWith("/") ? path : `/${path}`}`;
