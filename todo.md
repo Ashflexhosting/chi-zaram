@@ -128,3 +128,5 @@
 - [x] Add a live countdown timer to the rate-card success state.
 - [x] Implement animated validation toast notifications for incomplete submissions.
 - [x] Verify countdown timer, toasts, and mobile responsiveness, then save a checkpoint.
+- [x] Confirm Buyer Type and Company Name are included in the redirected WhatsApp message.
+- [x] Run build validation and save a checkpoint.
