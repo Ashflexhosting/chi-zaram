@@ -12,7 +12,8 @@ import Story from "./pages/Story";
 import Catalogue from "./pages/Catalogue";
 import PacksPricing from "./pages/PacksPricing";
 import BulkSupply from "./pages/BulkSupply";
-import Contact from "./pages/Contact";
+import Contact from "@/pages/Contact";
+import Gallery from "@/pages/Gallery";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -24,6 +25,7 @@ function Router() {
       <Route path={"/packs-pricing"} component={PacksPricing} />
       <Route path={"/bulk-supply"} component={BulkSupply} />
       <Route path={"/contact"} component={Contact} />
+      <Route path={"/gallery"} component={Gallery} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
