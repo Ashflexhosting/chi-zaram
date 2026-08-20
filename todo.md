@@ -82,3 +82,5 @@
 - [x] Redeploy and verify the logo on Manus and GitHub Pages, then save a final checkpoint.
 - [x] Extract the compact emblem and set it as the website favicon.
 - [x] Add a Home link to the shared and homepage navigation menus, then verify the update.
+- [x] Make the website header sticky while preserving the logo and responsive menu.
+- [x] Verify sticky scrolling on desktop and mobile, then save a checkpoint.
