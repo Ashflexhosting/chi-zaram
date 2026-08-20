@@ -16,6 +16,9 @@
 - [x] Build richer source-backed page content and reusable product data.
 - [x] Connect navigation and WhatsApp enquiry flows across routes.
 - [x] Test all pages on desktop and mobile, then save a checkpoint.
+- [x] Add a comprehensive FAQ section to the Contact page covering delivery areas, MOQ, and payments.
+- [x] Implement page-specific SEO metadata, titles, canonical links, and social preview images.
+- [x] Test and checkpoint the FAQ and SEO metadata update.
 - [x] Generate and integrate 1L, 3L, 5L, and bulk pack visuals in product modals.
 - [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
 - [x] Apply the generated brand pattern to pricing and footer sections.

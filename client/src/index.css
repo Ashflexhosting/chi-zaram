@@ -713,3 +713,12 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
   .page-nav a.is-active::after { right: auto; bottom: 7px; width: 36px; }
   .page-nav .main-nav__mobile-cta { display: flex; }
 }
+
+/* Contact page FAQ accordion styling */
+.faq-section { background: #fffaf3; }
+.faq-list { display: grid; gap: 14px; max-width: 860px; margin: 44px auto 0; }
+.faq-item { background: #f4efe6; border: 1px solid #ded2c0; transition: border-color 180ms ease-out; }
+.faq-item.is-open { border-color: #9f2f2a; background: #fffaf3; box-shadow: 0 12px 28px rgba(41,42,37,0.06); }
+.faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 21px 24px; border: 0; background: transparent; color: #292a25; font-family: var(--serif); font-size: 21px; font-weight: 400; text-align: left; cursor: pointer; }
+.faq-question svg { color: #9f2f2a; transition: transform 200ms var(--ease-out); flex: none; margin-left: 15px; }
+.faq-answer { padding: 0 24px 23px; color: #746f64; font-size: 15px; line-height: 1.7; border-top: 1px solid #eee5d8; margin-top: -4px; padding-top: 16px; }
