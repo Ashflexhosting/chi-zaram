@@ -1484,3 +1484,46 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   70% { transform: scale(1.1); opacity: 1; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* Countdown timer progress bar */
+.rate-card-countdown-bar {
+  width: 100%;
+  height: 4px;
+  margin-top: 22px;
+  background: #9f2f2a;
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+/* Animated validation toast notification */
+.validation-toast {
+  position: fixed;
+  z-index: 1000;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: #292a25;
+  color: #fffaf3;
+  border-left: 4px solid #9f2f2a;
+  box-shadow: 0 16px 40px rgba(41,42,37,0.35);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  animation: toastSlideUp 260ms var(--ease-out);
+}
+.validation-toast__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9f2f2a;
+  box-shadow: 0 0 0 4px rgba(159,47,42,0.22);
+  flex-shrink: 0;
+}
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: translate(-50%, 16px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

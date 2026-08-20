@@ -125,3 +125,6 @@
 - [x] Implement real-time input validation for contact details and quantities.
 - [x] Add a brief success animation before opening WhatsApp.
 - [x] Verify navigation and popup validation on desktop and mobile, then save a checkpoint.
+- [x] Add a live countdown timer to the rate-card success state.
+- [x] Implement animated validation toast notifications for incomplete submissions.
+- [x] Verify countdown timer, toasts, and mobile responsiveness, then save a checkpoint.
