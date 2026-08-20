@@ -10,7 +10,8 @@ import {
   ArrowUpRight,
   Check,
   ChevronDown,
-  Instagram,
+  Music2,
+  Share2,
   Leaf,
   Menu,
   MessageCircle,
@@ -115,6 +116,7 @@ const supplySteps = [
 
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [footerForm, setFooterForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<typeof categories[0] | null>(null);
   const [selectedQuantity, setSelectedQuantity] = useState("5L family pack");
@@ -130,6 +132,13 @@ export default function Home() {
 
   const openProductWhatsApp = (product: string, quantity: string) => {
     openWhatsApp(`Hello CHI-ZARAM, I would like to enquire about the following product.\n\n• Product: ${product}\n• Selected Quantity: ${quantity}\n\nPlease share the current price, availability, and delivery options.`);
+  };
+
+  const submitFooterEnquiry = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const message = `Hello CHI-ZARAM, I would like to make an enquiry.\n\nName: ${footerForm.name}\nEmail: ${footerForm.email || "Not provided"}\nMessage: ${footerForm.message}`;
+    openWhatsApp(message);
+    setFooterForm({ name: "", email: "", message: "" });
   };
 
   const shiftGallery = (direction: number) => {
@@ -536,7 +545,7 @@ export default function Home() {
 
       <AccessibilityWidget />
       <BackToTop />
-      <footer className="site-footer"><div className="container site-footer__top"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer"><Instagram size={15} /> Facebook</a></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
+      <footer className="site-footer"><div className="container site-footer__top"><div className="site-footer__identity"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><div className="footer-socials" aria-label="Social media links"><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={15} /><span>WhatsApp</span></a></div></div><div className="footer-enquiry"><span className="footer-enquiry__eyebrow">Quick enquiry</span><form onSubmit={submitFooterEnquiry}><div className="footer-enquiry__row"><label><span className="sr-only">Your name</span><input required value={footerForm.name} onChange={(event) => setFooterForm((current) => ({ ...current, name: event.target.value }))} placeholder="Your name" autoComplete="name" /></label><label><span className="sr-only">Email address</span><input type="email" value={footerForm.email} onChange={(event) => setFooterForm((current) => ({ ...current, email: event.target.value }))} placeholder="Email (optional)" autoComplete="email" /></label></div><label><span className="sr-only">Your message</span><textarea required value={footerForm.message} onChange={(event) => setFooterForm((current) => ({ ...current, message: event.target.value }))} placeholder="How can we help?" rows={2} /></label><button className="footer-enquiry__submit" type="submit">Send on WhatsApp <ArrowUpRight size={14} /></button></form></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
       <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
     </div>

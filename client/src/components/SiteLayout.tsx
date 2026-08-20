@@ -1,13 +1,13 @@
 /**
  * Harvest Editorial shared shell: warm cream space, Palm Crimson accents,
  * deep leaf green, editorial serif headlines, WhatsApp-first conversion,
- * and a shared Back to Top affordance across every page.
+ * a concise footer enquiry form, social links, and a shared Back to Top affordance across every page.
  */
-import { ArrowUpRight, ChevronUp, Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowUpRight, ChevronUp, Menu, MessageCircle, Music2, Share2, X } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
-import type { ReactNode } from "react";
+import type { FormEvent, ReactNode } from "react";
 
 const whatsappNumber = "2348092192180";
 const defaultMessage = "Hello CHI-ZARAM, I would like to explore your products and current availability.";
@@ -36,6 +36,14 @@ export function BackToTop() {
 
 export default function SiteLayout({ children, activePath }: { children: ReactNode; activePath?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [footerForm, setFooterForm] = useState({ name: "", email: "", message: "" });
+
+  const submitFooterEnquiry = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const message = `Hello CHI-ZARAM, I would like to make an enquiry.\n\nName: ${footerForm.name}\nEmail: ${footerForm.email || "Not provided"}\nMessage: ${footerForm.message}`;
+    window.open(whatsappHref(message), "_blank", "noopener,noreferrer");
+    setFooterForm({ name: "", email: "", message: "" });
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -72,12 +80,33 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
       <BackToTop />
       <footer className="site-footer page-footer">
         <div className="container site-footer__top">
-          <Link className="brand-lockup brand-lockup--footer" href="/">
-            <img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" />
-            <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
-          </Link>
-          <div className="footer-tagline">Good things are<br /><em>worth sharing.</em></div>
-          <div className="footer-contact"><span>Start a conversation</span><a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer"><Instagram size={15} /> Facebook</a></div>
+          <div className="site-footer__identity">
+            <Link className="brand-lockup brand-lockup--footer" href="/">
+              <img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" />
+              <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
+            </Link>
+            <div className="footer-tagline">Good things are<br /><em>worth sharing.</em></div>
+          </div>
+          <div className="footer-contact">
+            <span>Start a conversation</span>
+            <a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a>
+            <div className="footer-socials" aria-label="Social media links">
+              <a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a>
+              <a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a>
+              <a href={whatsappHref()} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={15} /><span>WhatsApp</span></a>
+            </div>
+          </div>
+          <div className="footer-enquiry">
+            <span className="footer-enquiry__eyebrow">Quick enquiry</span>
+            <form onSubmit={submitFooterEnquiry}>
+              <div className="footer-enquiry__row">
+                <label><span className="sr-only">Your name</span><input required value={footerForm.name} onChange={(event) => setFooterForm((current) => ({ ...current, name: event.target.value }))} placeholder="Your name" autoComplete="name" /></label>
+                <label><span className="sr-only">Email address</span><input type="email" value={footerForm.email} onChange={(event) => setFooterForm((current) => ({ ...current, email: event.target.value }))} placeholder="Email (optional)" autoComplete="email" /></label>
+              </div>
+              <label><span className="sr-only">Your message</span><textarea required value={footerForm.message} onChange={(event) => setFooterForm((current) => ({ ...current, message: event.target.value }))} placeholder="How can we help?" rows={2} /></label>
+              <button className="footer-enquiry__submit" type="submit">Send on WhatsApp <ArrowUpRight size={14} /></button>
+            </form>
+          </div>
         </div>
         <div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><Link href="/contact">Talk to the team <ArrowUpRight size={14} /></Link></div>
       </footer>
