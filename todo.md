@@ -31,6 +31,8 @@
 - [x] Verify contrast and responsive rendering, then save a checkpoint.
 - [x] Add a subtle brand-matching background pattern to the dark Quality Guarantee section.
 - [x] Create a dedicated Photo Gallery page featuring the supplied product and brand photos.
+- [x] Redesign the Our Story page into a visually rich editorial narrative with layered imagery and milestones.
+- [x] Test the redesigned story page across desktop and mobile, then checkpoint.
 - [x] Add category filters and swipeable lightbox browsing to the gallery page.
 - [x] Connect the gallery route to shared navigation, footer, and SEOHead.
 - [x] Test desktop and mobile rendering, then save a checkpoint.

@@ -1,88 +1,164 @@
 /**
- * Harvest Editorial story page: source-backed brand narrative, warm pacing,
- * practical product context, and SEO metadata.
+ * CHI-ZARAM Our Story page (Redesigned): A visually rich editorial narrative
+ * featuring layered imagery, brand philosophy, milestone cards, and trustworthy sourcing pillars.
  */
-import { ArrowUpRight, Check, Leaf, Sparkles } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, HeartHandshake, Leaf, ShieldCheck, Truck } from "lucide-react";
 import { Link } from "wouter";
-import SiteLayout from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
+import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 
 export default function Story() {
   return (
     <SiteLayout activePath="/story">
       <SEOHead
-        title="Our Story & Brand Values"
-        description="Discover the story behind CHI-ZARAM Palm Oil & More Enterprises. Explore our commitment to purity, family value, quality-minded consumer products, and direct ordering."
+        title="Our Story"
+        description="Discover the heritage, quality standards, and natural philosophy behind CHI-ZARAM Palm Oil & More Enterprises."
         path="/story"
       />
-      <main>
-        <section className="inner-hero inner-hero--story">
-          <div className="container inner-hero__grid">
-            <div>
-              <p className="eyebrow"><span className="eyebrow__line" /> Our story</p>
-              <h1>A brand with room<br /><em>to grow.</em></h1>
-              <p className="inner-hero__intro">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers.</p>
-            </div>
-            <div className="inner-hero__visual">
-              <img src="/manus-storage/chi-zaram-gen-hero_3991ab64.jpg" alt="Warm editorial still life representing the CHI-ZARAM product world" />
-              <span className="inner-hero__stamp">Rooted<br /><strong>here.</strong></span>
-            </div>
-          </div>
-        </section>
-
-        <section className="story-page-section section-pad">
-          <div className="container story-page-grid">
-            <div className="section-kicker"><span className="section-kicker__number">01</span><span>What we believe</span></div>
-            <div className="story-page-copy">
-              <p className="eyebrow">Good goods, honestly presented</p>
-              <h2>Quality everyday goods, <em>closer to home.</em></h2>
-              <p className="body-copy">Our range begins with products people use, share, and return to: red palm oil, vegetable oil, groundnut oil, fabrics, cleaning essentials, and oil perfumes. We are building a master brand that makes everyday buying feel more considered without making it complicated.</p>
-              <div className="story-page-callout">
-                <Sparkles size={19} />
-                <span>One master brand.<br /><strong>Many ways to live well.</strong></span>
+      <main className="story-page">
+        {/* Immersive Editorial Hero */}
+        <section className="story-hero">
+          <div className="container story-hero__inner">
+            <div className="story-hero__content">
+              <span className="eyebrow">Rooted in Heritage &amp; Quality</span>
+              <h1>Crafted by nature. <br /><em>Delivered with integrity.</em></h1>
+              <p className="lead">
+                CHI-ZARAM Palm Oil &amp; More Enterprises was founded on a simple yet uncompromising premise: that everyday family tables, traditional kitchens, and wholesale markets deserve unadulterated natural produce. We bridge traditional harvesting excellence with rigorous modern quality standards.
+              </p>
+              <div className="story-hero__actions">
+                <a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM, I'm reading your story and would like to connect with your team.")} target="_blank" rel="noreferrer">
+                  Speak with our team <ArrowUpRight size={16} />
+                </a>
+                <Link className="button button--outline" href="/catalogue">
+                  Explore our products
+                </Link>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="story-values section-pad">
-          <div className="container">
-            <div className="section-heading section-heading--split">
-              <div>
-                <p className="eyebrow">The CHI-ZARAM standard</p>
-                <h2>Chosen with care,<br /><em>shared with confidence.</em></h2>
+            <div className="story-hero__visual">
+              <div className="story-hero__mosaic">
+                <div className="story-hero__mosaic-item story-hero__mosaic-item--main">
+                  <img src="/manus-storage/chi-zaram-gen-hero_4ae4df23.jpg" alt="CHI-ZARAM editorial brand still life" />
+                </div>
+                <div className="story-hero__mosaic-item story-hero__mosaic-item--sub">
+                  <img src="/manus-storage/chi-zaram-gen-palmoil_352c8087.jpg" alt="Pure red palm oil and fresh palm fruits" />
+                </div>
               </div>
-              <p className="section-heading__aside">Every product line is presented with the same promise: practical value, clear communication, and a direct path from enquiry to dispatch.</p>
-            </div>
-            <div className="story-values-grid">
-              <article>
+              <div className="story-hero__badge-card">
                 <Leaf size={20} />
-                <span>01</span>
-                <h3>Quality-minded</h3>
-                <p>We keep quality, purity, and dependable presentation at the center of the customer experience.</p>
-              </article>
-              <article>
-                <Check size={20} />
-                <span>02</span>
-                <h3>Family value</h3>
-                <p>Pack sizes and supply options are shaped around households, retailers, resellers, and growing businesses.</p>
-              </article>
-              <article>
-                <ArrowUpRight size={20} />
-                <span>03</span>
-                <h3>Direct ordering</h3>
-                <p>WhatsApp gives customers a simple way to confirm availability, pricing, quantities, and delivery options.</p>
-              </article>
+                <div>
+                  <strong>100% Pure &amp; Natural</strong>
+                  <span>No artificial additives or chemical coloring</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="story-quote section-pad">
-          <div className="container story-quote__inner">
-            <p className="eyebrow eyebrow--gold">Our point of view</p>
-            <blockquote>“Pure goodness is not only about where a product begins. It is also about how clearly it reaches the people who need it.”</blockquote>
-            <span>— CHI-ZARAM, Palm Oil &amp; More</span>
-            <Link className="button button--gold" href="/catalogue">Explore what we carry <ArrowUpRight size={17} /></Link>
+        {/* Philosophy & Visual Split */}
+        <section className="story-philosophy container">
+          <div className="story-philosophy__grid">
+            <div className="story-philosophy__image-wrap">
+              <img src="/manus-storage/chi-zaram-gen-vegetable_6f849b25.jpg" alt="Pure vegetable oil and pantry staples" />
+              <div className="story-philosophy__caption">
+                <span>From harvest to kitchen</span>
+                <strong>Sourced with care, packed for freshness</strong>
+              </div>
+            </div>
+            <div className="story-philosophy__text">
+              <span className="eyebrow">Our Core Ethos</span>
+              <h2>Why compromise on what you consume and share?</h2>
+              <p>
+                In an era where mass production often sacrifices authenticity for volume, CHI-ZARAM stands apart. We maintain strict oversight over every stage of our supply chain—from partner sourcing and hygienic processing to precise pack sizing and secure dispatch.
+              </p>
+              <p>
+                Whether supplying 1-litre bottles to a household kitchen or multi-ton wholesale cartons to distributors across Nigeria, our commitment to purity, clarity, and dependable partnership remains unwavering.
+              </p>
+              <div className="story-philosophy__checklist">
+                <div>
+                  <CheckCircle2 size={18} />
+                  <span>Strict hygienic quality control at every batch</span>
+                </div>
+                <div>
+                  <CheckCircle2 size={18} />
+                  <span>Transparent pack weights and dependable volumes</span>
+                </div>
+                <div>
+                  <CheckCircle2 size={18} />
+                  <span>Direct WhatsApp-first customer support and consultation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Milestone Journey */}
+        <section className="story-journey">
+          <div className="container">
+            <div className="section-heading text-center">
+              <span className="eyebrow">Growth &amp; Milestones</span>
+              <h2>The CHI-ZARAM Journey</h2>
+              <p>Key chapters in our commitment to quality consumer supply.</p>
+            </div>
+            <div className="journey-grid">
+              <div className="journey-card">
+                <span className="journey-number">01</span>
+                <h3>Foundation &amp; Focus</h3>
+                <p>Established with a singular dedication to sourcing unadulterated red palm oil for households and local food businesses.</p>
+              </div>
+              <div className="journey-card">
+                <span className="journey-number">02</span>
+                <h3>Portfolio Expansion</h3>
+                <p>Expanded our offerings to include pure vegetable oils, tailored denim fabrics, and select home care and fragrance essentials.</p>
+              </div>
+              <div className="journey-card">
+                <span className="journey-number">03</span>
+                <h3>Wholesale &amp; Bulk Scale</h3>
+                <p>Built robust distribution channels and partner logistics to serve regional resellers, market vendors, and bulk buyers seamlessly.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pillars / Values Section */}
+        <section className="story-pillars container">
+          <div className="section-heading text-center">
+            <span className="eyebrow">Our Guiding Values</span>
+            <h2>Built on trust and consistency</h2>
+            <p>Every product bearing the CHI-ZARAM name reflects our foundational pillars.</p>
+          </div>
+          <div className="pillars-grid">
+            <div className="pillar-item">
+              <ShieldCheck size={28} />
+              <h3>Uncompromising Purity</h3>
+              <p>We reject artificial additives, ensuring every bottle of oil retains its natural nutrients, rich aroma, and authentic golden-red color.</p>
+            </div>
+            <div className="pillar-item">
+              <HeartHandshake size={28} />
+              <h3>Honest Partnership</h3>
+              <p>We build lasting relationships with retail customers, family shoppers, and bulk distributors through transparent pricing and open dialogue.</p>
+            </div>
+            <div className="pillar-item">
+              <Truck size={28} />
+              <h3>Reliable Delivery</h3>
+              <p>From local doorstep dispatch to interstate transport coordination, we ensure your orders arrive intact and on schedule.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="story-closing">
+          <div className="container text-center">
+            <span className="eyebrow">Experience the Difference</span>
+            <h2>Ready to experience CHI-ZARAM quality?</h2>
+            <p>Explore our product catalogue or start a direct conversation with our team on WhatsApp.</p>
+            <div className="story-closing__actions">
+              <a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM, I'd like to place an order or discuss product availability.")} target="_blank" rel="noreferrer">
+                Order on WhatsApp <ArrowUpRight size={16} />
+              </a>
+              <Link className="button button--outline" href="/catalogue">
+                View product catalogue
+              </Link>
+            </div>
           </div>
         </section>
       </main>
