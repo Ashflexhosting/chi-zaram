@@ -117,3 +117,6 @@
 - [x] Add a compact pack-size icon row for mobile and desktop scanning.
 - [x] Implement a subtle reduced-motion-safe animated grain texture.
 - [x] Verify the enhanced section on desktop and mobile, then save a checkpoint.
+- [x] Link the rate-card CTA to an accessible popup enquiry form.
+- [x] Capture enquiry details and continue through the WhatsApp-first submission flow.
+- [x] Verify the popup on desktop/mobile and save a checkpoint.

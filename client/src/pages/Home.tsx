@@ -118,6 +118,7 @@ export default function Home() {
   const [activeGalleryIndex, setActiveGalleryIndex] = useState<number | null>(null);
   const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
   const [pricingVolume, setPricingVolume] = useState("20–49 units");
+  const [rateCardOpen, setRateCardOpen] = useState(false);
   const lightboxTouchStart = useRef<number | null>(null);
 
   const openWhatsApp = (message: string) => {
@@ -143,11 +144,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (activeGalleryIndex === null && activeCategory === null) return;
+    if (activeGalleryIndex === null && activeCategory === null && !rateCardOpen) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveGalleryIndex(null);
         setActiveCategory(null);
+        setRateCardOpen(false);
       }
       if (activeGalleryIndex !== null && event.key === "ArrowRight") shiftGallery(1);
       if (activeGalleryIndex !== null && event.key === "ArrowLeft") shiftGallery(-1);
@@ -158,7 +160,7 @@ export default function Home() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeGalleryIndex, activeCategory]);
+  }, [activeGalleryIndex, activeCategory, rateCardOpen]);
 
   const handleLightboxTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
     lightboxTouchStart.current = event.touches[0]?.clientX ?? null;
@@ -182,6 +184,19 @@ export default function Home() {
     const message = `Hello CHI-ZARAM Wholesale Desk, I would like to request a bulk supply quotation.\n\n• Product: ${product}\n• Tier/Category: ${tier}\n• Required Quantity: ${quantity}\n• Delivery Location: ${location}\n\nPlease share current wholesale pricing, availability, and delivery arrangements.`;
     setSubmitted(true);
     openWhatsApp(message);
+  };
+
+  const handleRateCardSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = form.get("rate-name") || "Not provided";
+    const email = form.get("rate-email") || "Not provided";
+    const product = form.get("rate-product") || "Multiple products";
+    const quantity = form.get("rate-quantity") || "Not specified";
+    const location = form.get("rate-location") || "Not specified";
+    const message = form.get("rate-message") || "Please share your current rate card.";
+    setRateCardOpen(false);
+    openWhatsApp(`Hello CHI-ZARAM, I would like to request the current rate card.\n\n• Name: ${name}\n• Email: ${email}\n• Product focus: ${product}\n• Estimated quantity: ${quantity}\n• Delivery location: ${location}\n• Enquiry: ${message}\n\nPlease share current retail, reseller, and wholesale pricing with delivery options.`);
   };
 
   const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : activeCategory?.title === "Delta State Yellow Garri" ? ["Retail pouch", "5kg family pack", "Bulk sack", "Wholesale quantity"] : ["1 unit", "5 units", "Wholesale carton"];
@@ -465,7 +480,7 @@ export default function Home() {
               <button
                 className="button button--gold"
                 type="button"
-                onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to request the complete current rate card and pricing sheet for retail and bulk orders.")}
+                onClick={() => setRateCardOpen(true)}
               >
                 Request current rate card <ArrowUpRight size={17} />
               </button>
@@ -564,6 +579,37 @@ export default function Home() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {rateCardOpen && (
+        <div className="product-modal-backdrop" role="presentation" onClick={() => setRateCardOpen(false)}>
+          <div className="rate-card-modal" role="dialog" aria-modal="true" aria-labelledby="rate-card-title" aria-describedby="rate-card-description" onClick={(event) => event.stopPropagation()}>
+            <div className="rate-card-modal__header">
+              <div>
+                <span className="commercial-rate-banner__tag">Direct rate card</span>
+                <h3 id="rate-card-title">Let’s price the next order clearly.</h3>
+                <p id="rate-card-description">Share a few details and our team will continue with current rates, pack options, and delivery guidance on WhatsApp.</p>
+              </div>
+              <button className="product-modal__close" type="button" onClick={() => setRateCardOpen(false)} aria-label="Close rate card enquiry">
+                <X size={20} />
+              </button>
+            </div>
+            <form className="rate-card-form" onSubmit={handleRateCardSubmit}>
+              <div className="rate-card-form__grid">
+                <label><span>Your name</span><input id="rate-name" name="rate-name" required autoComplete="name" placeholder="Your name" /></label>
+                <label><span>Email address <small>(optional)</small></span><input id="rate-email" name="rate-email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
+                <label><span>Product focus</span><select id="rate-product" name="rate-product" defaultValue="Palm Oil"><option>Palm Oil</option><option>Vegetable Oil</option><option>Delta State Yellow Garri</option><option>Multiple products</option></select></label>
+                <label><span>Estimated quantity</span><input id="rate-quantity" name="rate-quantity" placeholder="e.g. 20 units / 2 cartons" /></label>
+              </div>
+              <label><span>Delivery location</span><input id="rate-location" name="rate-location" required placeholder="City or area" autoComplete="address-level2" /></label>
+              <label><span>What would you like priced?</span><textarea id="rate-message" name="rate-message" rows={3} placeholder="Tell us the pack sizes, order type, or delivery needs you have in mind." /></label>
+              <div className="rate-card-form__footer">
+                <span>We’ll open WhatsApp with your enquiry ready to send.</span>
+                <button className="button button--crimson" type="submit">Continue to WhatsApp <ArrowUpRight size={16} /></button>
+              </div>
+            </form>
           </div>
         </div>
       )}

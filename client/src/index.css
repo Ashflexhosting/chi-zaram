@@ -1376,3 +1376,60 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     animation: none;
   }
 }
+
+/* Rate-card popup form: accessible, compact, and aligned with the dark commercial section. */
+.rate-card-modal {
+  position: relative;
+  width: min(100%, 680px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: 36px 38px 32px;
+  background: #fffaf3;
+  border-top: 4px solid #e0b45f;
+  box-shadow: 0 25px 60px rgba(41,42,37,0.3);
+  animation: scaleUp 220ms var(--ease-out);
+}
+.rate-card-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding-right: 42px;
+  margin-bottom: 28px;
+}
+.rate-card-modal__header h3 {
+  margin: 0 0 10px;
+  color: #292a25;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+}
+.rate-card-modal__header p {
+  max-width: 540px;
+  margin: 0;
+  color: #746f64;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.rate-card-modal .product-modal__close { top: 18px; right: 18px; }
+.rate-card-form { display: flex; flex-direction: column; gap: 18px; }
+.rate-card-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.rate-card-form label { display: flex; flex-direction: column; gap: 7px; color: #435847; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.rate-card-form label small { color: #91887a; font-size: 9px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.rate-card-form input, .rate-card-form select, .rate-card-form textarea { width: 100%; padding: 12px 13px; border: 1px solid #d6c9b8; border-radius: 0; background: #f4efe6; color: #292a25; font: inherit; font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; outline: none; transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.rate-card-form textarea { resize: vertical; min-height: 86px; line-height: 1.55; }
+.rate-card-form input::placeholder, .rate-card-form textarea::placeholder { color: #9b9388; }
+.rate-card-form input:focus, .rate-card-form select:focus, .rate-card-form textarea:focus { border-color: #9f2f2a; background: #fffaf3; box-shadow: 0 0 0 3px rgba(159,47,42,0.13); }
+.rate-card-form__footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 6px; }
+.rate-card-form__footer > span { max-width: 250px; color: #91887a; font-size: 11px; line-height: 1.5; }
+.rate-card-form__footer .button { flex-shrink: 0; }
+@media (max-width: 700px) {
+  .rate-card-modal { max-height: calc(100vh - 20px); padding: 29px 20px 24px; }
+  .rate-card-modal__header { padding-right: 25px; margin-bottom: 22px; }
+  .rate-card-form__grid { grid-template-columns: 1fr; gap: 16px; }
+  .rate-card-form__footer { flex-direction: column; align-items: stretch; }
+  .rate-card-form__footer > span { max-width: none; }
+  .rate-card-form__footer .button { width: 100%; }
+}
