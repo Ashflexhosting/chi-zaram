@@ -109,6 +109,9 @@ export default function Contact() {
               <button className="button button--crimson button--full" type="submit">
                 {sent ? "Opening WhatsApp…" : "Send enquiry"} <ArrowUpRight size={16} />
               </button>
+              <a className="button button--quiet button--full contact-form__call" href="tel:08037365227" aria-label="Call CHI-ZARAM sales at 0803 736 5227">
+                <Phone size={16} /> Call Now · 0803 736 5227
+              </a>
             </form>
           </div>
         </section>

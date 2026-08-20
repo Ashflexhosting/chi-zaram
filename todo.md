@@ -149,3 +149,6 @@
 - [x] Verify the live status badge in the footer and Contact page, then save a checkpoint.
 - [x] Link Contact page “Call the sales line” directly to 08037365227.
 - [x] Verify the corrected sales-line link and save a checkpoint.
+- [x] Add a prominent Call Now button to the Contact page enquiry card.
+- [x] Add a tap-to-call phone icon to the mobile navigation menu.
+- [x] Verify both call actions on desktop/mobile, then save a checkpoint.

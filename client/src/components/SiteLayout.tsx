@@ -102,6 +102,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/bulk-supply" ? "is-active" : ""} href="/bulk-supply">Bulk supply</Link>
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/contact" ? "is-active" : ""} href="/contact">Contact</Link>
             <Link onClick={() => setMobileOpen(false)} className={activePath === "/gallery" ? "is-active" : ""} href="/gallery">Gallery</Link>
+            <a className="mobile-nav-call" href="tel:08037365227" aria-label="Call CHI-ZARAM at 0803 736 5227"><Phone size={17} /><span>Call 0803 736 5227</span><ArrowUpRight size={14} /></a>
           </nav>
           <a className="header-cta" href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={16} /><span>Order on WhatsApp</span></a>
           <button className="menu-toggle page-menu-toggle" type="button" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>

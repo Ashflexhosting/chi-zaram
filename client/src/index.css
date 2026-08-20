@@ -1720,3 +1720,34 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 .contact-location .business-status-badge.is-open {
   color: #435847;
 }
+
+/* Direct-call affordances: prominent on Contact, compact and icon-led in the mobile menu. */
+.contact-form__call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.mobile-nav-call {
+  display: none;
+}
+@media (max-width: 760px) {
+  .main-nav .mobile-nav-call {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 14px 12px;
+    border: 1px solid rgba(159,47,42,0.22);
+    background: rgba(159,47,42,0.08);
+    color: #9f2f2a;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .main-nav .mobile-nav-call span {
+    flex: 1;
+  }
+}
