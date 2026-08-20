@@ -275,19 +275,29 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="story-section section-pad" id="story">
-          <div className="container story-section__grid">
-            <div className="section-kicker"><span className="section-kicker__number">01</span><span>Our story</span></div>
-            <div className="story-section__content">
+        <section className="story-section story-section--editorial section-pad" id="story">
+          <div className="container story-editorial">
+            <div className="story-editorial__rail">
+              <div className="section-kicker"><span className="section-kicker__number">01</span><span>Our story</span></div>
+              <span className="story-editorial__rail-line" aria-hidden="true" />
+              <span className="story-editorial__rail-caption">Rooted in Nigeria<br />made for everyday life</span>
+            </div>
+            <div className="story-editorial__copy">
               <p className="eyebrow">A brand with room to grow</p>
               <h2>Quality everyday goods, <em>closer to home.</em></h2>
-              <div className="story-section__lower">
-                <p className="body-copy">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers. Our product portfolio spans red palm oil, pure vegetable oil, fabrics, cleaning essentials, and oil perfumes.</p>
-                <div className="story-callout"><Sparkles size={19} /><span>One master brand.<br /><strong>Many ways to live well.</strong></span></div>
+              <p className="story-editorial__lead">CHI-ZARAM is building a considered Nigerian consumer-products brand around the things people reach for every day — with honest presentation, practical value, and a direct line from our hands to yours.</p>
+              <div className="story-editorial__facts">
+                <article><span>01</span><strong>Selected with care</strong><p>Products chosen for usefulness, quality, and everyday confidence.</p></article>
+                <article><span>02</span><strong>Room to grow</strong><p>One master brand expanding from pantry staples into lifestyle essentials.</p></article>
+                <article><span>03</span><strong>Closer to home</strong><p>Retail and bulk supply made simpler through direct WhatsApp ordering.</p></article>
               </div>
-              <a className="text-link" href="#portfolio">Explore our collection <ArrowUpRight size={17} /></a>
+              <div className="story-editorial__footer"><div className="story-callout"><Sparkles size={19} /><span>One master brand.<br /><strong>Many ways to live well.</strong></span></div><a className="text-link" href="#portfolio">Explore our collection <ArrowUpRight size={17} /></a></div>
             </div>
-            <div className="story-section__side-note"><span>CHI-ZARAM</span><p>Pure goodness.<br /><em>Naturally better.</em></p></div>
+            <div className="story-editorial__visual" aria-label="CHI-ZARAM products and point of view">
+              <div className="story-editorial__image story-editorial__image--main"><img src={assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg")} alt="CHI-ZARAM vegetable oil and palm fruits arranged in a warm natural setting" loading="lazy" /></div>
+              <div className="story-editorial__image story-editorial__image--inset"><img src={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} alt="CHI-ZARAM palm oil container with fresh palm fruits" loading="lazy" /></div>
+              <div className="story-editorial__seal"><span>CHI-ZARAM</span><strong>Good things<br /><em>worth sharing.</em></strong></div>
+            </div>
           </div>
         </section>
 

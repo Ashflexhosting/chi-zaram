@@ -1107,3 +1107,60 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .brand-lockup__mark { width: 148px; height: 48px; }
   .brand-lockup--footer .brand-lockup__mark { width: 190px; height: 56px; }
 }
+
+/* Harvest Editorial brand story: an asymmetric rail, measured fact cards, and layered pantry imagery create a more ownable CHI-ZARAM narrative moment. */
+.story-section--editorial { position: relative; overflow: hidden; background: #e9dfd2; }
+.story-section--editorial::before { position: absolute; content: ""; top: 0; right: 11%; width: 1px; height: 100%; background: rgba(159,47,42,0.12); }
+.story-editorial { position: relative; display: grid; grid-template-columns: 0.55fr 1.18fr 0.92fr; gap: clamp(34px, 5vw, 78px); align-items: stretch; }
+.story-editorial__rail { display: flex; flex-direction: column; align-items: flex-start; padding-top: 5px; }
+.story-editorial__rail-line { display: block; width: 1px; flex: 1; min-height: 180px; margin: 25px 0 20px 6px; background: #c99a4a; }
+.story-editorial__rail-caption { color: #746f64; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; line-height: 1.6; text-transform: uppercase; }
+.story-editorial__copy { position: relative; z-index: 1; padding: 2px 0 10px; }
+.story-editorial__copy h2 { max-width: 720px; margin: 0; }
+.story-editorial__lead { max-width: 590px; margin: 30px 0 0; color: #5f5a51; font-size: 16px; line-height: 1.78; }
+.story-editorial__facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 42px; border-top: 1px solid #cfc2af; }
+.story-editorial__facts article { padding-top: 15px; }
+.story-editorial__facts article > span { display: block; margin-bottom: 13px; color: #9f2f2a; font-family: var(--serif); font-size: 25px; line-height: 0.8; }
+.story-editorial__facts strong { display: block; color: #435847; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; }
+.story-editorial__facts p { margin: 9px 0 0; color: #746f64; font-size: 11px; line-height: 1.55; }
+.story-editorial__footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+.story-editorial__footer .story-callout { padding-top: 0; padding-bottom: 0; }
+.story-editorial__visual { position: relative; min-height: 500px; }
+.story-editorial__image { position: absolute; overflow: hidden; background: #d9c7a6; box-shadow: 16px 18px 0 rgba(159,47,42,0.12); }
+.story-editorial__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+.story-editorial__image:hover img { transform: scale(1.04); }
+.story-editorial__image--main { top: 0; right: 0; width: 82%; height: 385px; border-radius: 0 0 46% 0; }
+.story-editorial__image--main img { object-position: 52% center; }
+.story-editorial__image--inset { bottom: 0; left: 0; width: 55%; height: 220px; border: 12px solid #e9dfd2; box-shadow: 0 12px 28px rgba(41,42,37,0.16); }
+.story-editorial__image--inset img { object-position: center; }
+.story-editorial__seal { position: absolute; right: 0; bottom: 52px; display: flex; width: 125px; height: 125px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(255,250,243,0.75); border-radius: 50%; background: #435847; color: #fffaf3; text-align: center; transform: rotate(7deg); }
+.story-editorial__seal span { color: #c99a4a; font-size: 8px; font-weight: 800; letter-spacing: 0.12em; }
+.story-editorial__seal strong { margin-top: 8px; font-family: var(--serif); font-size: 18px; font-weight: 400; line-height: 0.95; }
+.story-editorial__seal em { color: #e0b45f; }
+@media (max-width: 1024px) {
+  .story-editorial { grid-template-columns: 1fr 1.35fr; gap: 38px; }
+  .story-editorial__rail { grid-row: span 2; }
+  .story-editorial__visual { min-height: 420px; grid-column: 2; }
+  .story-editorial__image--main { height: 320px; }
+  .story-editorial__image--inset { height: 180px; }
+  .story-editorial__facts { gap: 12px; }
+}
+@media (max-width: 760px) {
+  .story-section--editorial::before { display: none; }
+  .story-editorial { display: block; }
+  .story-editorial__rail { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 15px; padding: 0; }
+  .story-editorial__rail-line { width: auto; height: 1px; min-height: 0; margin: 0; }
+  .story-editorial__rail-caption { grid-column: 1 / -1; margin: 0 0 8px; }
+  .story-editorial__copy { padding-top: 22px; }
+  .story-editorial__lead { margin-top: 22px; font-size: 14px; }
+  .story-editorial__facts { grid-template-columns: 1fr; gap: 0; margin-top: 30px; }
+  .story-editorial__facts article { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; padding: 15px 0; border-bottom: 1px solid #cfc2af; }
+  .story-editorial__facts article > span { grid-row: span 2; margin: 0; }
+  .story-editorial__facts p { margin-top: 5px; }
+  .story-editorial__footer { align-items: flex-start; flex-direction: column; gap: 25px; margin-top: 30px; }
+  .story-editorial__visual { min-height: 350px; margin-top: 38px; }
+  .story-editorial__image--main { width: 84%; height: 270px; }
+  .story-editorial__image--inset { width: 56%; height: 145px; border-width: 8px; }
+  .story-editorial__seal { right: 1%; bottom: 30px; width: 98px; height: 98px; }
+  .story-editorial__seal strong { font-size: 15px; }
+}

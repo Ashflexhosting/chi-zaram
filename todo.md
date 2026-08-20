@@ -86,3 +86,5 @@
 - [x] Verify sticky scrolling on desktop and mobile, then save a checkpoint.
 - [x] Replace the current logo and favicon with the supplied CZ.png asset.
 - [x] Verify the sticky header and new logo on Manus and GitHub Pages, then save a checkpoint.
+- [ ] Redesign the homepage “A brand with room to grow” section.
+- [ ] Verify the redesigned brand-story section on desktop and mobile, then save a checkpoint.
