@@ -137,3 +137,5 @@
 - [x] Verify the footer logo treatment on desktop and mobile, then save a checkpoint.
 - [x] Fix mobile visibility and overflow for all homepage pack-sizes cards.
 - [x] Verify the pack-sizes cards on mobile and desktop, then save a checkpoint.
+- [x] Add mobile viewport-triggered fade-in and slide-up animation to pack-sizes cards.
+- [x] Verify scroll reveal and reduced-motion behavior, then save a checkpoint.

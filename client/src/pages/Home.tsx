@@ -126,7 +126,42 @@ export default function Home() {
   const [generatedMessage, setGeneratedMessage] = useState("");
   const [copiedClipboard, setCopiedClipboard] = useState(false);
   const [rateCardValues, setRateCardValues] = useState({ name: "", email: "", company: "", buyerType: "Retail Household", product: "Palm Oil", quantity: "", location: "", message: "" });
+  const [commercialRevealReady, setCommercialRevealReady] = useState(false);
   const lightboxTouchStart = useRef<number | null>(null);
+  const commercialCardsRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setCommercialRevealReady(true);
+    const grid = commercialCardsRef.current;
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".commercial-card"));
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+    if (!isMobile || prefersReducedMotion) {
+      cards.forEach((card) => card.classList.add("is-revealed"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -10% 0px" },
+    );
+
+    cards.forEach((card, index) => {
+      card.style.setProperty("--card-reveal-delay", `${index * 90}ms`);
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const openWhatsApp = (message: string) => {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
@@ -510,7 +545,7 @@ export default function Home() {
               <span>Bulk Jerrycans</span>
             </div>
 
-            <div className="commercial-grid">
+            <div ref={commercialCardsRef} className={`commercial-grid ${commercialRevealReady ? "commercial-grid--reveal" : ""}`}>
               <div className="commercial-card">
                 <span className="commercial-card__tag">Flagship Product</span>
                 <h3>CHI-ZARAM Palm Oil</h3>

@@ -1620,3 +1620,23 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     margin-bottom: 22px;
   }
 }
+
+/* Mobile commercial-card reveal: cards enter softly as they reach the viewport; desktop remains static. */
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .commercial-grid--reveal .commercial-card {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+    transition-delay: var(--card-reveal-delay, 0ms);
+  }
+  .commercial-grid--reveal .commercial-card.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .commercial-grid--reveal .commercial-card {
+    opacity: 1;
+    transform: none;
+  }
+}
