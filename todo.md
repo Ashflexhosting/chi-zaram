@@ -52,3 +52,6 @@
 - [x] Refine desktop layouts for Packs & Pricing and Contact pages to match the wider visual rhythm.
 - [x] Add responsive image sources and compressed gallery assets while preserving the original visual quality.
 - [x] Test the revised desktop/mobile routes and gallery loading, then save a checkpoint.
+- [x] Place the opened gallery image and descriptive panel side by side on desktop lightbox view.
+- [x] Preserve the stacked lightbox layout on mobile and verify both breakpoints.
+- [ ] Save a checkpoint for the lightbox layout refinement.

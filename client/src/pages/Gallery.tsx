@@ -196,64 +196,66 @@ export default function Gallery() {
                 <X size={22} />
               </button>
               <div className="lightbox-main">
-                <button
-                  className="lightbox-nav-btn lightbox-prev"
-                  type="button"
-                  aria-label="Previous image"
-                  onClick={showPrevious}
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <div className="lightbox-media-box" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-                  <img src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
-                  <div className="lightbox-caption">
-                    <span className="lightbox-category">{activeLightboxItem.category}</span>
-                    <h3>{activeLightboxItem.title}</h3>
-                    <p>{activeLightboxItem.caption}</p>
-                    <div className="lightbox-actions">
-                      <a
-                        className="button button--crimson"
-                        href={whatsappHref(`Hello CHI-ZARAM, I am enquiring about ${activeLightboxItem.title} (${activeLightboxItem.category}) seen in your photo gallery.`)}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Enquire about this item <ArrowUpRight size={15} />
-                      </a>
-                      <button
-                        className="button button--outline lightbox-share-btn"
-                        type="button"
-                        onClick={async () => {
-                          const shareData = {
-                            title: `${activeLightboxItem.title} | CHI-ZARAM`,
-                            text: activeLightboxItem.caption,
-                            url: window.location.href,
-                          };
-                          try {
-                            if (navigator.share) {
-                              await navigator.share(shareData);
-                            } else {
-                              await navigator.clipboard.writeText(window.location.href);
-                              setShareFeedback(true);
-                              setTimeout(() => setShareFeedback(false), 2500);
-                            }
-                          } catch {
-                            // User cancelled or share failed
+                <div className="lightbox-stage">
+                  <button
+                    className="lightbox-nav-btn lightbox-prev"
+                    type="button"
+                    aria-label="Previous image"
+                    onClick={showPrevious}
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <div className="lightbox-media-box" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+                    <img src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/hero-960_46c9d711.jpg"; }} />
+                  </div>
+                  <button
+                    className="lightbox-nav-btn lightbox-next"
+                    type="button"
+                    aria-label="Next image"
+                    onClick={showNext}
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </div>
+                <div className="lightbox-caption">
+                  <span className="lightbox-category">{activeLightboxItem.category}</span>
+                  <h3>{activeLightboxItem.title}</h3>
+                  <p>{activeLightboxItem.caption}</p>
+                  <div className="lightbox-actions">
+                    <a
+                      className="button button--crimson"
+                      href={whatsappHref(`Hello CHI-ZARAM, I am enquiring about ${activeLightboxItem.title} (${activeLightboxItem.category}) seen in your photo gallery.`)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Enquire about this item <ArrowUpRight size={15} />
+                    </a>
+                    <button
+                      className="button button--outline lightbox-share-btn"
+                      type="button"
+                      onClick={async () => {
+                        const shareData = {
+                          title: `${activeLightboxItem.title} | CHI-ZARAM`,
+                          text: activeLightboxItem.caption,
+                          url: window.location.href,
+                        };
+                        try {
+                          if (navigator.share) {
+                            await navigator.share(shareData);
+                          } else {
+                            await navigator.clipboard.writeText(window.location.href);
+                            setShareFeedback(true);
+                            setTimeout(() => setShareFeedback(false), 2500);
                           }
-                        }}
-                      >
-                        <Share2 size={15} /> {shareFeedback ? "Link copied!" : "Share image"}
-                      </button>
-                    </div>
+                        } catch {
+                          // User cancelled or share failed
+                        }
+                      }}
+                    >
+                      <Share2 size={15} /> {shareFeedback ? "Link copied!" : "Share image"}
+                    </button>
                   </div>
                 </div>
-                <button
-                  className="lightbox-nav-btn lightbox-next"
-                  type="button"
-                  aria-label="Next image"
-                  onClick={showNext}
-                >
-                  <ChevronRight size={24} />
-                </button>
               </div>
               <div className="lightbox-footer">
                 <div className="lightbox-counter">

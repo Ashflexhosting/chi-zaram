@@ -937,3 +937,15 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .faq-question { padding: 25px 30px; font-size: 23px; }
   .faq-answer { padding: 0 30px 27px; padding-top: 18px; font-size: 16px; }
 }
+
+/* Gallery lightbox desktop composition: image stage left, description panel right. */
+.lightbox-main { grid-template-columns: minmax(0, 1fr) 380px; align-items: stretch; min-height: 520px; }
+.lightbox-stage { position: relative; min-width: 0; min-height: 520px; display: grid; place-items: center; background: #1a1b18; }
+.lightbox-stage .lightbox-media-box { min-height: 520px; height: 100%; padding: 28px 54px; }
+.lightbox-caption { min-width: 0; height: auto; min-height: 520px; }
+@media (max-width: 960px) {
+  .lightbox-main { grid-template-columns: 1fr; min-height: 0; }
+  .lightbox-stage { min-height: 320px; }
+  .lightbox-stage .lightbox-media-box { min-height: 320px; padding: 24px 52px; }
+  .lightbox-caption { min-height: 0; border-top: 1px solid #3d3b34; border-left: 0; }
+}
