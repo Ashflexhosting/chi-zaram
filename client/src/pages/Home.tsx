@@ -119,6 +119,9 @@ export default function Home() {
   const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
   const [pricingVolume, setPricingVolume] = useState("20–49 units");
   const [rateCardOpen, setRateCardOpen] = useState(false);
+  const [rateCardSuccess, setRateCardSuccess] = useState(false);
+  const [rateCardErrors, setRateCardErrors] = useState<{ [key: string]: string }>({});
+  const [rateCardValues, setRateCardValues] = useState({ name: "", email: "", company: "", buyerType: "Retail Household", product: "Palm Oil", quantity: "", location: "", message: "" });
   const lightboxTouchStart = useRef<number | null>(null);
 
   const openWhatsApp = (message: string) => {
@@ -150,6 +153,7 @@ export default function Home() {
         setActiveGalleryIndex(null);
         setActiveCategory(null);
         setRateCardOpen(false);
+        setRateCardSuccess(false);
       }
       if (activeGalleryIndex !== null && event.key === "ArrowRight") shiftGallery(1);
       if (activeGalleryIndex !== null && event.key === "ArrowLeft") shiftGallery(-1);
@@ -186,17 +190,57 @@ export default function Home() {
     openWhatsApp(message);
   };
 
+  const validateRateCardField = (name: string, value: string) => {
+    const errors = { ...rateCardErrors };
+    if (name === "rate-name") {
+      if (!value.trim() || value.trim().length < 2) errors.name = "Please enter a valid name (at least 2 characters).";
+      else delete errors.name;
+    }
+    if (name === "rate-email" && value.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value.trim())) errors.email = "Please enter a valid email address.";
+      else delete errors.email;
+    }
+    if (name === "rate-quantity") {
+      if (!value.trim() || value.trim().length < 2) errors.quantity = "Please specify an estimated quantity or pack size.";
+      else delete errors.quantity;
+    }
+    if (name === "rate-location") {
+      if (!value.trim() || value.trim().length < 2) errors.location = "Please enter a delivery city or area.";
+      else delete errors.location;
+    }
+    setRateCardErrors(errors);
+  };
+
   const handleRateCardSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const name = form.get("rate-name") || "Not provided";
-    const email = form.get("rate-email") || "Not provided";
-    const product = form.get("rate-product") || "Multiple products";
-    const quantity = form.get("rate-quantity") || "Not specified";
-    const location = form.get("rate-location") || "Not specified";
-    const message = form.get("rate-message") || "Please share your current rate card.";
-    setRateCardOpen(false);
-    openWhatsApp(`Hello CHI-ZARAM, I would like to request the current rate card.\n\n• Name: ${name}\n• Email: ${email}\n• Product focus: ${product}\n• Estimated quantity: ${quantity}\n• Delivery location: ${location}\n• Enquiry: ${message}\n\nPlease share current retail, reseller, and wholesale pricing with delivery options.`);
+    const name = (form.get("rate-name") as string) || "";
+    const email = (form.get("rate-email") as string) || "";
+    const company = (form.get("rate-company") as string) || "Not specified";
+    const buyerType = (form.get("rate-buyer-type") as string) || "Retail Household";
+    const product = (form.get("rate-product") as string) || "Multiple products";
+    const quantity = (form.get("rate-quantity") as string) || "";
+    const location = (form.get("rate-location") as string) || "";
+    const message = (form.get("rate-message") as string) || "Please share your current rate card.";
+
+    const errors: { [key: string]: string } = {};
+    if (!name.trim() || name.trim().length < 2) errors.name = "Please enter a valid name.";
+    if (!quantity.trim()) errors.quantity = "Please specify an estimated quantity.";
+    if (!location.trim()) errors.location = "Please enter a delivery city or area.";
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) errors.email = "Please enter a valid email address.";
+
+    if (Object.keys(errors).length > 0) {
+      setRateCardErrors(errors);
+      return;
+    }
+
+    setRateCardSuccess(true);
+    setTimeout(() => {
+      setRateCardOpen(false);
+      setRateCardSuccess(false);
+      openWhatsApp(`Hello CHI-ZARAM, I would like to request the current rate card.\n\n• Name: ${name}\n• Company: ${company}\n• Buyer Type: ${buyerType}\n• Email: ${email || "Not provided"}\n• Product focus: ${product}\n• Estimated quantity: ${quantity}\n• Delivery location: ${location}\n• Enquiry: ${message}\n\nPlease share current retail, reseller, and wholesale pricing with delivery options.`);
+    }, 750);
   };
 
   const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : activeCategory?.title === "Delta State Yellow Garri" ? ["Retail pouch", "5kg family pack", "Bulk sack", "Wholesale quantity"] : ["1 unit", "5 units", "Wholesale carton"];
@@ -223,12 +267,13 @@ export default function Home() {
           </a>
 
             <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
-            <a href={`${siteBase}/`} onClick={() => setMobileOpen(false)}>Home</a>
+            <a className="is-active" href={`${siteBase}/`} onClick={() => setMobileOpen(false)}>Home</a>
             <a href={`${siteBase}/story`} onClick={() => setMobileOpen(false)}>Our story</a>
             <a href={`${siteBase}/catalogue`} onClick={() => setMobileOpen(false)}>What we carry</a>
             <a href={`${siteBase}/packs-pricing`} onClick={() => setMobileOpen(false)}>Packs &amp; Pricing</a>
             <a href={`${siteBase}/bulk-supply`} onClick={() => setMobileOpen(false)}>Bulk supply</a>
             <a href={`${siteBase}/contact`} onClick={() => setMobileOpen(false)}>Contact</a>
+            <a href={`${siteBase}/gallery`} onClick={() => setMobileOpen(false)}>Gallery</a>
             <a className="main-nav__mobile-cta" href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello CHI-ZARAM, I would like to place an order. Please share current product availability and delivery terms.")}`} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
               Order on WhatsApp <ArrowUpRight size={16} />
             </a>
@@ -585,31 +630,151 @@ export default function Home() {
 
       {rateCardOpen && (
         <div className="product-modal-backdrop" role="presentation" onClick={() => setRateCardOpen(false)}>
-          <div className="rate-card-modal" role="dialog" aria-modal="true" aria-labelledby="rate-card-title" aria-describedby="rate-card-description" onClick={(event) => event.stopPropagation()}>
-            <div className="rate-card-modal__header">
-              <div>
-                <span className="commercial-rate-banner__tag">Direct rate card</span>
-                <h3 id="rate-card-title">Let’s price the next order clearly.</h3>
-                <p id="rate-card-description">Share a few details and our team will continue with current rates, pack options, and delivery guidance on WhatsApp.</p>
+          <div className={`rate-card-modal ${rateCardSuccess ? "is-success" : ""}`} role="dialog" aria-modal="true" aria-labelledby="rate-card-title" aria-describedby="rate-card-description" onClick={(event) => event.stopPropagation()}>
+            {rateCardSuccess ? (
+              <div className="rate-card-success-state">
+                <div className="rate-card-success-icon"><Check size={32} /></div>
+                <h3>Rate card ready</h3>
+                <p>Opening WhatsApp with your verified enquiry details…</p>
               </div>
-              <button className="product-modal__close" type="button" onClick={() => setRateCardOpen(false)} aria-label="Close rate card enquiry">
-                <X size={20} />
-              </button>
-            </div>
-            <form className="rate-card-form" onSubmit={handleRateCardSubmit}>
-              <div className="rate-card-form__grid">
-                <label><span>Your name</span><input id="rate-name" name="rate-name" required autoComplete="name" placeholder="Your name" /></label>
-                <label><span>Email address <small>(optional)</small></span><input id="rate-email" name="rate-email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
-                <label><span>Product focus</span><select id="rate-product" name="rate-product" defaultValue="Palm Oil"><option>Palm Oil</option><option>Vegetable Oil</option><option>Delta State Yellow Garri</option><option>Multiple products</option></select></label>
-                <label><span>Estimated quantity</span><input id="rate-quantity" name="rate-quantity" placeholder="e.g. 20 units / 2 cartons" /></label>
-              </div>
-              <label><span>Delivery location</span><input id="rate-location" name="rate-location" required placeholder="City or area" autoComplete="address-level2" /></label>
-              <label><span>What would you like priced?</span><textarea id="rate-message" name="rate-message" rows={3} placeholder="Tell us the pack sizes, order type, or delivery needs you have in mind." /></label>
-              <div className="rate-card-form__footer">
-                <span>We’ll open WhatsApp with your enquiry ready to send.</span>
-                <button className="button button--crimson" type="submit">Continue to WhatsApp <ArrowUpRight size={16} /></button>
-              </div>
-            </form>
+            ) : (
+              <>
+                <div className="rate-card-modal__header">
+                  <div>
+                    <span className="commercial-rate-banner__tag">Direct rate card</span>
+                    <h3 id="rate-card-title">Let’s price the next order clearly.</h3>
+                    <p id="rate-card-description">Share your order details. Real-time validation ensures your request is accurate before we open WhatsApp.</p>
+                  </div>
+                  <button className="product-modal__close" type="button" onClick={() => setRateCardOpen(false)} aria-label="Close rate card enquiry">
+                    <X size={20} />
+                  </button>
+                </div>
+                <form className="rate-card-form" onSubmit={handleRateCardSubmit} noValidate>
+                  <div className="rate-card-form__grid">
+                    <label>
+                      <span>Your name</span>
+                      <input
+                        name="rate-name"
+                        required
+                        autoComplete="name"
+                        placeholder="Your name"
+                        value={rateCardValues.name}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setRateCardValues((prev) => ({ ...prev, name: val }));
+                          validateRateCardField("rate-name", val);
+                        }}
+                      />
+                      {rateCardErrors.name && <small className="form-error">{rateCardErrors.name}</small>}
+                    </label>
+
+                    <label>
+                      <span>Email address <small>(optional)</small></span>
+                      <input
+                        name="rate-email"
+                        type="email"
+                        autoComplete="email"
+                        placeholder="you@example.com"
+                        value={rateCardValues.email}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setRateCardValues((prev) => ({ ...prev, email: val }));
+                          validateRateCardField("rate-email", val);
+                        }}
+                      />
+                      {rateCardErrors.email && <small className="form-error">{rateCardErrors.email}</small>}
+                    </label>
+
+                    <label>
+                      <span>Buyer Type</span>
+                      <select
+                        name="rate-buyer-type"
+                        value={rateCardValues.buyerType}
+                        onChange={(e) => setRateCardValues((prev) => ({ ...prev, buyerType: e.target.value }))}
+                      >
+                        <option value="Retail Household">Retail Household (1–4 units)</option>
+                        <option value="Shop Reseller">Shop Reseller / Vendor (5–19 units)</option>
+                        <option value="Wholesale Buyer">Wholesale Buyer (20–49 units)</option>
+                        <option value="Commercial Distributor">Commercial Distributor (50+ units)</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Company / Store Name <small>(optional)</small></span>
+                      <input
+                        name="rate-company"
+                        placeholder="e.g. Adeola Stores / Home"
+                        value={rateCardValues.company}
+                        onChange={(e) => setRateCardValues((prev) => ({ ...prev, company: e.target.value }))}
+                      />
+                    </label>
+
+                    <label>
+                      <span>Product focus</span>
+                      <select
+                        name="rate-product"
+                        value={rateCardValues.product}
+                        onChange={(e) => setRateCardValues((prev) => ({ ...prev, product: e.target.value }))}
+                      >
+                        <option value="Palm Oil">Palm Oil (All pack sizes)</option>
+                        <option value="Vegetable Oil">Vegetable Oil</option>
+                        <option value="Delta State Yellow Garri">Delta State Yellow Garri</option>
+                        <option value="Multiple products">Multiple products</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Estimated quantity</span>
+                      <input
+                        name="rate-quantity"
+                        required
+                        placeholder="e.g. 20 units / 2 cartons"
+                        value={rateCardValues.quantity}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setRateCardValues((prev) => ({ ...prev, quantity: val }));
+                          validateRateCardField("rate-quantity", val);
+                        }}
+                      />
+                      {rateCardErrors.quantity && <small className="form-error">{rateCardErrors.quantity}</small>}
+                    </label>
+                  </div>
+
+                  <label>
+                    <span>Delivery location</span>
+                    <input
+                      name="rate-location"
+                      required
+                      placeholder="City or area"
+                      autoComplete="address-level2"
+                      value={rateCardValues.location}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setRateCardValues((prev) => ({ ...prev, location: val }));
+                        validateRateCardField("rate-location", val);
+                      }}
+                    />
+                    {rateCardErrors.location && <small className="form-error">{rateCardErrors.location}</small>}
+                  </label>
+
+                  <label>
+                    <span>What would you like priced?</span>
+                    <textarea
+                      name="rate-message"
+                      rows={3}
+                      placeholder="Tell us the pack sizes, order type, or delivery needs you have in mind."
+                      value={rateCardValues.message}
+                      onChange={(e) => setRateCardValues((prev) => ({ ...prev, message: e.target.value }))}
+                    />
+                  </label>
+
+                  <div className="rate-card-form__footer">
+                    <span>Verified details open WhatsApp instantly.</span>
+                    <button className="button button--crimson" type="submit">Continue to WhatsApp <ArrowUpRight size={16} /></button>
+                  </div>
+                </form>
+              </>
+            )}
           </div>
         </div>
       )}

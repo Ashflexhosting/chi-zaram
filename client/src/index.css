@@ -1433,3 +1433,54 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .rate-card-form__footer > span { max-width: none; }
   .rate-card-form__footer .button { width: 100%; }
 }
+
+/* Form validation error styling */
+.form-error {
+  display: block;
+  margin-top: 4px;
+  color: #9f2f2a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Rate-card success state animation */
+.rate-card-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 20px;
+  animation: scaleUp 220ms var(--ease-out);
+}
+.rate-card-success-icon {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  background: #435847;
+  color: #fffaf3;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(67,88,71,0.3);
+  animation: bounceIn 400ms var(--ease-out);
+}
+.rate-card-success-state h3 {
+  margin: 0 0 10px;
+  color: #292a25;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 400;
+}
+.rate-card-success-state p {
+  margin: 0;
+  color: #746f64;
+  font-size: 14px;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}

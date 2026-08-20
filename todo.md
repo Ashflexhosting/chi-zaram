@@ -120,3 +120,8 @@
 - [x] Link the rate-card CTA to an accessible popup enquiry form.
 - [x] Capture enquiry details and continue through the WhatsApp-first submission flow.
 - [x] Verify the popup on desktop/mobile and save a checkpoint.
+- [x] Highlight the current page across shared navigation.
+- [x] Add Buyer Type and Company Name fields to the rate-card popup form.
+- [x] Implement real-time input validation for contact details and quantities.
+- [x] Add a brief success animation before opening WhatsApp.
+- [x] Verify navigation and popup validation on desktop and mobile, then save a checkpoint.
