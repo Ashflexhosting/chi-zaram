@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import type { FormEvent, ReactNode } from "react";
 
-const whatsappNumber = "2348092192180";
+const whatsappNumber = "2348037365227";
 const defaultMessage = "Hello CHI-ZARAM, I would like to explore your products and current availability.";
 
 export function whatsappHref(message = defaultMessage) {
@@ -91,7 +91,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
           </div>
           <div className="footer-contact">
             <span>Start a conversation</span>
-            <a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a>
+            <a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos</span>
             <div className="footer-socials" aria-label="Social media links">
               <a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a>
               <a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a>

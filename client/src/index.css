@@ -1640,3 +1640,30 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     transform: none;
   }
 }
+
+/* Updated contact details: location labels stay visible and aligned with the WhatsApp-first contact routes. */
+.footer-contact__location {
+  color: #e0b45f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.contact-location {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 18px 0 0;
+  padding-top: 17px;
+  border-top: 1px solid #ded2c0;
+}
+.contact-location small {
+  color: #91887a;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.contact-location strong {
+  color: #435847;
+  font-size: 13px;
+}

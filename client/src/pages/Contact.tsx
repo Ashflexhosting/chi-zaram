@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How can I check current stock availability and pricing?",
-    a: "Because our stock moves quickly between retail dispatch and wholesale restocking, the fastest way to check live availability, current pack prices, and delivery terms is to message us directly on WhatsApp at 0809 219 2180.",
+    a: "Because our stock moves quickly between retail dispatch and wholesale restocking, the fastest way to check live availability, current pack prices, and delivery terms is to message us directly on WhatsApp at 0803 736 5227.",
   },
   {
     q: "Do you supply both individual households and business resellers?",
@@ -74,10 +74,10 @@ export default function Contact() {
               <div className="contact-routes">
                 <a href={whatsappHref()} target="_blank" rel="noreferrer">
                   <MessageCircle size={19} />
-                  <span><small>WhatsApp ordering</small><strong>0809 219 2180</strong></span>
+                  <span><small>WhatsApp ordering</small><strong>0803 736 5227</strong></span>
                   <ArrowUpRight size={16} />
                 </a>
-                <a href="tel:+2348092192180">
+                <a href="tel:+2348037365227">
                   <Phone size={19} />
                   <span><small>Phone</small><strong>Call the sales line</strong></span>
                   <ArrowUpRight size={16} />
@@ -88,6 +88,7 @@ export default function Contact() {
                   <ArrowUpRight size={16} />
                 </a>
               </div>
+              <p className="contact-location"><small>Operating from</small><strong>Isolo, Lagos</strong></p>
             </div>
 
             <form className="contact-form" onSubmit={submit}>

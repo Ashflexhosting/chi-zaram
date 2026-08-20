@@ -139,3 +139,6 @@
 - [x] Verify the pack-sizes cards on mobile and desktop, then save a checkpoint.
 - [x] Add mobile viewport-triggered fade-in and slide-up animation to pack-sizes cards.
 - [x] Verify scroll reveal and reduced-motion behavior, then save a checkpoint.
+- [x] Replace visible contact phone references with 08037365227.
+- [x] Add Isolo, Lagos to the site’s visible location/contact context.
+- [x] Verify contact details and WhatsApp links, then save a checkpoint.

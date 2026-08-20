@@ -64,9 +64,15 @@ export default function SEOHead({ title, description, path, image = "/social-pre
       "logo": window.location.origin + assetPath("/manus-storage/chizaram-logo-cz_cdd4320b.webp"),
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+234-809-219-2180",
+        "telephone": "+234-803-736-5227",
         "contactType": "sales",
         "availableLanguage": ["English"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Isolo",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG"
       },
       "sameAs": [
         "https://www.tiktok.com/@ogonwibe"
