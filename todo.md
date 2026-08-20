@@ -84,3 +84,5 @@
 - [x] Add a Home link to the shared and homepage navigation menus, then verify the update.
 - [x] Make the website header sticky while preserving the logo and responsive menu.
 - [x] Verify sticky scrolling on desktop and mobile, then save a checkpoint.
+- [ ] Replace the current logo and favicon with the supplied CZ.png asset.
+- [ ] Verify the sticky header and new logo on Manus and GitHub Pages, then save a checkpoint.

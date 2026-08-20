@@ -57,7 +57,7 @@ export default function SEOHead({ title, description, path, image = assetPath("/
       "@type": "Organization",
       "name": "CHI-ZARAM Palm Oil & More Enterprises",
       "url": window.location.origin,
-      "logo": window.location.origin + assetPath("/manus-storage/chizaram-logo_4d14dc14.webp"),
+      "logo": window.location.origin + assetPath("/manus-storage/chizaram-logo-cz_cdd4320b.webp"),
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+234-809-219-2180",
