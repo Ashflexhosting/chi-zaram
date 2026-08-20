@@ -75,6 +75,23 @@ const galleryImages = [
   { title: "The CHI-ZARAM World", src: "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg", desc: "The brand's natural, editorial point of view" },
 ];
 
+const packVariants = [
+  { label: "1L", title: "Retail bottle", src: "/manus-storage/chi-zaram-pack-1l_6e672af6.jpg", quantity: "1L retail pack" },
+  { label: "3L", title: "Family pack", src: "/manus-storage/chi-zaram-pack-3l_733459fa.jpg", quantity: "3L family pack" },
+  { label: "5L", title: "Value jerrycan", src: "/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg", quantity: "5L family pack" },
+  { label: "Bulk", title: "Wholesale supply", src: "/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg", quantity: "Bulk jerrycan / carton" },
+];
+
+function GalleryImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className={`gallery-image-frame ${loaded ? "is-loaded" : ""}`}>
+      <span className="gallery-image-frame__loader" aria-hidden="true" />
+      <img src={src} alt={alt} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} />
+    </div>
+  );
+}
+
 const pricingTiers = [
   { tier: "Retail", volume: "1–4 units", redPalm: "Standard rate", vegetable: "Standard rate", note: "Single-unit household orders" },
   { tier: "Reseller", volume: "5–19 units", redPalm: "Volume rate", vegetable: "Volume rate", note: "For shops, vendors & small resellers" },
@@ -93,6 +110,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<typeof categories[0] | null>(null);
   const [selectedQuantity, setSelectedQuantity] = useState("5L family pack");
+  const [activePackVariant, setActivePackVariant] = useState(packVariants[2]);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState<number | null>(null);
   const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
   const [pricingVolume, setPricingVolume] = useState("20–49 units");
@@ -154,6 +172,8 @@ export default function Home() {
     setSubmitted(true);
     openWhatsApp(message);
   };
+
+  const modalQuantityOptions = activeCategory?.title === "Red Palm Oil" ? packVariants.map((variant) => variant.quantity) : activeCategory?.title === "Vegetable Oil & More" ? ["1L retail pack", "3L family pack", "5L family pack", "Wholesale carton"] : ["1 unit", "5 units", "Wholesale carton"];
 
   return (
     <div className="site-shell">
@@ -290,7 +310,7 @@ export default function Home() {
                   type="button"
                   className={category.className}
                   key={category.title}
-                  onClick={() => { setSelectedQuantity(category.title === "Red Palm Oil" ? "5L family pack" : "1 unit"); setActiveCategory(category); }}
+                  onClick={() => { setSelectedQuantity(category.title === "Red Palm Oil" ? "5L family pack" : "1 unit"); setActivePackVariant(packVariants[2]); setActiveCategory(category); }}
                   style={{ textAlign: "left", border: 0, padding: 0 }}
                 >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
@@ -319,13 +339,13 @@ export default function Home() {
             </div>
             <div className="gallery-grid">
               {galleryImages.map((item, idx) => (
-                <div className="gallery-card" key={idx}>
-                  <div className="gallery-card__img"><img src={item.src} alt={item.title} loading="lazy" /></div>
+                <button className="gallery-card" type="button" key={idx} onClick={() => setActiveGalleryIndex(idx)} aria-label={`Open ${item.title} image`}>
+                  <div className="gallery-card__img"><GalleryImage src={item.src} alt={item.title} /></div>
                   <div className="gallery-card__info">
                     <strong>{item.title}</strong>
                     <span>{item.desc}</span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -336,7 +356,7 @@ export default function Home() {
             <div className="lightbox" onClick={(e) => e.stopPropagation()} onTouchStart={handleLightboxTouchStart} onTouchEnd={handleLightboxTouchEnd}>
               <button className="lightbox__close" type="button" onClick={() => setActiveGalleryIndex(null)} aria-label="Close image gallery"><X size={22} /></button>
               <button className="lightbox__arrow lightbox__arrow--left" type="button" onClick={() => shiftGallery(-1)} aria-label="Previous image"><ArrowLeft size={24} /></button>
-              <div className="lightbox__media"><img src={galleryImages[activeGalleryIndex].src} alt={galleryImages[activeGalleryIndex].title} /></div>
+              <div className="lightbox__media"><img src={galleryImages[activeGalleryIndex].src} alt={galleryImages[activeGalleryIndex].title} loading="eager" decoding="async" /></div>
               <button className="lightbox__arrow lightbox__arrow--right" type="button" onClick={() => shiftGallery(1)} aria-label="Next image"><ArrowRight size={24} /></button>
               <div className="lightbox__caption"><strong>{galleryImages[activeGalleryIndex].title}</strong><span>{galleryImages[activeGalleryIndex].desc}</span><small>{activeGalleryIndex + 1} / {galleryImages.length}</small></div>
               <div className="lightbox__dots" aria-label="Gallery image selector">{galleryImages.map((item, index) => <button key={item.title} className={index === activeGalleryIndex ? "is-active" : ""} type="button" onClick={() => setActiveGalleryIndex(index)} aria-label={`View ${item.title}`} />)}</div>
@@ -447,7 +467,7 @@ export default function Home() {
               <X size={20} />
             </button>
             <div className="product-modal__image">
-              <img src={activeCategory.image} alt={activeCategory.title} />
+              <img src={activeCategory.title === "Red Palm Oil" ? activePackVariant.src : activeCategory.image} alt={activeCategory.title === "Red Palm Oil" ? `CHI-ZARAM ${activePackVariant.label} red palm oil pack` : activeCategory.title} loading="eager" decoding="async" />
               <span className="product-modal__badge">{activeCategory.label}</span>
             </div>
             <div className="product-modal__body">
@@ -460,9 +480,14 @@ export default function Home() {
                   <li key={i}><Check size={14} /> {spec}</li>
                 ))}
               </ul>
-              <label className="product-modal__quantity">Select quantity
-                <select value={selectedQuantity} onChange={(e) => setSelectedQuantity(e.target.value)}>
-                  {activeCategory.title === "Red Palm Oil" ? <><option>1L retail pack</option><option>3L family pack</option><option>5L family pack</option><option>Bulk jerrycan / carton</option></> : activeCategory.title === "Vegetable Oil & More" ? <><option>1L retail pack</option><option>3L family pack</option><option>5L family pack</option><option>Wholesale carton</option></> : <><option>1 unit</option><option>5 units</option><option>Wholesale carton</option></>}
+              {activeCategory.title === "Red Palm Oil" && <div className="pack-variant-strip" aria-label="Red palm oil pack-size variants">
+                {packVariants.map((variant) => <button className={`pack-variant ${activePackVariant.label === variant.label ? "is-active" : ""}`} type="button" key={variant.label} onClick={() => { setActivePackVariant(variant); setSelectedQuantity(variant.quantity); }}>
+                  <span className="pack-variant__image"><img src={variant.src} alt={`${variant.label} ${variant.title}`} loading="lazy" decoding="async" /></span><strong>{variant.label}</strong><small>{variant.title}</small>
+                </button>)}
+              </div>}
+              <label className="product-modal__quantity">Selected quantity
+                <select value={selectedQuantity} onChange={(e) => { const next = e.target.value; setSelectedQuantity(next); const variant = packVariants.find((item) => item.quantity === next); if (variant) setActivePackVariant(variant); }}>
+                  {modalQuantityOptions.map((option) => <option key={option}>{option}</option>)}
                 </select>
               </label>
               <div className="product-modal__actions">

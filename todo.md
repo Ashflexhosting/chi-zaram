@@ -11,3 +11,7 @@
 - [ ] Replace uploaded visuals with custom-generated Harvest Editorial assets.
 - [ ] Verify generated visual crops on desktop and mobile.
 - [ ] Save a checkpoint for the generated-visual refresh.
+- [x] Generate and integrate 1L, 3L, 5L, and bulk pack visuals in product modals.
+- [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
+- [x] Apply the generated brand pattern to pricing and footer sections.
+- [x] Test and checkpoint the pack-variant visual update.
