@@ -5,7 +5,7 @@
 import { ArrowUpRight, ChevronDown, Instagram, MessageCircle, Phone } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import { FormEvent, useState } from "react";
-import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
+import SiteLayout, { BusinessStatusBadge, whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
 
 const faqs = [
@@ -88,7 +88,7 @@ export default function Contact() {
                   <ArrowUpRight size={16} />
                 </a>
               </div>
-              <p className="contact-location"><small>Operating from</small><strong>Isolo, Lagos</strong><span>Mon–Fri, 9 AM–5 PM</span></p>
+              <p className="contact-location"><small>Operating from</small><strong>Isolo, Lagos</strong><span>Mon–Fri, 9 AM–5 PM</span><BusinessStatusBadge /></p>
             </div>
 
             <form className="contact-form" onSubmit={submit}>

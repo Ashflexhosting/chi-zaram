@@ -17,6 +17,36 @@ export function whatsappHref(message = defaultMessage) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+function isBusinessOpen(now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Africa/Lagos",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+  const weekday = parts.find((part) => part.type === "weekday")?.value ?? "";
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? 0);
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? 0);
+  const isWeekday = ["Mon", "Tue", "Wed", "Thu", "Fri"].includes(weekday);
+  const afterOpening = hour > 9 || (hour === 9 && minute >= 0);
+  const beforeClosing = hour < 17;
+  return isWeekday && afterOpening && beforeClosing;
+}
+
+export function BusinessStatusBadge() {
+  const [open, setOpen] = useState(() => isBusinessOpen());
+
+  useEffect(() => {
+    const refresh = () => setOpen(isBusinessOpen());
+    refresh();
+    const interval = window.setInterval(refresh, 60_000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return <span className={`business-status-badge ${open ? "is-open" : "is-closed"}`} aria-live="polite"><i aria-hidden="true" /> {open ? "Open Now" : "Closed"}</span>;
+}
+
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
 
@@ -91,7 +121,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
           </div>
           <div className="footer-contact">
             <span>Start a conversation</span>
-            <a href="tel:+2348037365227"><Phone size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos <span className="footer-contact__hours">Mon–Fri, 9 AM–5 PM</span></span>
+            <a href="tel:+2348037365227"><Phone size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos <span className="footer-contact__hours">Mon–Fri, 9 AM–5 PM</span> <BusinessStatusBadge /></span>
             <div className="footer-socials" aria-label="Social media links">
               <a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a>
               <a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a>

@@ -145,3 +145,5 @@
 - [x] Make 08037365227 a clickable tel link in the footer and Contact page.
 - [x] Add Monday–Friday, 9 AM–5 PM operating hours beside Isolo, Lagos.
 - [x] Verify phone links and hours on desktop/mobile, then save a checkpoint.
+- [x] Add a timezone-aware Open Now/Closed badge beside operating hours.
+- [x] Verify the live status badge in the footer and Contact page, then save a checkpoint.
