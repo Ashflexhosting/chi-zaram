@@ -1234,3 +1234,6 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 .hero-visual__image-wrap { background: #bda780; box-shadow: 22px 20px 0 rgba(159,47,42,0.14); }
 .hero-visual__image-wrap::after { z-index: 1; background: linear-gradient(112deg, rgba(41,42,37,0.22) 0%, rgba(41,42,37,0.06) 38%, rgba(159,47,42,0.03) 100%); mix-blend-mode: multiply; }
 .hero-visual__image-wrap img { position: relative; z-index: 0; filter: saturate(1.1) contrast(1.12) brightness(0.98); }
+
+/* Large-screen hero source: the picture wrapper keeps high-resolution and fallback sources inside the same editorial frame. */
+.hero-visual__image-wrap picture { display: block; width: 100%; height: 100%; }

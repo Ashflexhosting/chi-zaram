@@ -106,3 +106,5 @@
 - [x] Verify the sharpened image on desktop and mobile, then save a checkpoint.
 - [x] Improve visibility of the right-hand image in the homepage hero.
 - [x] Verify the hero image on desktop and mobile, then save a checkpoint.
+- [x] Add a dedicated high-resolution homepage hero image for large-screen presentation.
+- [x] Verify responsive hero source selection and save a checkpoint.

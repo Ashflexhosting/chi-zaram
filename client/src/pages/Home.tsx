@@ -255,7 +255,10 @@ export default function Home() {
             </div>
             <div className="hero-visual">
               <div className="hero-visual__image-wrap">
-                <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="Red palm oil, palm fruits, and fresh palm leaves arranged on a natural table" />
+                <picture>
+                  <source media="(min-width: 1280px)" srcSet={assetPath("/manus-storage/hero-large_9d3d1785.webp")} />
+                  <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="Red palm oil, palm fruits, and fresh palm leaves arranged on a natural table" fetchPriority="high" decoding="async" />
+                </picture>
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
