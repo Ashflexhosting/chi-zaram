@@ -1,9 +1,9 @@
 /**
  * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator
- * with delivery zone presets and custom location input, enquiry guidance, and SEO metadata.
+ * with customer contact fields, zone-based delivery fee calculation, printable order summary, and WhatsApp export.
  */
 import { useState, useMemo } from "react";
-import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck } from "lucide-react";
+import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck, User, Phone, Printer, FileText, X } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -25,17 +25,17 @@ const packNames: Record<PackKey, string> = {
   "25L": "25L Wholesale container",
 };
 
-const deliveryPresets = [
-  "Isolo, Lagos (Depot)",
-  "Ikeja / Oshodi, Lagos",
-  "Lekki / Victoria Island, Lagos",
-  "Surulere / Yaba, Lagos",
-  "Ajah / Epe, Lagos",
-  "Ikorodu / Ojota, Lagos",
-  "Abuja (FCT) / Interstate Depot",
-  "Port Harcourt / Rivers State",
-  "Other / Custom Location",
-];
+const deliveryZones: Record<string, { name: string; fee: number }> = {
+  "Isolo, Lagos (Depot)": { name: "Isolo, Lagos (Depot)", fee: 1500 },
+  "Ikeja / Oshodi, Lagos": { name: "Ikeja / Oshodi, Lagos", fee: 2500 },
+  "Surulere / Yaba, Lagos": { name: "Surulere / Yaba, Lagos", fee: 2500 },
+  "Lekki / Victoria Island, Lagos": { name: "Lekki / Victoria Island, Lagos", fee: 4000 },
+  "Ajah / Epe, Lagos": { name: "Ajah / Epe, Lagos", fee: 4500 },
+  "Ikorodu / Ojota, Lagos": { name: "Ikorodu / Ojota, Lagos", fee: 3500 },
+  "Abuja (FCT) / Interstate Depot": { name: "Abuja (FCT) / Interstate Depot", fee: 8500 },
+  "Port Harcourt / Rivers State": { name: "Port Harcourt / Rivers State", fee: 9000 },
+  "Other / Custom Location": { name: "Other / Custom Location", fee: 3000 },
+};
 
 export default function PacksPricing() {
   const [quantities, setQuantities] = useState<Record<PackKey, number>>({
@@ -46,6 +46,9 @@ export default function PacksPricing() {
   });
   const [selectedPreset, setSelectedPreset] = useState<string>("Isolo, Lagos (Depot)");
   const [customLocation, setCustomLocation] = useState<string>("");
+  const [customerName, setCustomerName] = useState<string>("");
+  const [customerPhone, setCustomerPhone] = useState<string>("");
+  const [showSummaryModal, setShowSummaryModal] = useState<boolean>(false);
 
   const handleQtyChange = (key: PackKey, val: string) => {
     const num = parseInt(val, 10);
@@ -62,33 +65,48 @@ export default function PacksPricing() {
     return selectedPreset;
   }, [selectedPreset, customLocation]);
 
-  const { totalUnits, totalPrice, whatsAppMessage } = useMemo(() => {
+  const deliveryFee = useMemo(() => {
+    return deliveryZones[selectedPreset]?.fee || 3000;
+  }, [selectedPreset]);
+
+  const { totalUnits, itemsTotal, appliedDeliveryFee, finalTotal, whatsAppMessage } = useMemo(() => {
     let units = 0;
-    let price = 0;
+    let sub = 0;
     const summaryParts: string[] = [];
 
     (Object.keys(quantities) as PackKey[]).forEach((key) => {
       const q = quantities[key];
       if (q > 0) {
         units += q;
-        const sub = q * packPrices[key];
-        price += sub;
-        summaryParts.push(`${q} x ${packNames[key]} (₦${packPrices[key].toLocaleString()} ea = ₦${sub.toLocaleString()})`);
+        const lineSub = q * packPrices[key];
+        sub += lineSub;
+        summaryParts.push(`${q} x ${packNames[key]} (₦${packPrices[key].toLocaleString()} ea = ₦${lineSub.toLocaleString()})`);
       }
     });
 
-    const msg = summaryParts.length > 0
-      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\nDelivery Destination: ${effectiveLocation}\n\nPlease confirm availability, shipping/delivery cost to this destination, and final payment details.`
-      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Delivery Destination: ${effectiveLocation}. Please share availability and delivery options.`;
+    const appliedFee = sub > 0 ? deliveryFee : 0;
+    const total = sub > 0 ? sub + appliedFee : 0;
+    const nameStr = customerName.trim() ? `Customer Name: ${customerName.trim()}` : "";
+    const phoneStr = customerPhone.trim() ? `Phone: ${customerPhone.trim()}` : "";
 
-    return { totalUnits: units, totalPrice: price, whatsAppMessage: msg };
-  }, [quantities, effectiveLocation]);
+    const contactLine = [nameStr, phoneStr].filter(Boolean).join(" | ");
+
+    const msg = summaryParts.length > 0
+      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nProducts Subtotal: ₦${sub.toLocaleString()}\nEstimated Delivery Fee (${effectiveLocation}): ₦${appliedFee.toLocaleString()}\nTotal Estimated Cost: ₦${total.toLocaleString()} (${units} total units).\nDelivery Destination: ${effectiveLocation}\n${contactLine ? contactLine + "\n" : ""}\nPlease confirm availability, final delivery logistics, and payment details.`
+      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Delivery Destination: ${effectiveLocation}.\n${contactLine ? contactLine + "\n" : ""}Please share availability and delivery options.`;
+
+    return { totalUnits: units, itemsTotal: sub, appliedDeliveryFee: appliedFee, finalTotal: total, whatsAppMessage: msg };
+  }, [quantities, effectiveLocation, deliveryFee, customerName, customerPhone]);
+
+  const handlePrintSummary = () => {
+    window.print();
+  };
 
   return (
     <SiteLayout activePath="/packs-pricing">
       <SEOHead
         title="Pack Sizes & Wholesale Price Guide with Cost Calculator"
-        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Select delivery zones and enquire via WhatsApp."
+        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk), calculate custom order estimates with automatic delivery fees, review printable summaries, and order via WhatsApp."
         path="/packs-pricing"
       />
       <main>
@@ -141,7 +159,37 @@ export default function PacksPricing() {
               <div className="pack-calculator-header">
                 <p className="eyebrow"><Calculator size={14} /> Multi-pack cost estimator</p>
                 <h3>Calculate your order in seconds</h3>
-                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, select your delivery zone, and send the breakdown directly to our sales desk on WhatsApp.</p>
+                <p>Enter your desired quantities for each pack size below, add your contact details and delivery zone for automatic shipping calculations, and review your order summary before submitting via WhatsApp.</p>
+              </div>
+
+              {/* Customer Contact Inputs */}
+              <div className="pack-calculator-contacts">
+                <div className="pack-calc-field">
+                  <label htmlFor="calc-customer-name">
+                    <User size={14} /> Full Name or Business Name
+                  </label>
+                  <input
+                    id="calc-customer-name"
+                    type="text"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="e.g. Mrs. Chioma Okeke or Green Valley Stores"
+                    aria-label="Full Name or Business Name"
+                  />
+                </div>
+                <div className="pack-calc-field">
+                  <label htmlFor="calc-customer-phone">
+                    <Phone size={14} /> Phone Number (WhatsApp / Mobile)
+                  </label>
+                  <input
+                    id="calc-customer-phone"
+                    type="tel"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    placeholder="e.g. 0803 000 0000"
+                    aria-label="Phone Number"
+                  />
+                </div>
               </div>
 
               <div className="pack-calculator-grid">
@@ -178,7 +226,7 @@ export default function PacksPricing() {
                 <div className="pack-calculator-location__row">
                   <div>
                     <label htmlFor="calc-delivery-preset">
-                      <Truck size={14} /> Select Delivery Zone / Area
+                      <Truck size={14} /> Select Delivery Zone / Area (Includes Dynamic Fee)
                     </label>
                     <select
                       id="calc-delivery-preset"
@@ -186,9 +234,9 @@ export default function PacksPricing() {
                       onChange={(e) => setSelectedPreset(e.target.value)}
                       aria-label="Delivery Zone Preset"
                     >
-                      {deliveryPresets.map((preset) => (
-                        <option key={preset} value={preset}>
-                          {preset}
+                      {Object.keys(deliveryZones).map((zoneKey) => (
+                        <option key={zoneKey} value={zoneKey}>
+                          {zoneKey} (Est. Fee: ₦{deliveryZones[zoneKey].fee.toLocaleString()})
                         </option>
                       ))}
                     </select>
@@ -214,22 +262,136 @@ export default function PacksPricing() {
 
               <div className="pack-calculator-summary">
                 <div className="pack-calculator-totals">
-                  <span>Estimated order breakdown</span>
-                  <strong>₦{totalPrice.toLocaleString()}</strong>
-                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected · Destination: {effectiveLocation}</small>
+                  <span>Estimated total with delivery</span>
+                  <strong>₦{finalTotal.toLocaleString()}</strong>
+                  <small>
+                    Products: ₦{itemsTotal.toLocaleString()} + Delivery ({effectiveLocation}): ₦{appliedDeliveryFee.toLocaleString()} ({totalUnits} units)
+                  </small>
                 </div>
+                <div className="pack-calculator-actions-group">
+                  <button
+                    type="button"
+                    className="button button--outline"
+                    onClick={() => setShowSummaryModal(true)}
+                  >
+                    <FileText size={16} /> Review Order Summary
+                  </button>
+                  <a
+                    className="button button--crimson"
+                    href={whatsappHref(whatsAppMessage)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MessageCircle size={16} /> Submit via WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Printable Order Review Modal / Dialog */}
+        {showSummaryModal && (
+          <div className="order-modal-overlay" onClick={() => setShowSummaryModal(false)}>
+            <div className="order-modal-card" onClick={(e) => e.stopPropagation()}>
+              <div className="order-modal-header">
+                <div>
+                  <span className="eyebrow">CHI-ZARAM FOODS</span>
+                  <h3>Provisional Order Summary</h3>
+                </div>
+                <button
+                  type="button"
+                  className="order-modal-close"
+                  onClick={() => setShowSummaryModal(false)}
+                  aria-label="Close Summary"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="order-modal-body">
+                <div className="order-receipt-box">
+                  <div className="order-receipt-meta">
+                    <div>
+                      <strong>Date:</strong> {new Date().toLocaleDateString("en-NG", { year: "numeric", month: "short", day: "numeric" })}
+                    </div>
+                    <div>
+                      <strong>Customer:</strong> {customerName.trim() || "Valued Customer"}
+                    </div>
+                    <div>
+                      <strong>Phone:</strong> {customerPhone.trim() || "Provided on WhatsApp"}
+                    </div>
+                    <div>
+                      <strong>Destination:</strong> {effectiveLocation}
+                    </div>
+                  </div>
+
+                  <table className="order-receipt-table">
+                    <thead>
+                      <tr>
+                        <th>Pack Description</th>
+                        <th>Qty</th>
+                        <th>Unit Price</th>
+                        <th>Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(["1L", "3L", "5L", "25L"] as PackKey[]).map((key) => {
+                        const q = quantities[key];
+                        if (q <= 0) return null;
+                        const sub = q * packPrices[key];
+                        return (
+                          <tr key={key}>
+                            <td>{packNames[key]}</td>
+                            <td>{q}</td>
+                            <td>₦{packPrices[key].toLocaleString()}</td>
+                            <td>₦{sub.toLocaleString()}</td>
+                          </tr>
+                        );
+                      })}
+                      {totalUnits === 0 && (
+                        <tr>
+                          <td colSpan={4} className="text-center text-muted">
+                            No packs selected yet. Adjust quantities in the calculator.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+
+                  <div className="order-receipt-totals">
+                    <div><span>Products Subtotal:</span><strong>₦{itemsTotal.toLocaleString()}</strong></div>
+                    <div><span>Estimated Delivery Fee:</span><strong>₦{appliedDeliveryFee.toLocaleString()}</strong></div>
+                    <div className="order-receipt-grand"><span>Estimated Grand Total:</span><strong>₦{finalTotal.toLocaleString()}</strong></div>
+                  </div>
+                </div>
+
+                <p className="order-modal-note">
+                  This summary is a preliminary cost estimate. Final availability, exact delivery schedules, and payment instructions will be confirmed directly with our sales desk on WhatsApp.
+                </p>
+              </div>
+
+              <div className="order-modal-footer">
+                <button
+                  type="button"
+                  className="button button--outline"
+                  onClick={handlePrintSummary}
+                >
+                  <Printer size={16} /> Print / Save PDF
+                </button>
                 <a
                   className="button button--crimson"
                   href={whatsappHref(whatsAppMessage)}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => setShowSummaryModal(false)}
                 >
-                  <MessageCircle size={16} /> Send Calculated Order via WhatsApp
+                  <MessageCircle size={16} /> Send This Summary via WhatsApp
                 </a>
               </div>
             </div>
           </div>
-        </section>
+        )}
 
         <section className="pricing-section section-pad">
           <div className="container">
