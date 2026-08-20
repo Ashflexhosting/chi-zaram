@@ -108,3 +108,5 @@
 - [x] Verify the hero image on desktop and mobile, then save a checkpoint.
 - [x] Add a dedicated high-resolution homepage hero image for large-screen presentation.
 - [x] Verify responsive hero source selection and save a checkpoint.
+- [x] Remove the homepage “How it works” section and clean up dependent references.
+- [x] Verify the homepage after removal on desktop and mobile, then save a checkpoint.

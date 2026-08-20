@@ -17,7 +17,6 @@ import {
   MessageCircle,
   MoveRight,
   Phone,
-  ShoppingBag,
   Sparkles,
   Truck,
   X,
@@ -107,12 +106,6 @@ const pricingTiers = [
   { tier: "Reseller", volume: "5–19 units", redPalm: "Volume rate", vegetable: "Volume rate", note: "For shops, vendors & small resellers" },
   { tier: "Wholesale", volume: "20–49 units", redPalm: "Preferred rate", vegetable: "Preferred rate", note: "Best value for regular bulk buyers", featured: true },
   { tier: "Distributor", volume: "50+ units", redPalm: "Custom quote", vegetable: "Custom quote", note: "Dedicated pricing & logistics" },
-];
-
-const supplySteps = [
-  { number: "01", title: "Tell us what you need", copy: "Share the product, quantity, and your location." },
-  { number: "02", title: "We confirm the details", copy: "We’ll respond with current availability and supply options." },
-  { number: "03", title: "We arrange the next move", copy: "Delivery, payment, and dispatch details are agreed directly." },
 ];
 
 export default function Home() {
@@ -480,13 +473,6 @@ export default function Home() {
           <div className="container supply-section__inner">
             <div className="supply-section__copy"><div className="section-kicker"><span className="section-kicker__number">03</span><span>Retail &amp; bulk supply</span></div><p className="eyebrow">For the home, shop, or growing business</p><h2>Need more<br /><em>to go around?</em></h2><p className="body-copy">Buying for resale, a food business, or larger household needs? Tell us what you need, the quantity, and your location. Our team can confirm current availability and supply options.</p><div className="supply-feature"><div className="supply-feature__icon"><Truck size={20} /></div><div><strong>Quality + value + convenience</strong><span>A direct path from enquiry to dispatch.</span></div></div></div>
             <form className="enquiry-card" onSubmit={handleSubmit}><div className="enquiry-card__top"><span className="enquiry-card__label">Wholesale desk</span><span className="enquiry-card__status"><i /> WhatsApp first</span></div><h3>Start an enquiry</h3><p>Share the basics. We’ll take it from there.</p><label>What are you looking for?<select name="product" defaultValue="Palm Oil"><option>Palm Oil</option><option>Vegetable Oil</option><option>Delta State Yellow Garri</option><option>Cleaning Essentials</option><option>Fabrics Collections</option><option>Oil Perfume</option><option>Multiple categories</option></select></label><label>Estimated quantity<input name="quantity" placeholder="e.g. 20 units / 2 cartons" /></label><label>Delivery location<input name="location" placeholder="City or area" required /></label><button className="button button--crimson button--full" type="submit">{submitted ? "Opening WhatsApp…" : "Send enquiry on WhatsApp"}<ArrowUpRight size={17} /></button><span className="enquiry-card__fineprint">No fixed prices are published here — live availability and logistics are confirmed directly.</span></form>
-          </div>
-        </section>
-
-        <section className="process-section section-pad">
-          <div className="container">
-            <div className="section-heading section-heading--center"><p className="eyebrow">How it works</p><h2>Simple by design.</h2><p>Because ordering should feel as easy as finding the right thing.</p></div>
-            <div className="process-grid">{supplySteps.map((step) => <div className="process-step" key={step.number}><span className="process-step__number">{step.number}</span><div className="process-step__icon">{step.number === "01" ? <ShoppingBag size={20} /> : step.number === "02" ? <MessageCircle size={20} /> : <Truck size={20} />}</div><h3>{step.title}</h3><p>{step.copy}</p></div>)}</div>
           </div>
         </section>
 

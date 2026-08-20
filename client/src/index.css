@@ -407,18 +407,10 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .enquiry-card .button { margin-top: 24px; }
 .enquiry-card__fineprint { display: block; margin-top: 14px; color: #91887a; font-size: 10px; line-height: 1.55; }
 
-.process-section { background: #e9dfd2; }
 .section-heading--center { max-width: 540px; margin: 0 auto 56px; text-align: center; }
 .section-heading--center .eyebrow { justify-content: center; }
 .section-heading--center h2 { font-size: clamp(3rem, 5vw, 5rem); }
 .section-heading--center > p:last-child { margin: 18px auto 0; color: #746f64; font-size: 14px; }
-.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #cfc2af; }
-.process-step { position: relative; padding: 33px 38px 0 0; }
-.process-step + .process-step { padding-left: 38px; border-left: 1px solid #cfc2af; }
-.process-step__number { color: #9f2f2a; font-family: var(--serif); font-size: 25px; }
-.process-step__icon { width: 46px; height: 46px; display: grid; place-items: center; margin: 25px 0 18px; border: 1px solid #c99a4a; border-radius: 50%; color: #435847; }
-.process-step h3 { margin: 0 0 8px; color: #292a25; font-family: var(--serif); font-size: 25px; font-weight: 400; letter-spacing: -0.025em; }
-.process-step p { max-width: 260px; margin: 0; color: #746f64; font-size: 12px; line-height: 1.6; }
 
 .closing-section { position: relative; overflow: hidden; background: #435847; color: #fffaf3; }
 .closing-section__inner { position: relative; z-index: 1; min-height: 470px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
@@ -517,10 +509,6 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
   .palm-section__copy { max-width: none; }
   .palm-section__copy h2 { font-size: clamp(3.5rem, 14vw, 5.8rem); }
   .enquiry-card { padding: 27px 21px 23px; }
-  .process-grid { grid-template-columns: 1fr; }
-  .process-step, .process-step + .process-step { min-height: 0; padding: 29px 0 31px; border-left: 0; border-bottom: 1px solid #cfc2af; }
-  .process-step:last-child { border-bottom: 0; }
-  .process-step__icon { margin-top: 17px; }
   .closing-section__inner { min-height: 440px; padding-top: 55px; padding-bottom: 55px; }
   .closing-section__inner h2 { font-size: clamp(4rem, 16vw, 6.4rem); }
   .closing-section__leaf--one { left: -7%; bottom: -31px; }
