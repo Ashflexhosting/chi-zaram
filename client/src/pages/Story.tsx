@@ -46,6 +46,23 @@ export default function Story() {
           </div>
         </section>
 
+        <section className="story-human section-pad">
+          <div className="container story-human__grid">
+            <div className="story-human__visual">
+              <img src={assetPath("/manus-storage/story-team-palm-oil_de9bf780.jpeg")} alt="CHI-ZARAM team member presenting palm oil pack sizes alongside retail and bulk containers" loading="lazy" />
+              <span className="story-human__tag">The people behind the source</span>
+            </div>
+            <div className="story-human__copy">
+              <div className="section-kicker"><span className="section-kicker__number">02</span><span>From source to supply</span></div>
+              <p className="eyebrow">Good products need good people</p>
+              <h2>There is a face behind <em>every good order.</em></h2>
+              <p className="body-copy">From family bottles to larger supply formats, CHI-ZARAM is built around real conversations with the people who cook, sell, share, and grow with our products. This is the human side of a brand made to stay close to everyday life.</p>
+              <p className="story-human__note">Retail, reseller, and bulk enquiries are welcomed directly on WhatsApp.</p>
+              <Link className="text-link" href="/bulk-supply">Talk to the supply team <ArrowUpRight size={17} /></Link>
+            </div>
+          </div>
+        </section>
+
         <section className="story-values section-pad">
           <div className="container">
             <div className="section-heading section-heading--split">

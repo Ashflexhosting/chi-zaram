@@ -1197,3 +1197,29 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .catalogue-feature__pricing-grid { grid-template-columns: 1fr; }
   .catalogue-feature__pricing-grid > div { min-height: 0; }
 }
+
+/* Harvest Editorial human-story section: pair the supplied team portrait with a direct, grounded trust narrative. */
+.story-human { background: #fffaf3; }
+.story-human__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr); gap: clamp(46px, 7vw, 110px); align-items: center; }
+.story-human__visual { position: relative; min-height: 540px; overflow: hidden; background: #e9dfd2; }
+.story-human__visual::after { position: absolute; inset: 16px; border: 1px solid rgba(255,250,243,0.55); pointer-events: none; content: ""; }
+.story-human__visual img { width: 100%; height: 100%; min-height: 540px; object-fit: cover; object-position: center; transition: transform 650ms var(--ease-out); }
+.story-human__visual:hover img { transform: scale(1.035); }
+.story-human__tag { position: absolute; z-index: 1; right: 18px; bottom: 18px; max-width: 175px; padding: 11px 13px; background: #435847; color: #fffaf3; font-size: 9px; font-weight: 800; letter-spacing: 0.13em; line-height: 1.5; text-transform: uppercase; }
+.story-human__copy { max-width: 640px; }
+.story-human__copy h2 { margin: 22px 0 0; }
+.story-human__copy h2 em { color: #9f2f2a; }
+.story-human__copy .body-copy { margin-top: 30px; }
+.story-human__note { margin: 28px 0 22px; padding: 16px 0 16px 17px; border-left: 2px solid #c99a4a; color: #435847; font-size: 13px; font-weight: 700; line-height: 1.55; }
+@media (max-width: 900px) {
+  .story-human__grid { grid-template-columns: 1fr; gap: 35px; }
+  .story-human__visual, .story-human__visual img { min-height: 430px; }
+  .story-human__copy { max-width: 760px; }
+}
+@media (max-width: 760px) {
+  .story-human__visual, .story-human__visual img { min-height: 340px; }
+  .story-human__visual::after { inset: 10px; }
+  .story-human__tag { right: 12px; bottom: 12px; max-width: 145px; padding: 9px 10px; font-size: 8px; }
+  .story-human__copy h2 { margin-top: 18px; }
+  .story-human__copy .body-copy { margin-top: 22px; }
+}

@@ -98,3 +98,5 @@
 - [x] Feature the supplied 3L palm-oil image on the main Catalogue page with description and pricing details.
 - [x] Replace the favicon background with transparency and increase its visible emblem size.
 - [x] Verify Catalogue and favicon changes on desktop and mobile, then save a checkpoint.
+- [x] Add the supplied team-and-product image to a suitable Story page trust section.
+- [x] Verify the Story page image placement on desktop and mobile, then save a checkpoint.
