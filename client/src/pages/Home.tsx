@@ -333,6 +333,10 @@ export default function Home() {
                 </button>
               ))}
             </div>
+            <div className="category-grid__footer">
+              <p>Explore the full CHI-ZARAM range, including pack formats, household essentials, fabrics, and direct supply options.</p>
+              <a className="button button--quiet" href="/catalogue">View all products <ArrowUpRight size={17} /></a>
+            </div>
           </div>
         </section>
 

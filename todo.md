@@ -66,3 +66,5 @@
 - [x] Add yellow garri enquiry messaging and verify responsive product presentation.
 - [x] Align the homepage What We Carry image cards and improve responsive cropping.
 - [x] Verify the updated card grid on desktop and mobile, then save a checkpoint.
+- [x] Add a subtle dark transparent overlay to homepage product cards for text contrast.
+- [x] Add and verify a View all products button linking to the full catalogue.
