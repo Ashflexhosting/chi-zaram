@@ -160,7 +160,7 @@ export default function Gallery() {
                 onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setLightboxIndex(index); }}
               >
                 <div className="gallery-card__media">
-                  <img src={item.src} alt={item.title} loading="lazy" decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
+                  <img src={item.src} alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
                   <div className="gallery-card__overlay">
                     <span className="gallery-card__badge"><ImageIcon size={14} /> View large</span>
                   </div>

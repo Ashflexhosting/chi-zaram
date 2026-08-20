@@ -884,3 +884,28 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .lightbox-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
   .lightbox-thumbnails { width: 100%; }
 }
+
+/* Desktop refinement layer: more intentional wide-screen proportions without changing the mobile layout. */
+@media (min-width: 1200px) {
+  .container { max-width: 1380px; padding-left: 3.5rem; padding-right: 3.5rem; }
+  .site-header__inner { min-height: 92px; }
+  .main-nav { gap: clamp(24px, 2.2vw, 36px); }
+  .main-nav > a { font-size: 13px; }
+  .hero-section { min-height: 690px; }
+  .hero-section__inner { min-height: 690px; grid-template-columns: minmax(0, 0.83fr) minmax(0, 1.17fr); gap: 68px; }
+  .hero-copy { max-width: 570px; padding: 78px 0 92px; }
+  .hero-copy h1 { font-size: clamp(5.2rem, 7vw, 7.8rem); }
+  .hero-copy__intro { max-width: 465px; font-size: 17px; }
+  .hero-visual { min-height: 620px; padding-right: 0; }
+  .hero-visual__image-wrap { width: min(100%, 720px); height: 560px; }
+  .brand-strip__inner { min-height: 96px; }
+  .gallery-section { margin-top: 44px; }
+  .gallery-grid { gap: 30px; }
+  .gallery-card__media { aspect-ratio: 1.45; }
+  .gallery-card__content { padding: 24px; }
+  .gallery-card__content h3 { font-size: 22px; }
+  .lightbox-container { width: min(1180px, calc(100vw - 96px)); }
+  .lightbox-main { grid-template-columns: minmax(0, 1fr) 420px; }
+  .lightbox-media-box { min-height: 560px; }
+  .lightbox-caption { padding: 44px; }
+}
