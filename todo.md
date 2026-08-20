@@ -113,3 +113,7 @@
 - [x] Restyle the homepage “Pack sizes & supply structure” section with a dark fixed parallax treatment.
 - [x] Adjust pack-sizes typography and controls for accessible light contrast.
 - [x] Verify the parallax section on desktop and mobile, then save a checkpoint.
+- [x] Add the "Request current rate card" CTA beneath the pack-sizes cards.
+- [x] Add a compact pack-size icon row for mobile and desktop scanning.
+- [x] Implement a subtle reduced-motion-safe animated grain texture.
+- [x] Verify the enhanced section on desktop and mobile, then save a checkpoint.

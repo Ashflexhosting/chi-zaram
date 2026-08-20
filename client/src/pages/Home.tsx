@@ -403,6 +403,15 @@ export default function Home() {
               <p className="section-heading__aside">We offer flexible packaging for household cooking, retail shelves, and commercial kitchens. All pricing and batch availability are confirmed directly through WhatsApp to ensure accuracy.</p>
             </div>
 
+            <div className="commercial-pack-chips" aria-label="Available pack sizes">
+              <span>1L Retail Bottle</span>
+              <span>2L Family Pack</span>
+              <span>3L Value Pack</span>
+              <span>4L Kitchen Pack</span>
+              <span>5L Hero Container</span>
+              <span>Bulk Jerrycans</span>
+            </div>
+
             <div className="commercial-grid">
               <div className="commercial-card">
                 <span className="commercial-card__tag">Flagship Product</span>
@@ -445,6 +454,21 @@ export default function Home() {
                   Confirm Delivery Coverage <ArrowUpRight size={16} />
                 </button>
               </div>
+            </div>
+
+            <div className="commercial-rate-banner">
+              <div>
+                <span className="commercial-rate-banner__tag">Direct Rate Card</span>
+                <h4>Need a complete rate card for retail or wholesale distribution?</h4>
+                <p>We’ll share current unit prices, bulk carton discounts, and delivery estimates directly on WhatsApp.</p>
+              </div>
+              <button
+                className="button button--gold"
+                type="button"
+                onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to request the complete current rate card and pricing sheet for retail and bulk orders.")}
+              >
+                Request current rate card <ArrowUpRight size={17} />
+              </button>
             </div>
           </div>
         </section>
