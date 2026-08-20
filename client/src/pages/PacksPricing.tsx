@@ -1,9 +1,9 @@
 /**
- * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator,
- * enquiry-based commercial guidance, and SEO metadata.
+ * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator
+ * with delivery location input, enquiry-based commercial guidance, and SEO metadata.
  */
 import { useState, useMemo } from "react";
-import { ArrowUpRight, Check, Calculator, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -32,6 +32,7 @@ export default function PacksPricing() {
     "5L": 0,
     "25L": 0,
   });
+  const [deliveryLocation, setDeliveryLocation] = useState<string>("Isolo, Lagos");
 
   const handleQtyChange = (key: PackKey, val: string) => {
     const num = parseInt(val, 10);
@@ -56,18 +57,20 @@ export default function PacksPricing() {
       }
     });
 
+    const locText = deliveryLocation.trim() ? deliveryLocation.trim() : "Lagos / Nigeria";
+
     const msg = summaryParts.length > 0
-      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\n\nPlease confirm availability, delivery to our location, and final payment details.`
-      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Please share availability and delivery options.`;
+      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\nDelivery Location: ${locText}\n\nPlease confirm availability, shipping/delivery cost to this location, and final payment details.`
+      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Delivery Location: ${locText}. Please share availability and delivery options.`;
 
     return { totalUnits: units, totalPrice: price, whatsAppMessage: msg };
-  }, [quantities]);
+  }, [quantities, deliveryLocation]);
 
   return (
     <SiteLayout activePath="/packs-pricing">
       <SEOHead
         title="Pack Sizes & Wholesale Price Guide with Cost Calculator"
-        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Enquire via WhatsApp."
+        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Include delivery location and enquire via WhatsApp."
         path="/packs-pricing"
       />
       <main>
@@ -120,7 +123,7 @@ export default function PacksPricing() {
               <div className="pack-calculator-header">
                 <p className="eyebrow"><Calculator size={14} /> Multi-pack cost estimator</p>
                 <h3>Calculate your order in seconds</h3>
-                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, then send the breakdown directly to our sales desk on WhatsApp.</p>
+                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, add your delivery location, and send the breakdown directly to our sales desk on WhatsApp.</p>
               </div>
 
               <div className="pack-calculator-grid">
@@ -152,11 +155,26 @@ export default function PacksPricing() {
                 })}
               </div>
 
+              {/* Delivery Location Field */}
+              <div className="pack-calculator-location">
+                <label htmlFor="calc-delivery-location">
+                  <MapPin size={14} /> Delivery Destination / Area (e.g. Isolo, Ikeja, Lekki, Abuja)
+                </label>
+                <input
+                  id="calc-delivery-location"
+                  type="text"
+                  value={deliveryLocation}
+                  onChange={(e) => setDeliveryLocation(e.target.value)}
+                  placeholder="Enter your town, city, or delivery depot"
+                  aria-label="Delivery Destination"
+                />
+              </div>
+
               <div className="pack-calculator-summary">
                 <div className="pack-calculator-totals">
                   <span>Estimated order breakdown</span>
                   <strong>₦{totalPrice.toLocaleString()}</strong>
-                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected across your custom mix</small>
+                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected · Delivering to: {deliveryLocation.trim() || "Lagos"}</small>
                 </div>
                 <a
                   className="button button--crimson"

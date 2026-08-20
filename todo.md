@@ -161,3 +161,9 @@
 - [x] Add a Request Quote button that pre-fills a WhatsApp message with the calculated breakdown.
 - [x] Verify the calculator's responsiveness and accuracy on mobile and desktop.
 - [ ] Save a checkpoint for the multi-pack calculator update.
+
+- [x] Add a delivery location input to the Packs & Pricing cost estimator.
+- [x] Include the delivery location in the generated WhatsApp multi-pack enquiry.
+- [x] Verify the field on desktop and mobile and confirm type checking/build output.
+- [ ] Save a checkpoint for the delivery-location calculator update.
+
