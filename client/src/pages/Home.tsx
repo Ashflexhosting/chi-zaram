@@ -26,6 +26,7 @@ import { BackToTop } from "@/components/SiteLayout";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const whatsappNumber = "2348092192180";
+const siteBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const categories = [
   {
@@ -214,11 +215,11 @@ export default function Home() {
           </a>
 
             <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
-            <a href="/story" onClick={() => setMobileOpen(false)}>Our story</a>
-            <a href="/catalogue" onClick={() => setMobileOpen(false)}>What we carry</a>
-            <a href="/packs-pricing" onClick={() => setMobileOpen(false)}>Packs &amp; Pricing</a>
-            <a href="/bulk-supply" onClick={() => setMobileOpen(false)}>Bulk supply</a>
-            <a href="/contact" onClick={() => setMobileOpen(false)}>Contact</a>
+            <a href={`${siteBase}/story`} onClick={() => setMobileOpen(false)}>Our story</a>
+            <a href={`${siteBase}/catalogue`} onClick={() => setMobileOpen(false)}>What we carry</a>
+            <a href={`${siteBase}/packs-pricing`} onClick={() => setMobileOpen(false)}>Packs &amp; Pricing</a>
+            <a href={`${siteBase}/bulk-supply`} onClick={() => setMobileOpen(false)}>Bulk supply</a>
+            <a href={`${siteBase}/contact`} onClick={() => setMobileOpen(false)}>Contact</a>
             <a className="main-nav__mobile-cta" href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello CHI-ZARAM, I would like to place an order. Please share current product availability and delivery terms.")}`} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
               Order on WhatsApp <ArrowUpRight size={16} />
             </a>
@@ -339,7 +340,7 @@ export default function Home() {
             </div>
             <div className="category-grid__footer">
               <p>Explore the full CHI-ZARAM range, including pack formats, household essentials, fabrics, and direct supply options.</p>
-              <a className="button button--quiet" href="/catalogue">View all products <ArrowUpRight size={17} /></a>
+              <a className="button button--quiet" href={`${siteBase}/catalogue`}>View all products <ArrowUpRight size={17} /></a>
             </div>
           </div>
         </section>

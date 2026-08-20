@@ -74,3 +74,5 @@
 - [x] Verify the pushed branch and commit on GitHub.
 - [x] Add an accessible contact form to the shared website footer.
 - [x] Add social media links and verify footer submission behavior on desktop and mobile.
+- [ ] Configure GitHub Pages deployment for Ashflexhosting/chi-zaram.
+- [ ] Push the Pages workflow and verify the resulting deployment status and URL.
