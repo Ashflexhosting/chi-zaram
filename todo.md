@@ -93,3 +93,5 @@
 - [x] Use the supplied palm-fruit emblem for the favicon and generate 180x180 and 512x512 app icons.
 - [x] Update the social sharing preview image and add the branded web app manifest.
 - [x] Verify icon assets, metadata, hosting paths, and save a checkpoint.
+- [x] Replace the second brand-story image with the supplied palm-oil product photo.
+- [x] Verify the replacement image on desktop and mobile, then save a checkpoint.

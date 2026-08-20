@@ -295,7 +295,7 @@ export default function Home() {
             </div>
             <div className="story-editorial__visual" aria-label="CHI-ZARAM products and point of view">
               <div className="story-editorial__image story-editorial__image--main"><img src={assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg")} alt="CHI-ZARAM vegetable oil and palm fruits arranged in a warm natural setting" loading="lazy" /></div>
-              <div className="story-editorial__image story-editorial__image--inset"><img src={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} alt="CHI-ZARAM palm oil container with fresh palm fruits" loading="lazy" /></div>
+              <div className="story-editorial__image story-editorial__image--inset"><img src={assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg")} alt="CHI-ZARAM 3L palm oil bottles with palm fruits and the Palm Oil product backdrop" loading="lazy" /></div>
               <div className="story-editorial__seal"><span>CHI-ZARAM</span><strong>Good things<br /><em>worth sharing.</em></strong></div>
             </div>
           </div>
