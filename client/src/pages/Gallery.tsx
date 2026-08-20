@@ -6,8 +6,26 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, RotateCcw,
 import { TouchEvent as ReactTouchEvent, useEffect, useRef, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
+import { pricingTiers } from "@/lib/commercialData";
 
-const galleryItems = [
+type GalleryCommercial = {
+  packSize: string;
+  priceGuide: string;
+  orderRange: string;
+  note: string;
+};
+
+type GalleryItem = {
+  id: number;
+  title: string;
+  category: string;
+  caption: string;
+  src: string;
+  mobileSrc: string;
+  commercial?: GalleryCommercial;
+};
+
+const galleryItems: GalleryItem[] = [
   {
     id: 1,
     title: "Flagship Red Palm Oil Bottle & Fresh Palm Fruits",
@@ -15,6 +33,12 @@ const galleryItems = [
     caption: "Our signature 1L red palm oil bottle styled alongside fresh palm nuts, representing pure unadulterated quality.",
     src: "/manus-storage/palmoil-960_3430c348.jpg",
     mobileSrc: "/manus-storage/palmoil-480_f3103087.jpg",
+    commercial: {
+      packSize: "1L retail bottle",
+      priceGuide: "Standard rate",
+      orderRange: "1–4 units",
+      note: "Current delivered pricing is confirmed on WhatsApp based on stock and location.",
+    },
   },
   {
     id: 2,
@@ -31,6 +55,12 @@ const galleryItems = [
     caption: "Crystal-clear vegetable oil bottles and cooking essentials designed for everyday culinary excellence.",
     src: "/manus-storage/vegetable-960_60063ee3.jpg",
     mobileSrc: "/manus-storage/vegetable-480_cc52e48e.jpg",
+    commercial: {
+      packSize: "Retail bottles or bulk supply",
+      priceGuide: "Standard, volume, or preferred rate",
+      orderRange: "1–49 units",
+      note: "Vegetable oil pack availability and current rate-card pricing are confirmed on WhatsApp.",
+    },
   },
   {
     id: 4,
@@ -39,6 +69,12 @@ const galleryItems = [
     caption: "Durable indigo denim jeans and tailored apparel from our lifestyle collection.",
     src: "/manus-storage/fabrics-960_7ed6ba51.jpg",
     mobileSrc: "/manus-storage/fabrics-480_2edf7bc1.jpg",
+    commercial: {
+      packSize: "Item-specific sizes and lengths",
+      priceGuide: "Product-specific quote",
+      orderRange: "Confirm on enquiry",
+      note: "Available fabric specifications, quantities, and delivered pricing are confirmed on WhatsApp.",
+    },
   },
   {
     id: 5,
@@ -47,6 +83,12 @@ const galleryItems = [
     caption: "Amber glass home care bottles, soy candles, and concentrated oil perfumes for daily living.",
     src: "/manus-storage/home-960_f88ac88a.jpg",
     mobileSrc: "/manus-storage/home-480_b710d4e4.jpg",
+    commercial: {
+      packSize: "Product-specific bottles or formats",
+      priceGuide: "Product-specific quote",
+      orderRange: "Confirm on enquiry",
+      note: "Ask for the current product format, price, availability, and delivery options.",
+    },
   },
   {
     id: 6,
@@ -55,6 +97,12 @@ const galleryItems = [
     caption: "Convenient tamper-evident retail bottle format for family kitchens and household cooking.",
     src: "/manus-storage/pack-1l-960_b48dd7f7.jpg",
     mobileSrc: "/manus-storage/pack-1l-480_6a33c6dd.jpg",
+    commercial: {
+      packSize: "1L retail bottle",
+      priceGuide: "Standard rate",
+      orderRange: "1–4 units",
+      note: "Ask for the current unit price and delivered total for your location.",
+    },
   },
   {
     id: 7,
@@ -63,6 +111,12 @@ const galleryItems = [
     caption: "Mid-size family pack offering exceptional value for regular cooking needs.",
     src: "/manus-storage/pack-3l-960_26cd8620.jpg",
     mobileSrc: "/manus-storage/pack-3l-480_29e5f033.jpg",
+    commercial: {
+      packSize: "3L family pack",
+      priceGuide: "Standard or volume rate",
+      orderRange: "1–19 units",
+      note: "Current pricing is confirmed by quantity, availability, and delivery destination.",
+    },
   },
   {
     id: 8,
@@ -71,6 +125,12 @@ const galleryItems = [
     caption: "Robust 5L jerrycan with secure handle for extended home use and food service caterers.",
     src: "/manus-storage/pack-5l-960_065d3c96.jpg",
     mobileSrc: "/manus-storage/pack-5l-480_34c6d045.jpg",
+    commercial: {
+      packSize: "5L value jerrycan",
+      priceGuide: "Standard or volume rate",
+      orderRange: "1–19 units",
+      note: "Ask for the current unit price, carton options, and delivered total for your location.",
+    },
   },
   {
     id: 9,
@@ -79,6 +139,12 @@ const galleryItems = [
     caption: "Commercial wholesale container and carton packaging built for distributors and resellers.",
     src: "/manus-storage/pack-bulk-960_02d289c8.jpg",
     mobileSrc: "/manus-storage/pack-bulk-480_021937f5.jpg",
+    commercial: {
+      packSize: "Bulk container or wholesale carton",
+      priceGuide: "Preferred rate or custom quote",
+      orderRange: "20+ units",
+      note: "Bulk pricing, MOQ, logistics, and dispatch timing are confirmed with the Wholesale Desk.",
+    },
   },
 ];
 
@@ -96,6 +162,11 @@ export default function Gallery() {
     : galleryItems.filter((item) => item.category === activeCategory);
 
   const activeLightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
+  const pricingGuide = pricingTiers.map((tier) => `${tier.rate} · ${tier.volume}`).join("  /  ");
+  const buildEnquiryMessage = (item: GalleryItem) => {
+    const commercial = item.commercial;
+    return `Hello CHI-ZARAM, I am enquiring about ${item.title} (${item.category}) seen in your photo gallery.\n\n${commercial ? `Pack / format: ${commercial.packSize}\nPrice guide: ${commercial.priceGuide}\nExpected order range: ${commercial.orderRange}` : "Product format: Please advise available options"}\n\nPlease share the current price, availability, and delivery cost for my location.`;
+  };
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setZoom(1);
@@ -125,12 +196,8 @@ export default function Gallery() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIndex === null) return;
       if (e.key === "Escape") setLightboxIndex(null);
-      if (e.key === "ArrowRight") {
-        setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : 0));
-      }
-      if (e.key === "ArrowLeft") {
-        setLightboxIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : 0));
-      }
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrevious();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -239,10 +306,29 @@ export default function Gallery() {
                   <span className="lightbox-category">{activeLightboxItem.category}</span>
                   <h3>{activeLightboxItem.title}</h3>
                   <p>{activeLightboxItem.caption}</p>
+                  <div className="lightbox-commercial" aria-label="Pack size and pricing information">
+                    <div className="lightbox-commercial__heading">
+                      <span>Commercial details</span>
+                      <small>Quote-led pricing</small>
+                    </div>
+                    {activeLightboxItem.commercial ? (
+                      <div className="lightbox-commercial__grid">
+                        <div><small>Pack / format</small><strong>{activeLightboxItem.commercial.packSize}</strong></div>
+                        <div><small>Price guide</small><strong>{activeLightboxItem.commercial.priceGuide}</strong></div>
+                        <div><small>Order range</small><strong>{activeLightboxItem.commercial.orderRange}</strong></div>
+                      </div>
+                    ) : (
+                      <div className="lightbox-commercial__generic"><strong>Product-specific quote</strong><span>Pack format and current pricing confirmed on WhatsApp.</span></div>
+                    )}
+                    <p className="lightbox-commercial__note">{activeLightboxItem.commercial?.note ?? "Please ask for the relevant product format, current price, and delivery options."}</p>
+                    {activeLightboxItem.category === "Palm Oil" || activeLightboxItem.category === "Vegetable Oil" || activeLightboxItem.category === "Bulk Supply" ? (
+                      <p className="lightbox-commercial__tiers"><span>Guide tiers</span>{pricingGuide}</p>
+                    ) : null}
+                  </div>
                   <div className="lightbox-actions">
                     <a
                       className="button button--crimson"
-                      href={whatsappHref(`Hello CHI-ZARAM, I am enquiring about ${activeLightboxItem.title} (${activeLightboxItem.category}) seen in your photo gallery.`)}
+                      href={whatsappHref(buildEnquiryMessage(activeLightboxItem))}
                       target="_blank"
                       rel="noreferrer"
                       >
@@ -285,7 +371,7 @@ export default function Gallery() {
                       key={thumbItem.id}
                       type="button"
                       className={`lightbox-thumb ${thumbIdx === lightboxIndex ? "is-active" : ""}`}
-                      onClick={() => setLightboxIndex(thumbIdx)}
+                      onClick={() => openLightbox(thumbIdx)}
                     >
                       <img src={thumbItem.mobileSrc} alt={thumbItem.title} loading="lazy" decoding="async" />
                     </button>

@@ -967,3 +967,30 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 @media (prefers-reduced-motion: reduce) {
   .lightbox-image { transition: none; }
 }
+
+/* Gallery commercial enquiry panel: quote-led details stay visible beside every product image. */
+.lightbox-commercial { margin: 22px 0 20px; padding: 15px 16px 14px; border: 1px solid #ded2c0; background: #f4efe6; }
+.lightbox-commercial__heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 13px; }
+.lightbox-commercial__heading span { color: #9f2f2a; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.lightbox-commercial__heading small { color: #91887a; font-size: 9px; font-weight: 700; }
+.lightbox-commercial__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.lightbox-commercial__grid > div { min-width: 0; padding-right: 9px; border-right: 1px solid #ded2c0; }
+.lightbox-commercial__grid > div:last-child { padding-right: 0; border-right: 0; }
+.lightbox-commercial__grid small { display: block; margin-bottom: 4px; color: #91887a; font-size: 9px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+.lightbox-commercial__grid strong { display: block; color: #292a25; font-family: var(--serif); font-size: 17px; font-weight: 400; line-height: 1.15; }
+.lightbox-commercial__note { margin: 13px 0 0; color: #746f64; font-size: 11px; line-height: 1.55; }
+.lightbox-commercial__tiers { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid #ded2c0; color: #91887a; font-size: 9px; line-height: 1.5; }
+.lightbox-commercial__tiers span { display: block; margin-bottom: 2px; color: #435847; font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.lightbox-commercial__generic { display: flex; flex-direction: column; gap: 3px; }
+.lightbox-commercial__generic strong { color: #292a25; font-family: var(--serif); font-size: 18px; font-weight: 400; }
+.lightbox-commercial__generic span { color: #746f64; font-size: 11px; line-height: 1.5; }
+@media (max-width: 960px) {
+  .lightbox-commercial { margin: 18px 0; }
+  .lightbox-commercial__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .lightbox-commercial__heading { align-items: flex-start; flex-direction: column; gap: 3px; }
+  .lightbox-commercial__grid { grid-template-columns: 1fr; gap: 10px; }
+  .lightbox-commercial__grid > div { padding: 0 0 9px; border-right: 0; border-bottom: 1px solid #ded2c0; }
+  .lightbox-commercial__grid > div:last-child { padding-bottom: 0; border-bottom: 0; }
+}

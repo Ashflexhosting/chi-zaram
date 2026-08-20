@@ -58,3 +58,5 @@
 - [x] Add desktop lightbox zoom controls with reset behavior.
 - [x] Place a direct product enquiry button beside the lightbox description.
 - [x] Verify desktop and mobile lightbox behavior, then save a checkpoint.
+- [x] Add pack-size and quote-led pricing details to gallery lightbox commercial panel.
+- [x] Include commercial context in lightbox WhatsApp messages and verify responsive display.

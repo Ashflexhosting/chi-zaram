@@ -5,20 +5,7 @@
 import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
-
-const packVariants = [
-  { label: "1L", title: "Retail bottle", src: "/manus-storage/chi-zaram-pack-1l_6e672af6.jpg", copy: "A practical entry size for household cooking and everyday retail shelves." },
-  { label: "3L", title: "Family pack", src: "/manus-storage/chi-zaram-pack-3l_733459fa.jpg", copy: "A family-size option for regular kitchens and small food businesses." },
-  { label: "5L", title: "Value jerrycan", src: "/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg", copy: "The documented flagship household size for lasting everyday value." },
-  { label: "Bulk", title: "Wholesale supply", src: "/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg", copy: "For resellers, food businesses, distributors, and larger supply needs." },
-];
-
-const tiers = [
-  ["Retail", "1–4 units", "Standard rate", "Households and direct consumers"],
-  ["Reseller", "5–19 units", "Volume rate", "Shops, vendors, and small resellers"],
-  ["Wholesale", "20–49 units", "Preferred rate", "Regular bulk buyers"],
-  ["Distributor", "50+ units", "Custom quote", "Dedicated supply and logistics"],
-];
+import { packVariants, pricingTiers } from "@/lib/commercialData";
 
 export default function PacksPricing() {
   return (
@@ -92,12 +79,12 @@ export default function PacksPricing() {
                   </tr>
                 </thead>
                 <tbody>
-                  {tiers.map((tier) => (
-                    <tr key={tier[0]}>
-                      <td><strong>{tier[0]}</strong></td>
-                      <td>{tier[1]}</td>
-                      <td><span>{tier[2]}</span><small>Confirm on WhatsApp</small></td>
-                      <td>{tier[3]}</td>
+                  {pricingTiers.map((tier) => (
+                    <tr key={tier.tier}>
+                      <td><strong>{tier.tier}</strong></td>
+                      <td>{tier.volume}</td>
+                      <td><span>{tier.rate}</span><small>Confirm on WhatsApp</small></td>
+                      <td>{tier.suitedTo}</td>
                     </tr>
                   ))}
                 </tbody>
