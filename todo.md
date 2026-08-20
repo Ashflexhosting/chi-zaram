@@ -60,3 +60,5 @@
 - [x] Verify desktop and mobile lightbox behavior, then save a checkpoint.
 - [x] Add pack-size and quote-led pricing details to gallery lightbox commercial panel.
 - [x] Include commercial context in lightbox WhatsApp messages and verify responsive display.
+- [x] Center the desktop primary navigation while preserving mobile menu behavior.
+- [x] Verify the centered header on desktop and mobile, then save a checkpoint.
