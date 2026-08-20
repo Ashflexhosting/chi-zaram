@@ -37,7 +37,7 @@ const categories = [
     label: "CHI-ZARAM HOME",
     copy: "Practical, dependable everyday helpers for homes, offices, and businesses.",
     image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=85",
-    className: "category-card",
+    className: "category-card category-card--cleaning",
   },
   {
     number: "03",
@@ -45,7 +45,7 @@ const categories = [
     label: "CHI-ZARAM FABRICS",
     copy: "A growing edit of texture, colour, and pieces made to be discovered directly.",
     image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85",
-    className: "category-card",
+    className: "category-card category-card--fabrics",
   },
   {
     number: "04",
@@ -53,7 +53,7 @@ const categories = [
     label: "CHI-ZARAM FRAGRANCE",
     copy: "Small moments of scent, selected for personal style and easy everyday gifting.",
     image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1200&q=85",
-    className: "category-card category-card--wide",
+    className: "category-card category-card--wide category-card--fragrance",
   },
 ];
 
