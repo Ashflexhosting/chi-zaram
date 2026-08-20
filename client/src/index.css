@@ -909,3 +909,31 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   .lightbox-media-box { min-height: 560px; }
   .lightbox-caption { padding: 44px; }
 }
+
+/* Desktop refinement layer for commercial and contact pages */
+@media (min-width: 1200px) {
+  .inner-hero { padding: 112px 0 118px; }
+  .inner-hero__grid { grid-template-columns: minmax(0, 0.84fr) minmax(520px, 1.16fr); gap: 108px; }
+  .inner-hero__intro { max-width: 520px; font-size: 18px; }
+  .inner-hero__visual, .inner-hero__visual img { min-height: 470px; height: 470px; }
+  .pack-page .section-heading, .pricing-section .section-heading { margin-bottom: 64px; }
+  .pack-variant-page-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
+  .pack-variant-page-card__image { aspect-ratio: 1 / 1; }
+  .pack-variant-page-card__body { padding: 25px 24px 28px; }
+  .pack-variant-page-card h3 { font-size: 29px; }
+  .pack-variant-page-card p { min-height: 82px; font-size: 14px; line-height: 1.65; }
+  .pricing-section .multi-page-price-table { max-width: 1180px; margin: 0 auto; }
+  .multi-page-price-table th { padding: 17px 24px; }
+  .multi-page-price-table td { padding: 23px 24px; font-size: 14px; }
+  .pricing-page-actions { max-width: 1180px; margin: 28px auto 0; }
+  .contact-page__grid { grid-template-columns: minmax(0, 1fr) minmax(390px, 0.62fr); gap: 128px; }
+  .contact-page__copy { padding-top: 16px; }
+  .contact-page__copy .body-copy { max-width: 560px; font-size: 17px; }
+  .contact-routes { margin-top: 45px; }
+  .contact-routes a { padding: 20px 0; }
+  .contact-form { padding: 44px 42px 38px; }
+  .contact-form h3 { font-size: 41px; }
+  .faq-list { max-width: 1000px; margin-top: 58px; }
+  .faq-question { padding: 25px 30px; font-size: 23px; }
+  .faq-answer { padding: 0 30px 27px; padding-top: 18px; font-size: 16px; }
+}

@@ -13,63 +13,72 @@ const galleryItems = [
     title: "Flagship Red Palm Oil Bottle & Fresh Palm Fruits",
     category: "Palm Oil",
     caption: "Our signature 1L red palm oil bottle styled alongside fresh palm nuts, representing pure unadulterated quality.",
-    src: "/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg",
+    src: "/manus-storage/palmoil-960_3430c348.jpg",
+    mobileSrc: "/manus-storage/palmoil-480_f3103087.jpg",
   },
   {
     id: 2,
     title: "Editorial Brand Still Life & Botanicals",
     category: "Brand Story",
     caption: "A warm Harvest Editorial composition capturing botanical elements, warm sunlight, and our core natural philosophy.",
-    src: "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg",
+    src: "/manus-storage/hero-960_46c9d711.jpg",
+    mobileSrc: "/manus-storage/hero-480_085fccc1.jpg",
   },
   {
     id: 3,
     title: "Pure Vegetable Oil & Kitchen Staples",
     category: "Vegetable Oil",
     caption: "Crystal-clear vegetable oil bottles and cooking essentials designed for everyday culinary excellence.",
-    src: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg",
+    src: "/manus-storage/vegetable-960_60063ee3.jpg",
+    mobileSrc: "/manus-storage/vegetable-480_cc52e48e.jpg",
   },
   {
     id: 4,
     title: "Premium Denim & Tailored Fabrics",
     category: "Fabrics",
     caption: "Durable indigo denim jeans and tailored apparel from our lifestyle collection.",
-    src: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg",
+    src: "/manus-storage/fabrics-960_7ed6ba51.jpg",
+    mobileSrc: "/manus-storage/fabrics-480_2edf7bc1.jpg",
   },
   {
     id: 5,
     title: "Home Fragrance & Cleaning Essentials",
     category: "Home & Fragrance",
     caption: "Amber glass home care bottles, soy candles, and concentrated oil perfumes for daily living.",
-    src: "/manus-storage/chi-zaram-gen-home_7c839812.jpg",
+    src: "/manus-storage/home-960_f88ac88a.jpg",
+    mobileSrc: "/manus-storage/home-480_b710d4e4.jpg",
   },
   {
     id: 6,
     title: "1-Litre Retail Bottle Format",
     category: "Palm Oil",
     caption: "Convenient tamper-evident retail bottle format for family kitchens and household cooking.",
-    src: "/manus-storage/chi-zaram-pack-1l_6e672af6.jpg",
+    src: "/manus-storage/pack-1l-960_b48dd7f7.jpg",
+    mobileSrc: "/manus-storage/pack-1l-480_6a33c6dd.jpg",
   },
   {
     id: 7,
     title: "3-Litre Family Pack Format",
     category: "Palm Oil",
     caption: "Mid-size family pack offering exceptional value for regular cooking needs.",
-    src: "/manus-storage/chi-zaram-pack-3l_733459fa.jpg",
+    src: "/manus-storage/pack-3l-960_26cd8620.jpg",
+    mobileSrc: "/manus-storage/pack-3l-480_29e5f033.jpg",
   },
   {
     id: 8,
     title: "5-Litre Jerrycan Format",
     category: "Palm Oil",
     caption: "Robust 5L jerrycan with secure handle for extended home use and food service caterers.",
-    src: "/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg",
+    src: "/manus-storage/pack-5l-960_065d3c96.jpg",
+    mobileSrc: "/manus-storage/pack-5l-480_34c6d045.jpg",
   },
   {
     id: 9,
     title: "Wholesale Bulk Container & Carton Supply",
     category: "Bulk Supply",
     caption: "Commercial wholesale container and carton packaging built for distributors and resellers.",
-    src: "/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg",
+    src: "/manus-storage/pack-bulk-960_02d289c8.jpg",
+    mobileSrc: "/manus-storage/pack-bulk-480_021937f5.jpg",
   },
 ];
 
@@ -160,7 +169,7 @@ export default function Gallery() {
                 onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setLightboxIndex(index); }}
               >
                 <div className="gallery-card__media">
-                  <img src={item.src} alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
+                  <img src={item.src} srcSet={`${item.mobileSrc} 480w, ${item.src} 960w`} sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
                   <div className="gallery-card__overlay">
                     <span className="gallery-card__badge"><ImageIcon size={14} /> View large</span>
                   </div>
@@ -258,7 +267,7 @@ export default function Gallery() {
                       className={`lightbox-thumb ${thumbIdx === lightboxIndex ? "is-active" : ""}`}
                       onClick={() => setLightboxIndex(thumbIdx)}
                     >
-                      <img src={thumbItem.src} alt={thumbItem.title} />
+                      <img src={thumbItem.mobileSrc} alt={thumbItem.title} loading="lazy" decoding="async" />
                     </button>
                   ))}
                 </div>

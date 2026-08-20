@@ -49,3 +49,6 @@
 - [x] Diagnose desktop layout issues across homepage, gallery, catalogue, story, and contact routes.
 - [x] Refine large-screen content widths, grids, typography, and spacing without weakening mobile styles.
 - [x] Test representative desktop and mobile viewports, then save a checkpoint.
+- [x] Refine desktop layouts for Packs & Pricing and Contact pages to match the wider visual rhythm.
+- [x] Add responsive image sources and compressed gallery assets while preserving the original visual quality.
+- [x] Test the revised desktop/mobile routes and gallery loading, then save a checkpoint.
