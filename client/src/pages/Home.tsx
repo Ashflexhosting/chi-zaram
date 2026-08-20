@@ -28,6 +28,8 @@ const categories = [
     title: "Palm Oil",
     label: "CHI-ZARAM FOODS",
     copy: "Our flagship red palm oil, presented for everyday cooking, family value, and larger supply needs.",
+    details: "Pure red palm oil with rich natural flavor and nutrients. Hygienically processed without artificial additives or preservatives, designed for households and bulk commercial buyers.",
+    specs: ["Primary pack: 5 Litres family size", "Bulk jerrycans & cartons available", "Rich in natural vitamins & flavor", "Ideal for retail & food service"],
     image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1200&q=85",
     className: "category-card category-card--large",
   },
@@ -36,6 +38,8 @@ const categories = [
     title: "Cleaning Essentials",
     label: "CHI-ZARAM HOME",
     copy: "Practical, dependable everyday helpers for homes, offices, and businesses.",
+    details: "Carefully curated household and commercial cleaning essentials designed for superior effectiveness, value, and reliable daily upkeep.",
+    specs: ["High-performance cleaning aids", "Suitable for homes & offices", "Bulk quantities for commercial buyers", "Dependable quality standards"],
     image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=85",
     className: "category-card category-card--cleaning",
   },
@@ -44,6 +48,8 @@ const categories = [
     title: "Fabrics Collections",
     label: "CHI-ZARAM FABRICS",
     copy: "A growing edit of texture, colour, and pieces made to be discovered directly.",
+    details: "An exquisite selection of fabrics and fashion collections showcasing rich textures, vibrant colors, and timeless appeal for discerning buyers.",
+    specs: ["Premium fabric textures", "Curated colorways & patterns", "Direct wholesale & retail ordering", "Suitable for custom tailoring"],
     image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85",
     className: "category-card category-card--fabrics",
   },
@@ -52,6 +58,8 @@ const categories = [
     title: "Oil Perfume",
     label: "CHI-ZARAM FRAGRANCE",
     copy: "Small moments of scent, selected for personal style and easy everyday gifting.",
+    details: "Long-lasting concentrated oil perfumes offering sophisticated scent profiles, skin-friendly formulations, and great value for personal use or gifting.",
+    specs: ["Concentrated fragrance oils", "Long-lasting scent projection", "Portable bottle sizes", "Ideal for retail reselling"],
     image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1200&q=85",
     className: "category-card category-card--wide category-card--fragrance",
   },
@@ -66,6 +74,7 @@ const supplySteps = [
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<typeof categories[0] | null>(null);
 
   const openWhatsApp = (message: string) => {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
@@ -188,12 +197,18 @@ export default function Home() {
             </div>
             <div className="category-grid">
               {categories.map((category) => (
-                <a className={category.className} href="#contact" key={category.title}>
+                <button
+                  type="button"
+                  className={category.className}
+                  key={category.title}
+                  onClick={() => setActiveCategory(category)}
+                  style={{ textAlign: "left", border: 0, padding: 0 }}
+                >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
                   <div className="category-card__overlay" />
                   <img className="category-card__mark" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" />
-                  <div className="category-card__content"><span className="category-card__number">{category.number}</span><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">Enquire now <ArrowUpRight size={16} /></span></div>
-                </a>
+                  <div className="category-card__content"><span className="category-card__number">{category.number}</span><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">View product details <ArrowUpRight size={16} /></span></div>
+                </button>
               ))}
             </div>
           </div>
@@ -281,6 +296,44 @@ export default function Home() {
           <div className="container closing-section__inner"><p className="eyebrow eyebrow--gold">Let’s make the next order easy</p><h2>Good things are<br /><em>worth sharing.</em></h2><p>Have a question, a restock in mind, or a larger supply need? We’re one message away.</p><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to make an enquiry. Please assist me with current products, availability and delivery options.")}>Talk to CHI-ZARAM <ArrowUpRight size={17} /></button></div>
         </section>
       </main>
+
+      {activeCategory && (
+        <div className="product-modal-backdrop" onClick={() => setActiveCategory(null)}>
+          <div className="product-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="product-modal__close" type="button" onClick={() => setActiveCategory(null)} aria-label="Close modal">
+              <X size={20} />
+            </button>
+            <div className="product-modal__image">
+              <img src={activeCategory.image} alt={activeCategory.title} />
+              <span className="product-modal__badge">{activeCategory.label}</span>
+            </div>
+            <div className="product-modal__body">
+              <span className="product-modal__number">{activeCategory.number}</span>
+              <h3>{activeCategory.title}</h3>
+              <p className="product-modal__desc">{activeCategory.details}</p>
+              <div className="product-modal__specs-title">Key Specifications &amp; Offerings</div>
+              <ul className="product-modal__specs">
+                {activeCategory.specs.map((spec, i) => (
+                  <li key={i}><Check size={14} /> {spec}</li>
+                ))}
+              </ul>
+              <div className="product-modal__actions">
+                <button
+                  className="button button--crimson button--full"
+                  type="button"
+                  onClick={() => {
+                    const msg = `Hello CHI-ZARAM, I am interested in ${activeCategory.title} (${activeCategory.label}). Please share current pricing, pack sizes, and availability details.`;
+                    setActiveCategory(null);
+                    openWhatsApp(msg);
+                  }}
+                >
+                  Enquire via WhatsApp <ArrowUpRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="site-footer"><div className="container site-footer__top"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
