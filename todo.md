@@ -40,3 +40,6 @@
 - [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
 - [x] Apply the generated brand pattern to pricing and footer sections.
 - [x] Test and checkpoint the pack-variant visual update.
+- [x] Repair missing image references on the Photo Gallery page using verified persistent assets.
+- [x] Implement click-to-enlarge lightbox navigation with keyboard and mobile controls.
+- [x] Test gallery image loading and lightbox behavior, then save a checkpoint.
