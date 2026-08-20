@@ -1229,3 +1229,8 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 .story-founder-card__role { color: #9f2f2a; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
 .story-founder-card h3 { margin: 0 0 10px; color: #292a25; font-family: var(--serif); font-size: 21px; font-weight: 400; line-height: 1.25; }
 .story-founder-card p { margin: 0; color: #746f64; font-size: 14px; line-height: 1.65; font-style: italic; }
+
+/* Homepage hero visibility refinement: preserve the pale Harvest Editorial palette while restoring clear subject separation in the right-hand image. */
+.hero-visual__image-wrap { background: #bda780; box-shadow: 22px 20px 0 rgba(159,47,42,0.14); }
+.hero-visual__image-wrap::after { z-index: 1; background: linear-gradient(112deg, rgba(41,42,37,0.22) 0%, rgba(41,42,37,0.06) 38%, rgba(159,47,42,0.03) 100%); mix-blend-mode: multiply; }
+.hero-visual__image-wrap img { position: relative; z-index: 0; filter: saturate(1.1) contrast(1.12) brightness(0.98); }

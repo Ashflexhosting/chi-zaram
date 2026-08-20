@@ -104,3 +104,5 @@
 - [x] Verify the Story page founder introduction on desktop and mobile, then save a checkpoint.
 - [x] Sharpen the Story page team-and-product image while preserving its natural appearance.
 - [x] Verify the sharpened image on desktop and mobile, then save a checkpoint.
+- [x] Improve visibility of the right-hand image in the homepage hero.
+- [x] Verify the hero image on desktop and mobile, then save a checkpoint.
