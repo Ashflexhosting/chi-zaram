@@ -2,7 +2,7 @@
  * CHI-ZARAM Photo Gallery page: displays the supplied product, packaging,
  * brand, and lifestyle imagery with category filtering and interactive lightbox browsing.
  */
-import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, Share2, X } from "lucide-react";
 import { TouchEvent as ReactTouchEvent, useEffect, useRef, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
@@ -78,6 +78,7 @@ const categories = ["All", "Palm Oil", "Vegetable Oil", "Fabrics", "Home & Fragr
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [shareFeedback, setShareFeedback] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
   const filteredItems = activeCategory === "All"
@@ -209,6 +210,30 @@ export default function Gallery() {
                       >
                         Enquire about this item <ArrowUpRight size={15} />
                       </a>
+                      <button
+                        className="button button--outline lightbox-share-btn"
+                        type="button"
+                        onClick={async () => {
+                          const shareData = {
+                            title: `${activeLightboxItem.title} | CHI-ZARAM`,
+                            text: activeLightboxItem.caption,
+                            url: window.location.href,
+                          };
+                          try {
+                            if (navigator.share) {
+                              await navigator.share(shareData);
+                            } else {
+                              await navigator.clipboard.writeText(window.location.href);
+                              setShareFeedback(true);
+                              setTimeout(() => setShareFeedback(false), 2500);
+                            }
+                          } catch {
+                            // User cancelled or share failed
+                          }
+                        }}
+                      >
+                        <Share2 size={15} /> {shareFeedback ? "Link copied!" : "Share image"}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -221,8 +246,22 @@ export default function Gallery() {
                   <ChevronRight size={24} />
                 </button>
               </div>
-              <div className="lightbox-counter">
-                {lightboxIndex! + 1} of {filteredItems.length}
+              <div className="lightbox-footer">
+                <div className="lightbox-counter">
+                  {lightboxIndex! + 1} of {filteredItems.length}
+                </div>
+                <div className="lightbox-thumbnails">
+                  {filteredItems.map((thumbItem, thumbIdx) => (
+                    <button
+                      key={thumbItem.id}
+                      type="button"
+                      className={`lightbox-thumb ${thumbIdx === lightboxIndex ? "is-active" : ""}`}
+                      onClick={() => setLightboxIndex(thumbIdx)}
+                    >
+                      <img src={thumbItem.src} alt={thumbItem.title} />
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

@@ -43,3 +43,6 @@
 - [x] Repair missing image references on the Photo Gallery page using verified persistent assets.
 - [x] Implement click-to-enlarge lightbox navigation with keyboard and mobile controls.
 - [x] Test gallery image loading and lightbox behavior, then save a checkpoint.
+- [x] Add a thumbnail preview strip to the lightbox for quick jumping between images.
+- [x] Include richer descriptive captions and social media share action for opened images.
+- [x] Style thumbnail strip and share feedback, then save a checkpoint.
