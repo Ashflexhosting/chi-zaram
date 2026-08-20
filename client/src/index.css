@@ -238,7 +238,19 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .palm-points svg { color: #e0b45f; }
 .micro-note { margin: 15px 0 0; color: rgba(255,250,243,0.55); font-size: 10px; }
 
-.supply-section { background: #fffaf3; }
+.commercial-section { background: #fffaf3; }
+.commercial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 48px; }
+.commercial-card { position: relative; display: flex; flex-direction: column; padding: 35px 30px 30px; background: #f4efe6; border-top: 3px solid #9f2f2a; box-shadow: 0 16px 36px rgba(41,42,37,0.06); transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+.commercial-card:hover { transform: translateY(-4px); box-shadow: 0 22px 45px rgba(41,42,37,0.11); }
+.commercial-card__tag { display: inline-block; margin-bottom: 15px; color: #9f2f2a; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.commercial-card h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -0.03em; }
+.commercial-card__desc { margin: 0 0 22px; color: #746f64; font-size: 13px; line-height: 1.6; }
+.commercial-specs { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #ded2c0; border-bottom: 1px solid #ded2c0; padding-top: 18px; padding-bottom: 18px; }
+.commercial-specs li { color: #5f5a51; font-size: 12px; line-height: 1.5; }
+.commercial-specs strong { color: #292a25; font-weight: 700; }
+.commercial-card .button { margin-top: auto; }
+
+.supply-section { background: #f4efe6; }
 .supply-section__inner { display: grid; grid-template-columns: 1fr 0.76fr; gap: clamp(70px, 12vw, 170px); align-items: center; }
 .supply-section__copy h2 { margin-top: 1px; }
 .supply-section__copy h2 em { color: #435847; }

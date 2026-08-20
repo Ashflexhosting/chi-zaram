@@ -74,7 +74,11 @@ export default function Home() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const message = `Hello CHI-ZARAM, I am interested in retail/bulk supply. My product is ${form.get("product") || "not specified"}, required quantity is ${form.get("quantity") || "not specified"}, and my location is ${form.get("location") || "not specified"}. Please share your current price, availability and delivery options.`;
+    const product = form.get("product") || "Palm Oil";
+    const quantity = form.get("quantity") || "Standard bulk order";
+    const location = form.get("location") || "Not specified";
+    const tier = form.get("tier") || "General Wholesale";
+    const message = `Hello CHI-ZARAM Wholesale Desk, I would like to request a bulk supply quotation.\n\n• Product: ${product}\n• Tier/Category: ${tier}\n• Required Quantity: ${quantity}\n• Delivery Location: ${location}\n\nPlease share current wholesale pricing, availability, and delivery arrangements.`;
     setSubmitted(true);
     openWhatsApp(message);
   };
@@ -100,12 +104,13 @@ export default function Home() {
             </span>
           </a>
 
-          <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
-            <a href="#story" onClick={() => setMobileOpen(false)}>Our story</a>
-            <a href="#portfolio" onClick={() => setMobileOpen(false)}>What we carry</a>
-            <a href="#supply" onClick={() => setMobileOpen(false)}>Bulk supply</a>
-            <a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
-            <a className="main-nav__mobile-cta" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
+            <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
+            <a href="#story" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' }); }}>Our story</a>
+            <a href="#portfolio" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>What we carry</a>
+            <a href="#commercial" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('commercial')?.scrollIntoView({ behavior: 'smooth' }); }}>Packs &amp; Pricing</a>
+            <a href="#supply" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('supply')?.scrollIntoView({ behavior: 'smooth' }); }}>Bulk supply</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact</a>
+            <a className="main-nav__mobile-cta" href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello CHI-ZARAM, I would like to place an order. Please share current product availability and delivery terms.")}`} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
               Order on WhatsApp <ArrowUpRight size={16} />
             </a>
           </nav>
@@ -198,6 +203,62 @@ export default function Home() {
           <div className="container palm-section__inner">
             <div className="palm-section__visual"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1200&q=85" alt="A natural oil bottle with a bowl and palm-inspired warm tones" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
             <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our 5-litre hero pack is presented for family use and value, with retail and bulk enquiries available directly through WhatsApp.</p><div className="palm-points"><span><Check size={16} /> Everyday cooking</span><span><Check size={16} /> Family-size value</span><span><Check size={16} /> Retail or bulk supply</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about the 5-litre palm oil pack. Please share current price, availability and delivery options.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
+          </div>
+        </section>
+
+        <section className="commercial-section section-pad" id="commercial">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div>
+                <p className="eyebrow">Pack sizes &amp; supply structure</p>
+                <h2>Built for households,<br /><em>priced for value.</em></h2>
+              </div>
+              <p className="section-heading__aside">We offer flexible packaging for household cooking, retail shelves, and commercial kitchens. All pricing and batch availability are confirmed directly through WhatsApp to ensure accuracy.</p>
+            </div>
+
+            <div className="commercial-grid">
+              <div className="commercial-card">
+                <span className="commercial-card__tag">Flagship Product</span>
+                <h3>CHI-ZARAM Palm Oil</h3>
+                <p className="commercial-card__desc">Pure red palm oil with no additives, hygienically processed for rich flavour and nutritional value.</p>
+                <ul className="commercial-specs">
+                  <li><strong>Primary Pack:</strong> 5 Litres (Hero household family size)</li>
+                  <li><strong>Bulk Options:</strong> Jerrycans &amp; Cartons available on request</li>
+                  <li><strong>Pricing Model:</strong> Tiered wholesale / retail pricing confirmed via WhatsApp</li>
+                </ul>
+                <button className="button button--crimson button--full" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to check current pack prices and availability for Palm Oil.")}>
+                  Enquire Palm Oil Pricing <ArrowUpRight size={16} />
+                </button>
+              </div>
+
+              <div className="commercial-card">
+                <span className="commercial-card__tag">Wholesale Tiers</span>
+                <h3>Supply Structure</h3>
+                <p className="commercial-card__desc">Designed to support individual shoppers, local retailers, restaurants, and commercial distributors.</p>
+                <ul className="commercial-specs">
+                  <li><strong>Tier 1 (Retail):</strong> Single units for households &amp; direct consumers</li>
+                  <li><strong>Tier 2 (Reseller):</strong> Carton / bundle quantities for shops &amp; vendors</li>
+                  <li><strong>Tier 3 (Commercial):</strong> High-volume pallet or bulk distribution supply</li>
+                </ul>
+                <button className="button button--quiet button--full" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM Wholesale Desk, I would like to request the wholesale tier rate card and MOQ details.")}>
+                  Request Wholesale Rate Card <ArrowUpRight size={16} />
+                </button>
+              </div>
+
+              <div className="commercial-card">
+                <span className="commercial-card__tag">Logistics &amp; Fulfillment</span>
+                <h3>Delivery Coverage</h3>
+                <p className="commercial-card__desc">Reliable dispatch from our operating hubs with structured delivery options for local and regional orders.</p>
+                <ul className="commercial-specs">
+                  <li><strong>Local Delivery:</strong> Direct doorstep dispatch within operating zones</li>
+                  <li><strong>Interstate Bulk:</strong> Partner transport and motor-park logistics for regional buyers</li>
+                  <li><strong>Pickup Option:</strong> Direct depot / warehouse collection by arrangement</li>
+                </ul>
+                <button className="button button--quiet button--full" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM Logistics, I want to confirm delivery coverage and dispatch cost for my location.")}>
+                  Confirm Delivery Coverage <ArrowUpRight size={16} />
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
