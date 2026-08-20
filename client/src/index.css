@@ -1667,3 +1667,20 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   color: #435847;
   font-size: 13px;
 }
+
+.footer-contact__location {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+.footer-contact__hours {
+  color: #d9cdbd;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.contact-location > span {
+  color: #746f64;
+  font-size: 11px;
+}

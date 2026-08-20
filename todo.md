@@ -142,3 +142,6 @@
 - [x] Replace visible contact phone references with 08037365227.
 - [x] Add Isolo, Lagos to the site’s visible location/contact context.
 - [x] Verify contact details and WhatsApp links, then save a checkpoint.
+- [x] Make 08037365227 a clickable tel link in the footer and Contact page.
+- [x] Add Monday–Friday, 9 AM–5 PM operating hours beside Isolo, Lagos.
+- [x] Verify phone links and hours on desktop/mobile, then save a checkpoint.

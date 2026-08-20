@@ -3,7 +3,7 @@
  * deep leaf green, editorial serif headlines, WhatsApp-first conversion,
  * a concise footer enquiry form, social links, and a shared Back to Top affordance across every page.
  */
-import { ArrowUpRight, ChevronUp, Menu, MessageCircle, Music2, Share2, X } from "lucide-react";
+import { ArrowUpRight, ChevronUp, Menu, MessageCircle, Music2, Phone, Share2, X } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
@@ -91,7 +91,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
           </div>
           <div className="footer-contact">
             <span>Start a conversation</span>
-            <a href={whatsappHref()} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos</span>
+            <a href="tel:+2348037365227"><Phone size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos <span className="footer-contact__hours">Mon–Fri, 9 AM–5 PM</span></span>
             <div className="footer-socials" aria-label="Social media links">
               <a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a>
               <a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a>

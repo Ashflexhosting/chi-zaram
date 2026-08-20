@@ -74,6 +74,12 @@ export default function SEOHead({ title, description, path, image = "/social-pre
         "addressRegion": "Lagos",
         "addressCountry": "NG"
       },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
       "sameAs": [
         "https://www.tiktok.com/@ogonwibe"
       ]

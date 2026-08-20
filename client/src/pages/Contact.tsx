@@ -88,7 +88,7 @@ export default function Contact() {
                   <ArrowUpRight size={16} />
                 </a>
               </div>
-              <p className="contact-location"><small>Operating from</small><strong>Isolo, Lagos</strong></p>
+              <p className="contact-location"><small>Operating from</small><strong>Isolo, Lagos</strong><span>Mon–Fri, 9 AM–5 PM</span></p>
             </div>
 
             <form className="contact-form" onSubmit={submit}>
