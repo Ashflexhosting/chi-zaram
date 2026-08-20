@@ -1,19 +1,73 @@
 /**
- * Harvest Editorial packs and pricing page: pack-size clarity, enquiry-based
- * commercial guidance, and SEO metadata.
+ * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator,
+ * enquiry-based commercial guidance, and SEO metadata.
  */
-import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ArrowUpRight, Check, Calculator, MessageCircle } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
 import { packVariants, pricingTiers } from "@/lib/commercialData";
 
+type PackKey = "1L" | "3L" | "5L" | "25L";
+
+const packPrices: Record<PackKey, number> = {
+  "1L": 2500,
+  "3L": 8500,
+  "5L": 12500,
+  "25L": 60000,
+};
+
+const packNames: Record<PackKey, string> = {
+  "1L": "1L Retail bottle",
+  "3L": "3L Family pack",
+  "5L": "5L Value jerrycan",
+  "25L": "25L Wholesale container",
+};
+
 export default function PacksPricing() {
+  const [quantities, setQuantities] = useState<Record<PackKey, number>>({
+    "1L": 0,
+    "3L": 0,
+    "5L": 0,
+    "25L": 0,
+  });
+
+  const handleQtyChange = (key: PackKey, val: string) => {
+    const num = parseInt(val, 10);
+    setQuantities((prev) => ({
+      ...prev,
+      [key]: isNaN(num) || num < 0 ? 0 : num,
+    }));
+  };
+
+  const { totalUnits, totalPrice, whatsAppMessage } = useMemo(() => {
+    let units = 0;
+    let price = 0;
+    const summaryParts: string[] = [];
+
+    (Object.keys(quantities) as PackKey[]).forEach((key) => {
+      const q = quantities[key];
+      if (q > 0) {
+        units += q;
+        const sub = q * packPrices[key];
+        price += sub;
+        summaryParts.push(`${q} x ${packNames[key]} (₦${packPrices[key].toLocaleString()} ea = ₦${sub.toLocaleString()})`);
+      }
+    });
+
+    const msg = summaryParts.length > 0
+      ? `Hello CHI-ZARAM, I would like to order/enquire about the following multi-pack combination:\n\n${summaryParts.join("\n")}\n\nTotal Estimated Cost: ₦${price.toLocaleString()} (${units} total units).\n\nPlease confirm availability, delivery to our location, and final payment details.`
+      : `Hello CHI-ZARAM, I would like to inquire about red palm oil wholesale and retail pack pricing (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Please share availability and delivery options.`;
+
+    return { totalUnits: units, totalPrice: price, whatsAppMessage: msg };
+  }, [quantities]);
+
   return (
     <SiteLayout activePath="/packs-pricing">
       <SEOHead
-        title="Pack Sizes & Wholesale Price Guide"
-        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and our wholesale supply tiers. Request current rate cards and pricing via WhatsApp."
+        title="Pack Sizes & Wholesale Price Guide with Cost Calculator"
+        description="Explore CHI-ZARAM red palm oil pack formats (1L, 3L, 5L, and bulk) and calculate custom multi-pack order estimates instantly. Enquire via WhatsApp."
         path="/packs-pricing"
       />
       <main>
@@ -59,6 +113,60 @@ export default function PacksPricing() {
                   </div>
                 </article>
               ))}
+            </div>
+
+            {/* Quick Multi-Pack Calculator */}
+            <div className="pack-calculator-section" id="calculator">
+              <div className="pack-calculator-header">
+                <p className="eyebrow"><Calculator size={14} /> Multi-pack cost estimator</p>
+                <h3>Calculate your order in seconds</h3>
+                <p>Enter your desired quantities for each pack size below to estimate your total order cost instantly, then send the breakdown directly to our sales desk on WhatsApp.</p>
+              </div>
+
+              <div className="pack-calculator-grid">
+                {(["1L", "3L", "5L", "25L"] as PackKey[]).map((key) => {
+                  const unitPrice = packPrices[key];
+                  const count = quantities[key];
+                  const subtotal = count * unitPrice;
+                  return (
+                    <div className="pack-calc-card" key={key}>
+                      <div className="pack-calc-card__top">
+                        <span>{key}</span>
+                        <strong>₦{unitPrice.toLocaleString()} ea</strong>
+                      </div>
+                      <label htmlFor={`calc-${key}`}>{packNames[key].split(" ")[1]}</label>
+                      <input
+                        id={`calc-${key}`}
+                        type="number"
+                        min="0"
+                        max="999"
+                        value={count}
+                        onChange={(e) => handleQtyChange(key, e.target.value)}
+                        aria-label={`Quantity of ${key} packs`}
+                      />
+                      <div className="pack-calc-card__subtotal">
+                        Subtotal: <strong>₦{subtotal.toLocaleString()}</strong>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="pack-calculator-summary">
+                <div className="pack-calculator-totals">
+                  <span>Estimated order breakdown</span>
+                  <strong>₦{totalPrice.toLocaleString()}</strong>
+                  <small>{totalUnits} total unit{totalUnits === 1 ? "" : "s"} selected across your custom mix</small>
+                </div>
+                <a
+                  className="button button--crimson"
+                  href={whatsappHref(whatsAppMessage)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle size={16} /> Send Calculated Order via WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </section>

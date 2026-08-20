@@ -155,3 +155,9 @@
 - [x] Update shared commercial pricing data with exact pack rates (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000).
 - [x] Update Catalogue and Packs & Pricing pages to display exact pricing.
 - [x] Verify exact pricing display and WhatsApp pre-filled messages on desktop/mobile, then save a checkpoint.
+
+- [x] Add a quick multi-pack cost calculator to the Packs & Pricing page.
+- [x] Add quantity inputs for each pack size (1L, 3L, 5L, 25L) with live total calculation.
+- [x] Add a Request Quote button that pre-fills a WhatsApp message with the calculated breakdown.
+- [x] Verify the calculator's responsiveness and accuracy on mobile and desktop.
+- [ ] Save a checkpoint for the multi-pack calculator update.
