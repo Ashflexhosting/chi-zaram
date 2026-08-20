@@ -1,8 +1,8 @@
 /**
  * Harvest Editorial catalogue page: practical product storytelling, distinct
- * category moments, and SEO metadata.
+ * category moments, quality assurance notes, and SEO metadata.
  */
-import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check, MessageCircle, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -70,6 +70,33 @@ export default function Catalogue() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="catalogue-trust section-pad">
+          <div className="container">
+            <div className="section-heading section-heading--center">
+              <p className="eyebrow">Quality Guarantee</p>
+              <h2>The CHI-ZARAM assurance.<br /><em>Pure products, transparent supply.</em></h2>
+              <p>We believe trust is earned through consistent presentation, verified pack sizes, and direct conversations with our retail and wholesale buyers.</p>
+            </div>
+            <div className="catalogue-trust__grid">
+              <div className="catalogue-trust__card">
+                <ShieldCheck size={26} />
+                <h3>Hygienically Processed</h3>
+                <p>All red palm oil and food products are sourced and packaged under clean, quality-controlled conditions with no artificial additives.</p>
+              </div>
+              <div className="catalogue-trust__card">
+                <Check size={26} />
+                <h3>Consistent Pack Sizes</h3>
+                <p>Whether you choose our 1L retail bottle, 3L family pack, 5L jerrycan, or bulk wholesale carton, quantities and volumes are strictly maintained.</p>
+              </div>
+              <div className="catalogue-trust__card">
+                <MessageCircle size={26} />
+                <h3>Direct WhatsApp Support</h3>
+                <p>We discuss every retail order and bulk quotation directly with you to ensure availability, pricing, and delivery terms are clear before dispatch.</p>
+              </div>
             </div>
           </div>
         </section>

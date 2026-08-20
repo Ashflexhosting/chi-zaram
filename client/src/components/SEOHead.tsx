@@ -44,6 +44,30 @@ export default function SEOHead({ title, description, path, image = "/manus-stor
       document.head.appendChild(linkCanonical);
     }
     linkCanonical.setAttribute("href", window.location.origin + path);
+
+    let scriptLd = document.querySelector('script[type="application/ld+json"]');
+    if (!scriptLd) {
+      scriptLd = document.createElement("script");
+      scriptLd.setAttribute("type", "application/ld+json");
+      document.head.appendChild(scriptLd);
+    }
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CHI-ZARAM Palm Oil & More Enterprises",
+      "url": window.location.origin,
+      "logo": window.location.origin + "/manus-storage/chi-zaram-mark_15d277e5.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+234-809-219-2180",
+        "contactType": "sales",
+        "availableLanguage": ["English"]
+      },
+      "sameAs": [
+        "https://www.tiktok.com/@ogonwibe"
+      ]
+    };
+    scriptLd.textContent = JSON.stringify(structuredData);
   }, [title, description, path, image]);
 
   return null;

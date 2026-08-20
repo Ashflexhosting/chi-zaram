@@ -722,3 +722,14 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 21px 24px; border: 0; background: transparent; color: #292a25; font-family: var(--serif); font-size: 21px; font-weight: 400; text-align: left; cursor: pointer; }
 .faq-question svg { color: #9f2f2a; transition: transform 200ms var(--ease-out); flex: none; margin-left: 15px; }
 .faq-answer { padding: 0 24px 23px; color: #746f64; font-size: 15px; line-height: 1.7; border-top: 1px solid #eee5d8; margin-top: -4px; padding-top: 16px; }
+
+/* Catalogue assurance trust section styling */
+.catalogue-trust { background: #f4efe6; }
+.catalogue-trust__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.catalogue-trust__card { padding: 34px 28px; background: #fffaf3; border-top: 2px solid #9f2f2a; box-shadow: 0 14px 30px rgba(41,42,37,0.06); }
+.catalogue-trust__card svg { color: #9f2f2a; margin-bottom: 18px; }
+.catalogue-trust__card h3 { margin: 0 0 10px; color: #292a25; font-family: var(--serif); font-size: 26px; font-weight: 400; }
+.catalogue-trust__card p { margin: 0; color: #746f64; font-size: 15px; line-height: 1.7; }
+@media (max-width: 900px) {
+  .catalogue-trust__grid { grid-template-columns: 1fr; }
+}
