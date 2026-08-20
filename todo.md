@@ -110,3 +110,6 @@
 - [x] Verify responsive hero source selection and save a checkpoint.
 - [x] Remove the homepage “How it works” section and clean up dependent references.
 - [x] Verify the homepage after removal on desktop and mobile, then save a checkpoint.
+- [x] Restyle the homepage “Pack sizes & supply structure” section with a dark fixed parallax treatment.
+- [x] Adjust pack-sizes typography and controls for accessible light contrast.
+- [x] Verify the parallax section on desktop and mobile, then save a checkpoint.

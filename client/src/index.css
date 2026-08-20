@@ -1225,3 +1225,54 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 
 /* Large-screen hero source: the picture wrapper keeps high-resolution and fallback sources inside the same editorial frame. */
 .hero-visual__image-wrap picture { display: block; width: 100%; height: 100%; }
+
+/* Pack sizes & supply structure: dark Harvest Editorial parallax panel with light, high-contrast commercial copy. */
+.commercial-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #26352b;
+  background-image:
+    linear-gradient(115deg, rgba(20,31,25,0.98) 0%, rgba(38,53,43,0.94) 54%, rgba(61,43,38,0.9) 100%),
+    radial-gradient(circle at 18% 18%, rgba(224,180,95,0.17) 0 1px, transparent 1.5px),
+    repeating-linear-gradient(135deg, rgba(255,250,243,0.04) 0 1px, transparent 1px 18px);
+  background-attachment: fixed, fixed, fixed;
+  background-position: center, 18% 18%, center;
+  background-size: cover, 150px 150px, auto;
+}
+.commercial-section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(circle at 82% 68%, rgba(159,47,42,0.27), transparent 34%), linear-gradient(180deg, transparent, rgba(10,18,14,0.2));
+  content: "";
+  pointer-events: none;
+}
+.commercial-section > .container { position: relative; z-index: 1; }
+.commercial-section .section-heading { border-bottom-color: rgba(255,250,243,0.18); }
+.commercial-section .eyebrow { color: #e0b45f; }
+.commercial-section .section-heading__aside { color: #d8ddd5; }
+.commercial-section h2 { color: #fffaf3; }
+.commercial-section h2 em { color: #efb98f; }
+.commercial-section .commercial-grid { margin-top: 48px; }
+.commercial-section .commercial-card {
+  background: rgba(48,69,56,0.82);
+  border-top-color: #e0b45f;
+  box-shadow: 0 20px 48px rgba(8,16,11,0.24);
+  backdrop-filter: blur(7px);
+}
+.commercial-section .commercial-card:hover { box-shadow: 0 26px 56px rgba(8,16,11,0.36); }
+.commercial-section .commercial-card__tag { color: #e0b45f; }
+.commercial-section .commercial-card h3 { color: #fffaf3; }
+.commercial-section .commercial-card__desc { color: #d8ddd5; }
+.commercial-section .commercial-specs { border-color: rgba(255,250,243,0.2); }
+.commercial-section .commercial-specs li { color: #d8ddd5; }
+.commercial-section .commercial-specs strong { color: #fffaf3; }
+.commercial-section .button--quiet { border-color: rgba(255,250,243,0.48); background: rgba(255,250,243,0.06); color: #fffaf3; }
+.commercial-section .button--quiet:hover { border-color: #e0b45f; background: rgba(224,180,95,0.16); color: #fffaf3; }
+@media (max-width: 760px) {
+  .commercial-section { background-attachment: scroll, scroll, scroll; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .commercial-section { background-attachment: scroll, scroll, scroll; }
+}
