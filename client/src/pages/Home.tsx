@@ -197,11 +197,11 @@ export default function Home() {
           </a>
 
             <nav className={`main-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
-            <a href="#story" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' }); }}>Our story</a>
-            <a href="#portfolio" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>What we carry</a>
-            <a href="#commercial" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('commercial')?.scrollIntoView({ behavior: 'smooth' }); }}>Packs &amp; Pricing</a>
-            <a href="#supply" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('supply')?.scrollIntoView({ behavior: 'smooth' }); }}>Bulk supply</a>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact</a>
+            <a href="/story" onClick={() => setMobileOpen(false)}>Our story</a>
+            <a href="/catalogue" onClick={() => setMobileOpen(false)}>What we carry</a>
+            <a href="/packs-pricing" onClick={() => setMobileOpen(false)}>Packs &amp; Pricing</a>
+            <a href="/bulk-supply" onClick={() => setMobileOpen(false)}>Bulk supply</a>
+            <a href="/contact" onClick={() => setMobileOpen(false)}>Contact</a>
             <a className="main-nav__mobile-cta" href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello CHI-ZARAM, I would like to place an order. Please share current product availability and delivery terms.")}`} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
               Order on WhatsApp <ArrowUpRight size={16} />
             </a>
