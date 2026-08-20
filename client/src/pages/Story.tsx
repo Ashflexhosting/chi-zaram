@@ -3,6 +3,7 @@
  * practical product context, and SEO metadata.
  */
 import { ArrowUpRight, Check, Leaf, Sparkles } from "lucide-react";
+import { assetPath } from "@/lib/sitePaths";
 import { Link } from "wouter";
 import SiteLayout from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -24,7 +25,7 @@ export default function Story() {
               <p className="inner-hero__intro">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers.</p>
             </div>
             <div className="inner-hero__visual">
-              <img src="/manus-storage/chi-zaram-gen-hero_3991ab64.jpg" alt="Warm editorial still life representing the CHI-ZARAM product world" />
+              <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="Warm editorial still life representing the CHI-ZARAM product world" />
               <span className="inner-hero__stamp">Rooted<br /><strong>here.</strong></span>
             </div>
           </div>

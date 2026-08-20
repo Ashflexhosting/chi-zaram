@@ -3,6 +3,7 @@
  * brand, and lifestyle imagery with category filtering and interactive lightbox browsing.
  */
 import { ArrowUpRight, ChevronLeft, ChevronRight, Image as ImageIcon, RotateCcw, Share2, X, ZoomIn, ZoomOut } from "lucide-react";
+import { assetPath } from "@/lib/sitePaths";
 import { TouchEvent as ReactTouchEvent, useEffect, useRef, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
@@ -31,8 +32,8 @@ const galleryItems: GalleryItem[] = [
     title: "Flagship Red Palm Oil Bottle & Fresh Palm Fruits",
     category: "Palm Oil",
     caption: "Our signature 1L red palm oil bottle styled alongside fresh palm nuts, representing pure unadulterated quality.",
-    src: "/manus-storage/palmoil-960_3430c348.jpg",
-    mobileSrc: "/manus-storage/palmoil-480_f3103087.jpg",
+    src: assetPath("/manus-storage/palmoil-960_3430c348.jpg"),
+    mobileSrc: assetPath("/manus-storage/palmoil-480_f3103087.jpg"),
     commercial: {
       packSize: "1L retail bottle",
       priceGuide: "Standard rate",
@@ -45,16 +46,16 @@ const galleryItems: GalleryItem[] = [
     title: "Editorial Brand Still Life & Botanicals",
     category: "Brand Story",
     caption: "A warm Harvest Editorial composition capturing botanical elements, warm sunlight, and our core natural philosophy.",
-    src: "/manus-storage/hero-960_46c9d711.jpg",
-    mobileSrc: "/manus-storage/hero-480_085fccc1.jpg",
+    src: assetPath("/manus-storage/hero-960_46c9d711.jpg"),
+    mobileSrc: assetPath("/manus-storage/hero-480_085fccc1.jpg"),
   },
   {
     id: 3,
     title: "Pure Vegetable Oil & Kitchen Staples",
     category: "Vegetable Oil",
     caption: "Crystal-clear vegetable oil bottles and cooking essentials designed for everyday culinary excellence.",
-    src: "/manus-storage/vegetable-960_60063ee3.jpg",
-    mobileSrc: "/manus-storage/vegetable-480_cc52e48e.jpg",
+    src: assetPath("/manus-storage/vegetable-960_60063ee3.jpg"),
+    mobileSrc: assetPath("/manus-storage/vegetable-480_cc52e48e.jpg"),
     commercial: {
       packSize: "Retail bottles or bulk supply",
       priceGuide: "Standard, volume, or preferred rate",
@@ -67,8 +68,8 @@ const galleryItems: GalleryItem[] = [
     title: "Delta State Yellow Garri",
     category: "Yellow Garri",
     caption: "Golden yellow garri sourced from Delta State, styled as a versatile pantry staple for family meals, soaking, and garri eba.",
-    src: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
-    mobileSrc: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
+    src: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"),
+    mobileSrc: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"),
     commercial: {
       packSize: "Retail pouch, family pack, or bulk sack",
       priceGuide: "Product-specific quote",
@@ -81,8 +82,8 @@ const galleryItems: GalleryItem[] = [
     title: "Premium Denim & Tailored Fabrics",
     category: "Fabrics",
     caption: "Durable indigo denim jeans and tailored apparel from our lifestyle collection.",
-    src: "/manus-storage/fabrics-960_7ed6ba51.jpg",
-    mobileSrc: "/manus-storage/fabrics-480_2edf7bc1.jpg",
+    src: assetPath("/manus-storage/fabrics-960_7ed6ba51.jpg"),
+    mobileSrc: assetPath("/manus-storage/fabrics-480_2edf7bc1.jpg"),
     commercial: {
       packSize: "Item-specific sizes and lengths",
       priceGuide: "Product-specific quote",
@@ -95,8 +96,8 @@ const galleryItems: GalleryItem[] = [
     title: "Home Fragrance & Cleaning Essentials",
     category: "Home & Fragrance",
     caption: "Amber glass home care bottles, soy candles, and concentrated oil perfumes for daily living.",
-    src: "/manus-storage/home-960_f88ac88a.jpg",
-    mobileSrc: "/manus-storage/home-480_b710d4e4.jpg",
+    src: assetPath("/manus-storage/home-960_f88ac88a.jpg"),
+    mobileSrc: assetPath("/manus-storage/home-480_b710d4e4.jpg"),
     commercial: {
       packSize: "Product-specific bottles or formats",
       priceGuide: "Product-specific quote",
@@ -109,8 +110,8 @@ const galleryItems: GalleryItem[] = [
     title: "1-Litre Retail Bottle Format",
     category: "Palm Oil",
     caption: "Convenient tamper-evident retail bottle format for family kitchens and household cooking.",
-    src: "/manus-storage/pack-1l-960_b48dd7f7.jpg",
-    mobileSrc: "/manus-storage/pack-1l-480_6a33c6dd.jpg",
+    src: assetPath("/manus-storage/pack-1l-960_b48dd7f7.jpg"),
+    mobileSrc: assetPath("/manus-storage/pack-1l-480_6a33c6dd.jpg"),
     commercial: {
       packSize: "1L retail bottle",
       priceGuide: "Standard rate",
@@ -123,8 +124,8 @@ const galleryItems: GalleryItem[] = [
     title: "3-Litre Family Pack Format",
     category: "Palm Oil",
     caption: "Mid-size family pack offering exceptional value for regular cooking needs.",
-    src: "/manus-storage/pack-3l-960_26cd8620.jpg",
-    mobileSrc: "/manus-storage/pack-3l-480_29e5f033.jpg",
+    src: assetPath("/manus-storage/pack-3l-960_26cd8620.jpg"),
+    mobileSrc: assetPath("/manus-storage/pack-3l-480_29e5f033.jpg"),
     commercial: {
       packSize: "3L family pack",
       priceGuide: "Standard or volume rate",
@@ -137,8 +138,8 @@ const galleryItems: GalleryItem[] = [
     title: "5-Litre Jerrycan Format",
     category: "Palm Oil",
     caption: "Robust 5L jerrycan with secure handle for extended home use and food service caterers.",
-    src: "/manus-storage/pack-5l-960_065d3c96.jpg",
-    mobileSrc: "/manus-storage/pack-5l-480_34c6d045.jpg",
+    src: assetPath("/manus-storage/pack-5l-960_065d3c96.jpg"),
+    mobileSrc: assetPath("/manus-storage/pack-5l-480_34c6d045.jpg"),
     commercial: {
       packSize: "5L value jerrycan",
       priceGuide: "Standard or volume rate",
@@ -151,8 +152,8 @@ const galleryItems: GalleryItem[] = [
     title: "Wholesale Bulk Container & Carton Supply",
     category: "Bulk Supply",
     caption: "Commercial wholesale container and carton packaging built for distributors and resellers.",
-    src: "/manus-storage/pack-bulk-960_02d289c8.jpg",
-    mobileSrc: "/manus-storage/pack-bulk-480_021937f5.jpg",
+    src: assetPath("/manus-storage/pack-bulk-960_02d289c8.jpg"),
+    mobileSrc: assetPath("/manus-storage/pack-bulk-480_021937f5.jpg"),
     commercial: {
       packSize: "Bulk container or wholesale carton",
       priceGuide: "Preferred rate or custom quote",
@@ -262,7 +263,7 @@ export default function Gallery() {
                 onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") openLightbox(index); }}
               >
                 <div className="gallery-card__media">
-                  <img src={item.src} srcSet={`${item.mobileSrc} 480w, ${item.src} 960w`} sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"; }} />
+                  <img src={item.src} srcSet={`${item.mobileSrc} 480w, ${item.src} 960w`} sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={item.title} loading={index < 3 ? "eager" : "lazy"} decoding="async" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"); }} />
                   <div className="gallery-card__overlay">
                     <span className="gallery-card__badge"><ImageIcon size={14} /> View large</span>
                   </div>
@@ -305,7 +306,7 @@ export default function Gallery() {
                       <button type="button" onClick={() => setZoom((value) => Math.min(2.4, Number((value + 0.2).toFixed(1))))} disabled={zoom >= 2.4} aria-label="Zoom in"><ZoomIn size={15} /></button>
                       <button type="button" onClick={() => setZoom(1)} disabled={zoom === 1} aria-label="Reset zoom"><RotateCcw size={14} /></button>
                     </div>
-                    <img className="lightbox-image" src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" style={{ transform: `scale(${zoom})` }} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/manus-storage/hero-960_46c9d711.jpg"; }} />
+                    <img className="lightbox-image" src={activeLightboxItem.src} alt={activeLightboxItem.title} decoding="async" style={{ transform: `scale(${zoom})` }} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = assetPath("/manus-storage/hero-960_46c9d711.jpg"); }} />
                   </div>
                   <button
                     className="lightbox-nav-btn lightbox-next"

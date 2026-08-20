@@ -4,6 +4,7 @@
  * a concise footer enquiry form, social links, and a shared Back to Top affordance across every page.
  */
 import { ArrowUpRight, ChevronUp, Menu, MessageCircle, Music2, Share2, X } from "lucide-react";
+import { assetPath } from "@/lib/sitePaths";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
@@ -60,7 +61,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
       <header className="site-header">
         <div className="container site-header__inner">
           <Link className="brand-lockup" href="/" aria-label="CHI-ZARAM home">
-            <img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" />
+            <img src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" className="brand-lockup__mark" />
             <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
           </Link>
           <nav className={`main-nav page-nav ${mobileOpen ? "main-nav--open" : ""}`} aria-label="Primary navigation">
@@ -82,7 +83,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
         <div className="container site-footer__top">
           <div className="site-footer__identity">
             <Link className="brand-lockup brand-lockup--footer" href="/">
-              <img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" />
+              <img src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" className="brand-lockup__mark" />
               <span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span>
             </Link>
             <div className="footer-tagline">Good things are<br /><em>worth sharing.</em></div>

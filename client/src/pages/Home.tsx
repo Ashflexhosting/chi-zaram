@@ -23,10 +23,10 @@ import {
   X,
 } from "lucide-react";
 import { BackToTop } from "@/components/SiteLayout";
+import { assetPath, siteBase } from "@/lib/sitePaths";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const whatsappNumber = "2348092192180";
-const siteBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const categories = [
   {
@@ -35,7 +35,7 @@ const categories = [
     copy: "Our flagship red palm oil, presented in family and bulk sizes for authentic Nigerian cooking.",
     details: "100% pure, fresh, and natural red palm oil extracted from premium palm fruits. Hygienically processed with no artificial additives or preservatives, rich in natural vitamins A and E.",
     specs: ["Available sizes: 1L, 2L, 3L, 4L, 5L & Bulk Jerrycans", "100% natural red palm oil with rich aroma", "Ideal for soups, stews, and traditional dishes", "Family-size value and bulk supply available"],
-    image: "/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg",
+    image: assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg"),
     className: "category-card category-card--large category-card--palm",
   },
   {
@@ -44,7 +44,7 @@ const categories = [
     copy: "Pure Nigerian vegetable oil, groundnut oil, and pantry staples for healthy daily meals.",
     details: "Premium vegetable and cooking oils filtered for purity and clean taste. Perfect for frying, general cooking, and wholesome family nutrition.",
     specs: ["Available in 1L, 3L, 5L and wholesale cartons", "Pure, natural, and nutrient-rich", "Great for frying, baking, and all cooking", "Affordable price with trusted quality"],
-    image: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg",
+    image: assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg"),
     className: "category-card category-card--cleaning category-card--vegetable",
   },
   {
@@ -53,7 +53,7 @@ const categories = [
     copy: "Golden yellow garri sourced from Delta State for quick family meals, snacks, and everyday pantry value.",
     details: "A clean, bright, and versatile cassava staple with the familiar texture and sunny colour that belongs in every well-stocked Nigerian pantry.",
     specs: ["Retail, family, and bulk formats available on enquiry", "Sourced from Delta State", "Ideal for soaking, garri eba, and pantry use", "Current pricing and delivery confirmed via WhatsApp"],
-    image: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg",
+    image: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"),
     className: "category-card category-card--garri category-card--yellow-garri",
   },
   {
@@ -62,7 +62,7 @@ const categories = [
     copy: "Expertly tailored premium denim jeans and fabrics with durable stitching and lasting comfort.",
     details: "An exclusive collection of blue and black denim jeans designed for timeless style, superior durability, and everyday comfort.",
     specs: ["Premium denim and cotton fabrics", "Expert tailoring with durable stitching", "Modern fit for lasting comfort", "Available in blue and black styles"],
-    image: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg",
+    image: assetPath("/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg"),
     className: "category-card category-card--fabrics category-card--fabric",
   },
   {
@@ -71,25 +71,25 @@ const categories = [
     copy: "Practical home care essentials and concentrated oil perfumes for daily lifestyle needs.",
     details: "Dependable household helpers and long-lasting oil perfumes selected for freshness, quality, and everyday value.",
     specs: ["Home care and cleaning essentials", "Concentrated oil perfumes / fragrances", "Great for personal use and gifting", "Wholesale reselling options available"],
-    image: "/manus-storage/chi-zaram-gen-home_7c839812.jpg",
+    image: assetPath("/manus-storage/chi-zaram-gen-home_7c839812.jpg"),
     className: "category-card category-card--wide category-card--fragrance category-card--home",
   },
 ];
 
 const galleryImages = [
-  { title: "Red Palm Oil", src: "/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg", desc: "Warm, natural product storytelling for the flagship line" },
-      { title: "Vegetable Oil", src: "/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg", desc: "Clean golden pantry styling for everyday meals" },
-  { title: "Delta State Yellow Garri", src: "/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg", desc: "Golden cassava staple sourced from Delta State" },
-    { title: "Fabrics Collection", src: "/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg", desc: "Indigo denim and textured fabric direction" },
-  { title: "Home & Fragrance", src: "/manus-storage/chi-zaram-gen-home_7c839812.jpg", desc: "Warm shelf-life styling for home essentials" },
-  { title: "The CHI-ZARAM World", src: "/manus-storage/chi-zaram-gen-hero_3991ab64.jpg", desc: "The brand's natural, editorial point of view" },
+  { title: "Red Palm Oil", src: assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg"), desc: "Warm, natural product storytelling for the flagship line" },
+      { title: "Vegetable Oil", src: assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg"), desc: "Clean golden pantry styling for everyday meals" },
+  { title: "Delta State Yellow Garri", src: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"), desc: "Golden cassava staple sourced from Delta State" },
+    { title: "Fabrics Collection", src: assetPath("/manus-storage/chi-zaram-gen-fabrics_b7f05a2b.jpg"), desc: "Indigo denim and textured fabric direction" },
+  { title: "Home & Fragrance", src: assetPath("/manus-storage/chi-zaram-gen-home_7c839812.jpg"), desc: "Warm shelf-life styling for home essentials" },
+  { title: "The CHI-ZARAM World", src: assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg"), desc: "The brand's natural, editorial point of view" },
 ];
 
 const packVariants = [
-  { label: "1L", title: "Retail bottle", src: "/manus-storage/chi-zaram-pack-1l_6e672af6.jpg", quantity: "1L retail pack" },
-  { label: "3L", title: "Family pack", src: "/manus-storage/chi-zaram-pack-3l_733459fa.jpg", quantity: "3L family pack" },
-  { label: "5L", title: "Value jerrycan", src: "/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg", quantity: "5L family pack" },
-  { label: "Bulk", title: "Wholesale supply", src: "/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg", quantity: "Bulk jerrycan / carton" },
+  { label: "1L", title: "Retail bottle", src: assetPath("/manus-storage/chi-zaram-pack-1l_6e672af6.jpg"), quantity: "1L retail pack" },
+  { label: "3L", title: "Family pack", src: assetPath("/manus-storage/chi-zaram-pack-3l_733459fa.jpg"), quantity: "3L family pack" },
+  { label: "5L", title: "Value jerrycan", src: assetPath("/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg"), quantity: "5L family pack" },
+  { label: "Bulk", title: "Wholesale supply", src: assetPath("/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg"), quantity: "Bulk jerrycan / carton" },
 ];
 
 function GalleryImage({ src, alt }: { src: string; alt: string }) {
@@ -207,7 +207,7 @@ export default function Home() {
       <header className="site-header">
         <div className="container site-header__inner">
           <a className="brand-lockup" href="#top" aria-label="CHI-ZARAM home">
-            <img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" />
+            <img src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" className="brand-lockup__mark" />
             <span className="brand-lockup__type">
               <strong>CHI-ZARAM</strong>
               <small>Palm Oil &amp; More</small>
@@ -254,7 +254,7 @@ export default function Home() {
             </div>
             <div className="hero-visual">
               <div className="hero-visual__image-wrap">
-                <img src="/manus-storage/chi-zaram-gen-hero_3991ab64.jpg" alt="Red palm oil, palm fruits, and fresh palm leaves arranged on a natural table" />
+                <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="Red palm oil, palm fruits, and fresh palm leaves arranged on a natural table" />
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
@@ -301,13 +301,13 @@ export default function Home() {
             </div>
             <div className="brand-showcase__grid">
               <div className="brand-showcase__card">
-                <img src="/manus-storage/chi-zaram-gen-hero_3991ab64.jpg" alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
+                <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
                 <div className="brand-showcase__tag">Direct Representation</div>
                 <h4>Trusted quality from our hands to yours</h4>
                 <p>We take pride in transparent presentation, consistent pack sizes, and direct customer engagement.</p>
               </div>
               <div className="brand-showcase__card">
-                <img src="/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg" alt="CHI-ZARAM Palm Oil and More roundel" loading="lazy" />
+                <img src={assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg")} alt="CHI-ZARAM Palm Oil and More roundel" loading="lazy" />
                 <div className="brand-showcase__tag">Palm Oil &amp; More</div>
                 <h4>A growing pantry and lifestyle ecosystem</h4>
                 <p>From palm and vegetable oils to groundnut oil, grains, and fabrics — explore our complete range.</p>
@@ -333,7 +333,7 @@ export default function Home() {
                 >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
                   <div className="category-card__overlay" />
-                  <img className="category-card__mark" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" />
+                  <img className="category-card__mark" src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" />
                   <div className="category-card__content"><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">View product details <ArrowUpRight size={16} /></span></div>
                 </button>
               ))}
@@ -347,7 +347,7 @@ export default function Home() {
 
         <section className="palm-section section-pad" id="palm-oil">
           <div className="container palm-section__inner">
-            <div className="palm-section__visual"><img src="/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg" alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
+            <div className="palm-section__visual"><img src={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
             <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our red palm oil is available in 1L, 2L, 3L, 4L, and 5L containers as well as bulk jerrycans. Rich in vitamins A and E with no artificial additives.</p><div className="palm-points"><span><Check size={16} /> 100% pure &amp; natural red palm oil</span><span><Check size={16} /> Multiple pack sizes (1L to 5L &amp; Bulk)</span><span><Check size={16} /> Hygienically processed for soups &amp; stews</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about palm oil pack sizes (1L to 5L and bulk). Please share current pricing and availability.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
           </div>
         </section>
@@ -546,7 +546,7 @@ export default function Home() {
 
       <AccessibilityWidget />
       <BackToTop />
-      <footer className="site-footer"><div className="container site-footer__top"><div className="site-footer__identity"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><div className="footer-socials" aria-label="Social media links"><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={15} /><span>WhatsApp</span></a></div></div><div className="footer-enquiry"><span className="footer-enquiry__eyebrow">Quick enquiry</span><form onSubmit={submitFooterEnquiry}><div className="footer-enquiry__row"><label><span className="sr-only">Your name</span><input required value={footerForm.name} onChange={(event) => setFooterForm((current) => ({ ...current, name: event.target.value }))} placeholder="Your name" autoComplete="name" /></label><label><span className="sr-only">Email address</span><input type="email" value={footerForm.email} onChange={(event) => setFooterForm((current) => ({ ...current, email: event.target.value }))} placeholder="Email (optional)" autoComplete="email" /></label></div><label><span className="sr-only">Your message</span><textarea required value={footerForm.message} onChange={(event) => setFooterForm((current) => ({ ...current, message: event.target.value }))} placeholder="How can we help?" rows={2} /></label><button className="footer-enquiry__submit" type="submit">Send on WhatsApp <ArrowUpRight size={14} /></button></form></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
+      <footer className="site-footer"><div className="container site-footer__top"><div className="site-footer__identity"><a className="brand-lockup brand-lockup--footer" href="#top"><img src={assetPath("/manus-storage/chi-zaram-mark_15d277e5.png")} alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><div className="footer-socials" aria-label="Social media links"><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={15} /><span>WhatsApp</span></a></div></div><div className="footer-enquiry"><span className="footer-enquiry__eyebrow">Quick enquiry</span><form onSubmit={submitFooterEnquiry}><div className="footer-enquiry__row"><label><span className="sr-only">Your name</span><input required value={footerForm.name} onChange={(event) => setFooterForm((current) => ({ ...current, name: event.target.value }))} placeholder="Your name" autoComplete="name" /></label><label><span className="sr-only">Email address</span><input type="email" value={footerForm.email} onChange={(event) => setFooterForm((current) => ({ ...current, email: event.target.value }))} placeholder="Email (optional)" autoComplete="email" /></label></div><label><span className="sr-only">Your message</span><textarea required value={footerForm.message} onChange={(event) => setFooterForm((current) => ({ ...current, message: event.target.value }))} placeholder="How can we help?" rows={2} /></label><button className="footer-enquiry__submit" type="submit">Send on WhatsApp <ArrowUpRight size={14} /></button></form></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
       <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
     </div>

@@ -3,6 +3,7 @@
  * WhatsApp enquiry form, and SEO metadata.
  */
 import { ArrowUpRight, Check, Truck } from "lucide-react";
+import { assetPath } from "@/lib/sitePaths";
 import { FormEvent, useState } from "react";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
@@ -33,7 +34,7 @@ export default function BulkSupply() {
               <p className="inner-hero__intro">Buying for resale, a food business, a larger household, or a growing distribution route? Tell us what you need and we’ll confirm the next move.</p>
             </div>
             <div className="inner-hero__visual">
-              <img src="/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg" alt="Bulk red palm oil jerrycans ready for supply" />
+              <img src={assetPath("/manus-storage/chi-zaram-pack-bulk_ffbd7e5f.jpg")} alt="Bulk red palm oil jerrycans ready for supply" />
               <span className="inner-hero__stamp">Direct<br /><strong>supply.</strong></span>
             </div>
           </div>

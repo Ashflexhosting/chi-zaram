@@ -3,6 +3,7 @@
  * commercial guidance, and SEO metadata.
  */
 import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
 import { packVariants, pricingTiers } from "@/lib/commercialData";
@@ -24,7 +25,7 @@ export default function PacksPricing() {
               <p className="inner-hero__intro">Choose the pack format and supply level that fits your need. Final rates are confirmed directly because availability, location, and logistics can affect delivered pricing.</p>
             </div>
             <div className="inner-hero__visual">
-              <img src="/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg" alt="CHI-ZARAM five litre palm oil value pack" />
+              <img src={assetPath("/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg")} alt="CHI-ZARAM five litre palm oil value pack" />
               <span className="inner-hero__stamp">Pack<br /><strong>your way.</strong></span>
             </div>
           </div>
