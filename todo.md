@@ -88,3 +88,5 @@
 - [x] Verify the sticky header and new logo on Manus and GitHub Pages, then save a checkpoint.
 - [ ] Redesign the homepage “A brand with room to grow” section.
 - [ ] Verify the redesigned brand-story section on desktop and mobile, then save a checkpoint.
+- [x] Improve favicon visibility with a clearer compact emblem variant.
+- [x] Verify favicon metadata and hosting paths, then save a checkpoint.
