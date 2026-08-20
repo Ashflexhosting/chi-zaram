@@ -733,3 +733,29 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 @media (max-width: 900px) {
   .catalogue-trust__grid { grid-template-columns: 1fr; }
 }
+
+/* Brand visibility, navigation control, and review-ready trust styling */
+.brand-lockup__mark { width: 46px; height: 46px; }
+.brand-lockup__type strong { font-size: 17px; }
+.brand-lockup__type small { font-size: 9px; }
+.main-nav a, .page-nav a { font-size: 13px; }
+.header-cta { font-size: 12px; }
+.back-to-top { position: fixed; z-index: 35; right: 24px; bottom: 78px; display: inline-flex; align-items: center; gap: 6px; padding: 10px 12px; border: 1px solid rgba(255,250,243,0.2); border-radius: 999px; background: #292a25; color: #fffaf3; box-shadow: 0 12px 28px rgba(41,42,37,0.18); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity 180ms ease-out, transform 180ms var(--ease-out), background 180ms ease-out; }
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { background: #435847; }
+.testimonial-placeholder { background: #e9dfd2; }
+.testimonial-placeholder__card { display: grid; grid-template-columns: auto 1fr auto; gap: 23px; align-items: center; max-width: 920px; margin: 0 auto; padding: 29px 31px; border: 1px solid #d3c3ae; background: #fffaf3; box-shadow: 0 14px 30px rgba(41,42,37,0.06); }
+.testimonial-placeholder__mark { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 50%; background: #9f2f2a; color: #e0b45f; font-size: 22px; }
+.testimonial-placeholder__label { color: #9f2f2a; font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.testimonial-placeholder__card h3 { margin: 6px 0 5px; color: #292a25; font-family: var(--serif); font-size: 27px; font-weight: 400; }
+.testimonial-placeholder__card p { max-width: 590px; margin: 0; color: #746f64; font-size: 14px; line-height: 1.6; }
+@media (max-width: 760px) {
+  .brand-lockup__mark { width: 40px; height: 40px; }
+  .brand-lockup__type strong { font-size: 15px; }
+  .main-nav a, .page-nav a { font-size: 14px; }
+  .back-to-top { right: 14px; bottom: 68px; padding: 10px; }
+  .back-to-top span { display: none; }
+  .testimonial-placeholder__card { grid-template-columns: auto 1fr; gap: 15px; padding: 22px 18px; }
+  .testimonial-placeholder__card .button { grid-column: 1 / -1; width: 100%; }
+  .testimonial-placeholder__card h3 { font-size: 24px; }
+}

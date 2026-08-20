@@ -19,6 +19,10 @@
 - [x] Add a comprehensive FAQ section to the Contact page covering delivery areas, MOQ, and payments.
 - [x] Implement page-specific SEO metadata, titles, canonical links, and social preview images.
 - [x] Test and checkpoint the FAQ and SEO metadata update.
+- [x] Increase the logo and multi-page menu text sizes.
+- [x] Add a review-ready testimonial placeholder section to the homepage.
+- [x] Implement a sticky Back to Top control across the multi-page site.
+- [x] Test responsive behavior and save a checkpoint.
 - [x] Generate and integrate 1L, 3L, 5L, and bulk pack visuals in product modals.
 - [x] Add lazy loading and subtle image-loading transitions to the visual gallery.
 - [x] Apply the generated brand pattern to pricing and footer sections.

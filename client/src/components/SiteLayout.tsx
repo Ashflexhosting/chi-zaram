@@ -1,10 +1,11 @@
 /**
  * Harvest Editorial shared shell: warm cream space, Palm Crimson accents,
- * deep leaf green, editorial serif headlines, and WhatsApp-first conversion.
+ * deep leaf green, editorial serif headlines, WhatsApp-first conversion,
+ * and a shared Back to Top affordance across every page.
  */
-import { ArrowUpRight, Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowUpRight, ChevronUp, Instagram, Menu, MessageCircle, X } from "lucide-react";
 import { Link } from "wouter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 const whatsappNumber = "2348092192180";
@@ -14,8 +15,31 @@ export function whatsappHref(message = defaultMessage) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+export function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => setVisible(window.scrollY > 480);
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
+
+  return (
+    <button className={`back-to-top ${visible ? "is-visible" : ""}`} type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
+      <ChevronUp size={16} />
+      <span>Top</span>
+    </button>
+  );
+}
+
 export default function SiteLayout({ children, activePath }: { children: ReactNode; activePath?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [activePath]);
+
   return (
     <div className="site-shell page-shell">
       <div className="utility-bar">
@@ -42,6 +66,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
         </div>
       </header>
       {children}
+      <BackToTop />
       <footer className="site-footer page-footer">
         <div className="container site-footer__top">
           <Link className="brand-lockup brand-lockup--footer" href="/">

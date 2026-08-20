@@ -21,6 +21,7 @@ import {
   Truck,
   X,
 } from "lucide-react";
+import { BackToTop } from "@/components/SiteLayout";
 
 const whatsappNumber = "2348092192180";
 
@@ -454,6 +455,21 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="testimonial-placeholder section-pad" aria-labelledby="testimonial-title">
+          <div className="container">
+            <div className="section-heading section-heading--center">
+              <p className="eyebrow">Customer voices</p>
+              <h2 id="testimonial-title">Real experiences,<br /><em>when they’re ready to share.</em></h2>
+              <p>This space is reserved for verified feedback from CHI-ZARAM customers. We will only publish names, comments, and ratings with permission.</p>
+            </div>
+            <div className="testimonial-placeholder__card">
+              <div className="testimonial-placeholder__mark">✳</div>
+              <div><span className="testimonial-placeholder__label">Verified feedback coming soon</span><h3>A better buying experience starts with listening.</h3><p>Have you ordered from CHI-ZARAM? Share your experience with our team and, with your permission, it can help future customers buy with confidence.</p></div>
+              <button className="button button--crimson" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to share feedback about my recent order. Please let me know how to submit it.")}>Share feedback <ArrowUpRight size={16} /></button>
+            </div>
+          </div>
+        </section>
+
         <section className="closing-section" id="contact">
           <div className="closing-section__leaf closing-section__leaf--one" aria-hidden="true"><Leaf size={170} /></div><div className="closing-section__leaf closing-section__leaf--two" aria-hidden="true"><Leaf size={95} /></div>
           <div className="container closing-section__inner"><p className="eyebrow eyebrow--gold">Let’s make the next order easy</p><h2>Good things are<br /><em>worth sharing.</em></h2><p>Have a question, a restock in mind, or a larger supply need? We’re one message away.</p><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to make an enquiry. Please assist me with current products, availability and delivery options.")}>Talk to CHI-ZARAM <ArrowUpRight size={17} /></button></div>
@@ -508,6 +524,7 @@ export default function Home() {
         </div>
       )}
 
+      <BackToTop />
       <footer className="site-footer"><div className="container site-footer__top"><a className="brand-lockup brand-lockup--footer" href="#top"><img src="/manus-storage/chi-zaram-mark_15d277e5.png" alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div><div className="footer-contact"><span>Start a conversation</span><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer"><MessageCircle size={15} /> 0809 219 2180</a><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer"><Instagram size={15} /> @ogonwibe</a></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
       <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
