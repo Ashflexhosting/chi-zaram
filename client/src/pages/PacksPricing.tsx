@@ -47,7 +47,10 @@ export default function PacksPricing() {
                     <img src={pack.src} alt={`${pack.label} ${pack.title}`} loading="lazy" />
                   </div>
                   <div className="pack-variant-page-card__body">
-                    <span>{pack.label}</span>
+                    <div className="pack-variant-header">
+                      <span>{pack.label}</span>
+                      <strong className="pack-variant-price">{pack.exactPrice}</strong>
+                    </div>
                     <h3>{pack.title}</h3>
                     <p>{pack.copy}</p>
                     <a className="text-link" href={whatsappHref(`Hello CHI-ZARAM, I would like to enquire about the ${pack.label} ${pack.title} red palm oil pack. Please share current pricing and availability.`)} target="_blank" rel="noreferrer">
@@ -91,9 +94,13 @@ export default function PacksPricing() {
                 </tbody>
               </table>
             </div>
+            <div className="pricing-availability-banner">
+              <strong>(Wholesale &amp; Retail Available)</strong>
+              <span>Direct delivery &amp; depot pickup options available for all pack volumes.</span>
+            </div>
             <div className="pricing-page-actions">
-              <span><Check size={16} /> Available for red palm oil and vegetable oil</span>
-              <a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM Wholesale Desk, I would like the current red palm oil and vegetable oil rate card. Please share pack sizes, MOQ, and delivery options.")} target="_blank" rel="noreferrer">
+              <span><Check size={16} /> Wholesale &amp; Retail Available</span>
+              <a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM Wholesale Desk, I would like the current red palm oil and vegetable oil rate card (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Please share MOQ and delivery options.")} target="_blank" rel="noreferrer">
                 <MessageCircle size={16} /> Request the current rate card
               </a>
             </div>

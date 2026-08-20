@@ -15,9 +15,10 @@ const featuredPalmOil = {
   image: assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg"),
   details: ["3L family-size bottle", "Pure, fresh, and naturally rich in flavour", "Suitable for household kitchens and small food businesses"],
   pricing: [
-    { tier: "Retail", volume: "1–4 units", rate: "Standard rate" },
-    { tier: "Reseller", volume: "5–19 units", rate: "Volume rate" },
-    { tier: "Wholesale", volume: "20+ units", rate: "Preferred / custom quote" },
+    { tier: "1 Liter", volume: "Retail bottle", rate: "₦2,500" },
+    { tier: "3 Liters", volume: "Family pack", rate: "₦8,500" },
+    { tier: "5 Liters", volume: "Value jerrycan", rate: "₦12,500" },
+    { tier: "25 Liters", volume: "Wholesale / bulk", rate: "₦60,000" },
   ],
 };
 
@@ -65,11 +66,11 @@ export default function Catalogue() {
                 <h2>{featuredPalmOil.title}</h2>
                 <p>{featuredPalmOil.copy}</p>
                 <ul className="catalogue-feature__details">{featuredPalmOil.details.map((detail) => <li key={detail}><Check size={14} />{detail}</li>)}</ul>
-                <div className="catalogue-feature__pricing" aria-label="3L palm oil pricing guide">
-                  <div className="catalogue-feature__pricing-head"><span>Pricing guide</span><small>Current price confirmed on enquiry</small></div>
+                <div className="catalogue-feature__pricing" aria-label="Palm oil exact pricing guide">
+                  <div className="catalogue-feature__pricing-head"><span>Exact pack prices</span><small>Wholesale &amp; Retail Available</small></div>
                   <div className="catalogue-feature__pricing-grid">{featuredPalmOil.pricing.map((tier) => <div key={tier.tier}><strong>{tier.tier}</strong><span>{tier.volume}</span><em>{tier.rate}</em></div>)}</div>
                 </div>
-                <div className="catalogue-product__actions"><a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM, I would like to enquire about the 3L Red Palm Oil Family Pack. Please share the current retail, reseller, and wholesale pricing, availability, and delivery options.")} target="_blank" rel="noreferrer"><MessageCircle size={16} /> Enquire about 3L Palm Oil</a><Link className="text-link" href="/packs-pricing">See all pack sizes <ArrowUpRight size={16} /></Link></div>
+                <div className="catalogue-product__actions"><a className="button button--crimson" href={whatsappHref("Hello CHI-ZARAM, I would like to order red palm oil (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000). Please share availability and delivery options.")} target="_blank" rel="noreferrer"><MessageCircle size={16} /> Enquire about Palm Oil Pricing</a><Link className="text-link" href="/packs-pricing">See all pack sizes <ArrowUpRight size={16} /></Link></div>
               </div>
             </article>
             <div className="catalogue-list">

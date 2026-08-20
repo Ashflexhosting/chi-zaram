@@ -1751,3 +1751,40 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
     flex: 1;
   }
 }
+
+/* Packs & Pricing exact pricing badges and availability banner */
+.pack-variant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pack-variant-price {
+  color: #9f2f2a;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.pricing-availability-banner {
+  margin: 28px 0 0;
+  padding: 18px 24px;
+  background: rgba(159,47,42,0.08);
+  border: 1px dashed rgba(159,47,42,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+.pricing-availability-banner strong {
+  color: #9f2f2a;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pricing-availability-banner span {
+  color: #746f64;
+  font-size: 12px;
+}

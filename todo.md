@@ -152,3 +152,6 @@
 - [x] Add a prominent Call Now button to the Contact page enquiry card.
 - [x] Add a tap-to-call phone icon to the mobile navigation menu.
 - [x] Verify both call actions on desktop/mobile, then save a checkpoint.
+- [x] Update shared commercial pricing data with exact pack rates (1L ₦2,500, 3L ₦8,500, 5L ₦12,500, 25L ₦60,000).
+- [x] Update Catalogue and Packs & Pricing pages to display exact pricing.
+- [x] Verify exact pricing display and WhatsApp pre-filled messages on desktop/mobile, then save a checkpoint.
