@@ -147,3 +147,5 @@
 - [x] Verify phone links and hours on desktop/mobile, then save a checkpoint.
 - [x] Add a timezone-aware Open Now/Closed badge beside operating hours.
 - [x] Verify the live status badge in the footer and Contact page, then save a checkpoint.
+- [x] Link Contact page “Call the sales line” directly to 08037365227.
+- [x] Verify the corrected sales-line link and save a checkpoint.

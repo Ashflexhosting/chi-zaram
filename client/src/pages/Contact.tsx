@@ -77,7 +77,7 @@ export default function Contact() {
                   <span><small>WhatsApp ordering</small><strong>0803 736 5227</strong></span>
                   <ArrowUpRight size={16} />
                 </a>
-                <a href="tel:+2348037365227">
+                <a href="tel:08037365227" aria-label="Call the CHI-ZARAM sales line at 0803 736 5227">
                   <Phone size={19} />
                   <span><small>Phone</small><strong>Call the sales line</strong></span>
                   <ArrowUpRight size={16} />
