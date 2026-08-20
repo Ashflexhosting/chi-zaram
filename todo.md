@@ -76,5 +76,7 @@
 - [x] Add social media links and verify footer submission behavior on desktop and mobile.
 - [x] Configure GitHub Pages deployment for Ashflexhosting/chi-zaram.
 - [x] Push the Pages workflow and verify the resulting deployment status and URL.
-- [ ] Replace the current logo with the supplied chizaramlogo.png and optimize it for checkpoint storage.
-- [ ] Update GitHub Pages, verify the new logo, and retry the project checkpoint.
+- [x] Replace the current logo with the supplied chizaramlogo.png and optimize it for checkpoint storage.
+- [x] Update GitHub Pages, verify the new logo, and retry the project checkpoint.
+- [ ] Upload the optimized supplied logo to persistent web storage for Manus hosting.
+- [ ] Redeploy and verify the logo on Manus and GitHub Pages, then save a final checkpoint.
