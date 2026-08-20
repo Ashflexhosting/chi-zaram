@@ -70,3 +70,5 @@
 - [x] Add and verify a View all products button linking to the full catalogue.
 - [x] Remove numeric markers from homepage product cards.
 - [x] Add category colour accents and verify responsive readability.
+- [ ] Push the current project to Ashflexhosting/chi-zaram.
+- [ ] Verify the pushed branch and commit on GitHub.
