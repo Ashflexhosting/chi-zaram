@@ -301,7 +301,7 @@ export default function Home() {
         <section className="portfolio-section section-pad" id="portfolio">
           <div className="container">
             <div className="section-heading section-heading--split">
-              <div><p className="eyebrow">What we carry</p><h2>A little more of<br /><em>the good stuff.</em></h2></div>
+              <div><p className="eyebrow">What we carry</p><h2 className="portfolio-section__title"><span>A little more of</span><em>the good stuff.</em></h2></div>
               <p className="section-heading__aside">From the kitchen to the home, from personal style to thoughtful gifting — we’re building a considered range of products for real, everyday life.</p>
             </div>
             <div className="category-grid">

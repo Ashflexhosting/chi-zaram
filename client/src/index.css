@@ -299,6 +299,7 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .story-section__side-note em { color: #435847; }
 
 .portfolio-section { background: #f4efe6; }
+.portfolio-section__title span, .portfolio-section__title em { display: block; }
 .section-heading--split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: end; margin-bottom: 51px; }
 .section-heading__aside { max-width: 360px; margin: 0 0 4px auto; color: #746f64; font-size: 15px; line-height: 1.75; }
 .category-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 155px; gap: 18px; }
