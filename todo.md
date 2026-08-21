@@ -226,3 +226,9 @@
 - [x] Verify footer rendering across desktop and mobile, with type checking and production build.
 - [ ] Save a checkpoint for the footer logo update.
 
+
+- [x] Identify the remaining gap as transparent canvas inside the horizontal logo asset rather than only outer plate padding.
+- [x] Constrain the footer logo artwork box to its visible wordmark width at desktop, medium, and mobile breakpoints.
+- [x] Verify the corrected footer plate on full-page desktop and mobile previews.
+- [ ] Save a checkpoint for the corrected footer logo artwork spacing.
+
