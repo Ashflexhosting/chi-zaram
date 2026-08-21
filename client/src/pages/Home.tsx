@@ -449,7 +449,7 @@ export default function Home() {
                   whatsapp: "Hello CHI-ZARAM, I'm planning to make native palm oil rice! Please share pricing and availability for your 3L and 5L palm oil packs."
                 }
               ].map((recipe, idx) => (
-                <article key={idx} className="cooking-card">
+                <article key={idx} className={`cooking-card cooking-card--${idx + 1}`}>
                   <div className="cooking-card__image">
                     <img src={recipe.image} alt={recipe.title} loading="lazy" />
                     <span className="cooking-card__tag">{recipe.tag}</span>
