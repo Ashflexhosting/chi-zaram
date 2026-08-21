@@ -8,7 +8,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Calculator,
   Check,
   ChevronDown,
   Music2,
@@ -364,20 +363,34 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="hero-section hero-section--editorial">
+        <section className="hero-section">
           <div className="hero-section__grain" aria-hidden="true" />
           <div className="container hero-section__inner">
-            <div className="hero-copy hero-copy--editorial">
-              <div className="hero-badge-group">
-                <span className="hero-badge">Est. Premium Harvest</span>
-                <span className="hero-badge hero-badge--sub">Delta State Sourcing</span>
-              </div>
-              <h1>Pure goodness,<br /><em>crafted at the source.</em></h1>
-              <p className="hero-copy__intro">Experience CHI-ZARAM’s flagship 5L palm oil and certified pantry selection. Uncompromising purity, transparent wholesale pricing, and doorstep convenience.</p>
+            <div className="hero-copy">
+              <p className="eyebrow hero-copy__eyebrow"><span className="eyebrow__line" /> Pure goodness from nature</p>
+              <h1>Good things<br /><em>begin at the source.</em></h1>
+              <p className="hero-copy__intro">Discover CHI-ZARAM Palm Oil and a growing range of everyday consumer products. Made to be chosen with confidence, ordered with ease, and shared generously.</p>
               <div className="hero-actions">
-                <a className="button button--crimson" href="#palm-oil">Explore Products <ArrowUpRight size={17} /></a>
+                <a className="button button--crimson" href="#palm-oil">Shop Palm Oil <ArrowUpRight size={17} /></a>
+                <a className="button button--quiet" href="#supply">Buy in bulk <MoveRight size={18} /></a>
+              </div>
+              <div className="hero-note">
+                <span className="hero-note__dot" />
+                <span>Retail &amp; bulk supply across everyday needs</span>
+              </div>
+            </div>
+            <div className="hero-visual">
+              <div className="hero-visual__image-wrap">
+                <picture>
+                  <source media="(min-width: 1280px)" srcSet={assetPath("/manus-storage/palm-oil-hero_b2969ba2.jpg")} />
+                  <img src={assetPath("/manus-storage/palm-oil-hero_b2969ba2.jpg")} alt="CHI-ZARAM 5-litre pure red palm oil jerrycan styled with fresh palm fruits and palm fronds" fetchPriority="high" decoding="async" />
+                </picture>
+                <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
+              </div>
+              <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
+              <div className="hero-visual__cta-overlay">
                 <a
-                  className="button button--gold"
+                  className="button button--gold button--sm"
                   href={`${siteBase}/packs-pricing#calculator`}
                   onClick={(e) => {
                     if (window.location.pathname.replace(/\/$/, "") === routePath("/packs-pricing").replace(/\/$/, "")) {
@@ -389,26 +402,9 @@ export default function Home() {
                     }
                   }}
                 >
-                  Price Estimator <Calculator size={17} />
+                  View Pricing &amp; Calculator <ArrowUpRight size={15} />
                 </a>
               </div>
-              <div className="hero-highlights">
-                <div><strong>100%</strong><small>Pure Red Oil</small></div>
-                <div className="hero-highlights__divider" />
-                <div><strong>₦2,500</strong><small>Starting Retail</small></div>
-                <div className="hero-highlights__divider" />
-                <div><strong>Isolo</strong><small>Lagos Depot</small></div>
-              </div>
-            </div>
-            <div className="hero-visual hero-visual--editorial">
-              <div className="hero-visual__image-wrap">
-                <picture>
-                  <source media="(min-width: 1280px)" srcSet={assetPath("/manus-storage/palm-oil-hero_b2969ba2.jpg")} />
-                  <img src={assetPath("/manus-storage/palm-oil-hero_b2969ba2.jpg")} alt="CHI-ZARAM 5-litre pure red palm oil jerrycan styled with fresh palm fruits and palm fronds" fetchPriority="high" decoding="async" />
-                </picture>
-                <div className="hero-visual__stamp"><span>CZ</span><small>Flagship<br />5L Jerrycan</small></div>
-              </div>
-              <div className="hero-visual__caption"><span>Harvested with care</span><span className="caption-rule" /><span>Delivered fresh</span></div>
               <div className="hero-visual__leaf" aria-hidden="true"><Leaf size={112} strokeWidth={0.65} /></div>
             </div>
           </div>
