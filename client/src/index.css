@@ -2319,3 +2319,19 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   html { scroll-behavior: auto; }
   .floating-whatsapp-widget { animation: none; }
 }
+
+/* Redesigned Harvest Editorial Home Hero */
+.hero-section--editorial { padding: 92px 0 76px; }
+.hero-badge-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.hero-badge { display: inline-flex; align-items: center; padding: 5px 12px; background: rgba(159,47,42,0.1); border: 1px solid rgba(159,47,42,0.22); color: #9f2f2a; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px; }
+.hero-badge--sub { background: rgba(201,154,74,0.12); border-color: rgba(201,154,74,0.3); color: #8a6422; }
+.hero-highlights { display: flex; align-items: center; gap: 24px; margin-top: 38px; padding-top: 24px; border-top: 1px solid #ded2c0; }
+.hero-highlights strong { display: block; font-family: var(--serif); font-size: 26px; font-weight: 400; color: #9f2f2a; line-height: 1; }
+.hero-highlights small { display: block; margin-top: 4px; font-size: 11px; font-weight: 700; color: #746f64; letter-spacing: 0.05em; text-transform: uppercase; }
+.hero-highlights__divider { width: 1px; height: 32px; background: #ded2c0; }
+@media (max-width: 760px) {
+  .hero-section--editorial { padding: 54px 0 50px; }
+  .hero-highlights { gap: 14px; margin-top: 26px; padding-top: 18px; }
+  .hero-highlights strong { font-size: 21px; }
+  .hero-highlights small { font-size: 9px; }
+}

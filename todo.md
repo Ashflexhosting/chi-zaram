@@ -249,3 +249,8 @@
 - [x] Confirm GitHub Actions build and Deploy to GitHub Pages completed successfully for commit eed27f7.
 - [x] Confirm the published Pages URL: https://ashflexhosting.github.io/chi-zaram/.
 
+
+- [x] Redesign the Home page hero into a refined Harvest Editorial opening with curated badges, clear product value metrics, and dual CTAs.
+- [x] Verify type checking, production build, and desktop/mobile responsiveness for the redesigned hero.
+- [ ] Save a checkpoint for the redesigned Home hero.
+
