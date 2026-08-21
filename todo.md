@@ -261,3 +261,9 @@
 - [x] Verify texture subtlety, CTA contrast, type checking, production build, and desktop/mobile Story layouts.
 - [ ] Save a checkpoint for the Story section enhancement.
 
+
+- [x] Add Nwibe Ogochukwu Ekene to the Founder & Principal quote card.
+- [x] Verify the founder name remains readable on desktop and mobile Story layouts.
+- [x] Verify type checking and production build.
+- [ ] Save a checkpoint for the founder attribution update.
+

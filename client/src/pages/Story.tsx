@@ -63,7 +63,7 @@ export default function Story() {
               <h2>There is a face behind <em>every good order.</em></h2>
               <p className="body-copy">From family bottles to larger supply formats, CHI-ZARAM is built around real conversations with the people who cook, sell, share, and grow with our products. This is the human side of a brand made to stay close to everyday life.</p>
               <div className="story-founder-card">
-                <div className="story-founder-card__role">Founder &amp; Principal</div>
+                <div className="story-founder-card__role">Founder &amp; Principal — Nwibe Ogochukwu Ekene</div>
                 <h3>Led by commitment to quality and community trust.</h3>
                 <p>“We started CHI-ZARAM to ensure that every household and business looking for pure palm oil and everyday essentials has a direct, reliable partner they can trust.”</p>
               </div>
