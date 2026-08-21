@@ -293,3 +293,8 @@ The final desktop preview at 1280px shows the palm-oil hero image fully unobstru
 ## Cooking inspiration mobile refinement — verification
 
 At 375px, the cooking inspiration cards now stack into a single readable column with reduced body padding, a tighter image ratio, comfortable text spacing, and full-width WhatsApp actions suitable for touch interaction. At 1280px, the three-card editorial grid remains balanced with equal visual hierarchy and consistent card heights. Type checking and the production build pass; existing non-blocking asset-resolution and bundle-size warnings remain.
+
+
+## Dark recipe cards & imagery update — verification
+
+The cooking inspiration section has been restyled with a deep charcoal background (`#292a25`) and warm light card surfaces (`#353630`) featuring light headings (`#fffaf3`), muted descriptions (`#b5ada1`), and gold metadata highlights (`#e0b45f`). All three recipe images have been replaced with fresh editorial food photography (authentic Nigerian stew, crispy fried yam and plantain, and traditional Delta palm oil rice) generated and integrated via persistent webdev storage assets. Responsive layouts and touch actions remain fully optimized.

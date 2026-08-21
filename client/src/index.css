@@ -177,19 +177,24 @@ button { cursor: pointer; }
 .brand-strip { background: #435847; color: #fffaf3; }
 .brand-strip__inner { min-height: 88px; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); align-items: center; }
 
-.cooking-inspiration { background: #f4efe6; }
+.cooking-inspiration { background: #292a25; color: #fffaf3; }
+.cooking-inspiration .section-heading h2 { color: #fffaf3; }
+.cooking-inspiration .section-heading h2 em { color: #e0b45f; }
+.cooking-inspiration .section-heading .eyebrow { color: #d3c3ae; }
+.cooking-inspiration .section-heading__aside { color: #b5ada1; }
 .cooking-inspiration-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-.cooking-card { background: #fffaf3; border: 1px solid #ded2c0; border-top: 3px solid #c99a4a; display: flex; flex-direction: column; overflow: hidden; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-.cooking-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(41,42,37,0.08); }
-.cooking-card__image { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #e9dfd2; }
+.cooking-card { background: #353630; border: 1px solid rgba(255,250,243,0.12); border-top: 3px solid #c99a4a; display: flex; flex-direction: column; overflow: hidden; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+.cooking-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.35); }
+.cooking-card__image { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #22231f; }
 .cooking-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
 .cooking-card:hover .cooking-card__image img { transform: scale(1.04); }
-.cooking-card__tag { position: absolute; top: 14px; left: 14px; z-index: 2; padding: 5px 10px; background: rgba(41,42,37,0.85); backdrop-filter: blur(4px); color: #fffaf3; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.cooking-card__tag { position: absolute; top: 14px; left: 14px; z-index: 2; padding: 5px 10px; background: rgba(43,68,53,0.92); backdrop-filter: blur(4px); color: #fffaf3; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
 .cooking-card__body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
-.cooking-card__meta { display: flex; align-items: center; gap: 8px; color: #9f2f2a; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
-.cooking-card h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 23px; font-weight: 400; color: #292a25; letter-spacing: -0.03em; }
-.cooking-card p { margin: 0 0 22px; color: #746f64; font-size: 14px; line-height: 1.65; flex: 1; }
-.cooking-card .button { align-self: flex-start; }
+.cooking-card__meta { display: flex; align-items: center; gap: 8px; color: #e0b45f; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+.cooking-card h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 23px; font-weight: 400; color: #fffaf3; letter-spacing: -0.03em; }
+.cooking-card p { margin: 0 0 22px; color: #b5ada1; font-size: 14px; line-height: 1.65; flex: 1; }
+.cooking-card .button { align-self: flex-start; background: rgba(255,250,243,0.08); border-color: rgba(255,250,243,0.2); color: #fffaf3; }
+.cooking-card .button:hover { background: #c99a4a; color: #292a25; border-color: #c99a4a; }
 
 @media (max-width: 980px) {
   .cooking-inspiration-grid { grid-template-columns: 1fr; gap: 20px; }

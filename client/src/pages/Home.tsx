@@ -429,7 +429,7 @@ export default function Home() {
                   desc: "A rich base of fresh tomatoes, peppers, and onions simmered to perfection in pure CHI-ZARAM red palm oil for unmatched aroma and depth.",
                   time: "45 mins",
                   level: "Medium",
-                  image: assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg"),
+                  image: assetPath("/manus-storage/recipe-stew_72a1b9fc_d55128ee.jpg"),
                   whatsapp: "Hello CHI-ZARAM, I'm inspired to cook authentic Nigerian stew! Please let me know the best palm oil pack size to order for family cooking."
                 },
                 {
@@ -438,7 +438,7 @@ export default function Home() {
                   desc: "Golden fried yam slices and ripe plantains cooked clean and crispy using pure CHI-ZARAM vegetable and groundnut oil.",
                   time: "25 mins",
                   level: "Easy",
-                  image: assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg"),
+                  image: assetPath("/manus-storage/recipe-yam_81c2d8fe_d8358d1a.jpg"),
                   whatsapp: "Hello CHI-ZARAM, I'd love to order vegetable oil for crispy frying and daily cooking. Please share your current pack options."
                 },
                 {
@@ -447,7 +447,7 @@ export default function Home() {
                   desc: "A fragrant native delicacy featuring seasoned stockfish, crayfish, smoked fish, and rich unadulterated palm oil from Delta State.",
                   time: "55 mins",
                   level: "Special",
-                  image: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"),
+                  image: assetPath("/manus-storage/recipe-rice_32e4f7ac_5155926e.jpg"),
                   whatsapp: "Hello CHI-ZARAM, I'm planning to make native palm oil rice! Please share pricing and availability for your 3L and 5L palm oil packs."
                 }
               ].map((recipe, idx) => (
