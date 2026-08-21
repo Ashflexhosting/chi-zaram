@@ -2319,3 +2319,15 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   html { scroll-behavior: auto; }
   .floating-whatsapp-widget { animation: none; }
 }
+
+/* Dark theme for Our Story "What we believe" section */
+.story-page-section--dark { background: #222d25; color: #fffaf3; }
+.story-page-section--dark .section-kicker { color: #e0b45f; }
+.story-page-section--dark .section-kicker__number { color: #c99a4a; background: rgba(201,154,74,0.14); }
+.story-page-section--dark .eyebrow { color: #e0b45f; }
+.story-page-section--dark h2 { color: #fffaf3; }
+.story-page-section--dark h2 em { color: #e0b45f; }
+.story-page-section--dark .body-copy { color: #d3c3ae; }
+.story-page-section--dark .story-page-callout { background: rgba(255,255,255,0.06); border-left-color: #c99a4a; color: #fffaf3; }
+.story-page-section--dark .story-page-callout strong { color: #fffaf3; }
+.story-page-section--dark .story-page-callout svg { color: #c99a4a; }

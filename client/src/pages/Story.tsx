@@ -31,7 +31,7 @@ export default function Story() {
           </div>
         </section>
 
-        <section className="story-page-section section-pad">
+        <section className="story-page-section story-page-section--dark section-pad">
           <div className="container story-page-grid">
             <div className="section-kicker"><span className="section-kicker__number">01</span><span>What we believe</span></div>
             <div className="story-page-copy">
