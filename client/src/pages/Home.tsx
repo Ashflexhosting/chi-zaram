@@ -374,21 +374,7 @@ export default function Home() {
                 <a className="button button--crimson" href="#palm-oil">Shop Palm Oil <ArrowUpRight size={17} /></a>
                 <a className="button button--quiet" href="#supply">Buy in bulk <MoveRight size={18} /></a>
               </div>
-              <a
-                className="button button--gold hero-pricing-cta"
-                href={`${siteBase}/packs-pricing#calculator`}
-                onClick={(e) => {
-                  if (window.location.pathname.replace(/\/$/, "") === routePath("/packs-pricing").replace(/\/$/, "")) {
-                    e.preventDefault();
-                    const calcEl = document.getElementById("calculator");
-                    if (calcEl) {
-                      calcEl.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
-                }}
-              >
-                View Pricing &amp; Calculator <ArrowUpRight size={17} />
-              </a>
+
               <div className="hero-note">
                 <span className="hero-note__dot" />
                 <span>Retail &amp; bulk supply across everyday needs</span>
@@ -403,7 +389,13 @@ export default function Home() {
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
-
+              <div className="hero-delivery-badge" aria-label="Delivery coverage across Lagos and nationwide">
+                <Truck size={15} />
+                <div>
+                  <strong>Lagos &amp; Nationwide</strong>
+                  <span>Rapid depot dispatch &amp; doorstep delivery</span>
+                </div>
+              </div>
               <div className="hero-visual__leaf" aria-hidden="true"><Leaf size={112} strokeWidth={0.65} /></div>
             </div>
           </div>
@@ -417,6 +409,68 @@ export default function Home() {
             <div className="brand-strip__item"><strong>02</strong><span>Family value</span></div>
             <div className="brand-strip__item"><strong>03</strong><span>Direct ordering</span></div>
             <div className="brand-strip__item"><strong>04</strong><span>Retail &amp; bulk</span></div>
+          </div>
+        </section>
+
+        <section className="cooking-inspiration section-pad" id="inspiration">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div>
+                <p className="eyebrow"><span className="eyebrow__line" /> Kitchen &amp; lifestyle inspiration</p>
+                <h2>Cook with confidence,<br /><em>savor every meal.</em></h2>
+              </div>
+              <p className="section-heading__aside">From rich Nigerian stews to golden fried yams and wholesome daily dishes, discover how pure CHI-ZARAM red palm oil and cooking essentials elevate your kitchen.</p>
+            </div>
+            <div className="cooking-inspiration-grid">
+              {[
+                {
+                  title: "Authentic Nigerian Stews",
+                  tag: "RED PALM OIL CLASSIC",
+                  desc: "A rich base of fresh tomatoes, peppers, and onions simmered to perfection in pure CHI-ZARAM red palm oil for unmatched aroma and depth.",
+                  time: "45 mins",
+                  level: "Medium",
+                  image: assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg"),
+                  whatsapp: "Hello CHI-ZARAM, I'm inspired to cook authentic Nigerian stew! Please let me know the best palm oil pack size to order for family cooking."
+                },
+                {
+                  title: "Crispy Fried Yam & Plantain",
+                  tag: "VEGETABLE OIL ESSENTIAL",
+                  desc: "Golden fried yam slices and ripe plantains cooked clean and crispy using pure CHI-ZARAM vegetable and groundnut oil.",
+                  time: "25 mins",
+                  level: "Easy",
+                  image: assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg"),
+                  whatsapp: "Hello CHI-ZARAM, I'd love to order vegetable oil for crispy frying and daily cooking. Please share your current pack options."
+                },
+                {
+                  title: "Traditional Delta Palm Oil Rice",
+                  tag: "PANTRY MASTERCLASS",
+                  desc: "A fragrant native delicacy featuring seasoned stockfish, crayfish, smoked fish, and rich unadulterated palm oil from Delta State.",
+                  time: "55 mins",
+                  level: "Special",
+                  image: assetPath("/manus-storage/chi-zaram-yellow-garri-delta-state_d15b1171.jpg"),
+                  whatsapp: "Hello CHI-ZARAM, I'm planning to make native palm oil rice! Please share pricing and availability for your 3L and 5L palm oil packs."
+                }
+              ].map((recipe, idx) => (
+                <article key={idx} className="cooking-card">
+                  <div className="cooking-card__image">
+                    <img src={recipe.image} alt={recipe.title} loading="lazy" />
+                    <span className="cooking-card__tag">{recipe.tag}</span>
+                  </div>
+                  <div className="cooking-card__body">
+                    <div className="cooking-card__meta">
+                      <span>⏱ {recipe.time}</span>
+                      <span>•</span>
+                      <span>Level: {recipe.level}</span>
+                    </div>
+                    <h3>{recipe.title}</h3>
+                    <p>{recipe.desc}</p>
+                    <a className="button button--quiet button--sm" href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(recipe.whatsapp)}`} target="_blank" rel="noreferrer">
+                      Get ingredients on WhatsApp <ArrowUpRight size={15} />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
