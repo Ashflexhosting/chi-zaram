@@ -238,3 +238,14 @@
 - [x] Verify desktop/mobile presentation, type checking, and production build.
 - [ ] Save a checkpoint for the footer logo refinement.
 
+
+- [x] Diagnose missing GitHub Pages images as assets absent from client/public/manus-storage and unavailable via the dev-only storage proxy.
+- [x] Copy the new hero, brand-story, and story-team image files into the public asset directory.
+- [x] Verify all 34 referenced /manus-storage images are present in the GitHub Pages dist/public artifact.
+- [ ] Commit, push, and verify the GitHub Pages deployment.
+
+
+- [x] Commit and push the public image assets to Ashflexhosting/chi-zaram.
+- [x] Confirm GitHub Actions build and Deploy to GitHub Pages completed successfully for commit eed27f7.
+- [x] Confirm the published Pages URL: https://ashflexhosting.github.io/chi-zaram/.
+
