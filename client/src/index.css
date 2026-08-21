@@ -1591,7 +1591,7 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  padding: 9px 18px 9px 14px;
+  padding: 9px 14px 9px 14px;
   border: 1px solid rgba(224,180,95,0.34);
   border-radius: 999px;
   background: #fff;
@@ -1603,7 +1603,7 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 }
 @media (max-width: 760px) {
   .brand-lockup--footer {
-    padding: 7px 14px 7px 11px;
+    padding: 7px 11px 7px 11px;
   }
 }
 

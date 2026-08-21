@@ -221,3 +221,8 @@
 - [x] Verify reduced-motion CSS fallbacks and successful type checking/production build.
 - [ ] Save a checkpoint for the interaction enhancements.
 
+
+- [x] Balance left and right padding on the footer logo white plate (.brand-lockup--footer).
+- [x] Verify footer rendering across desktop and mobile, with type checking and production build.
+- [ ] Save a checkpoint for the footer logo update.
+
