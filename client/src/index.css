@@ -563,7 +563,7 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .story-page-copy h2, .story-values h2, .catalogue-cta h2, .bulk-details h2, .contact-page h2 { max-width: 760px; margin: 0; color: #292a25; font-family: var(--serif); font-size: clamp(3.3rem, 6vw, 5.9rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.92; }
 .story-page-copy h2 em, .story-values h2 em, .catalogue-cta h2 em, .bulk-details h2 em, .contact-page h2 em { color: #9f2f2a; font-style: italic; }
 .story-page-copy .body-copy { margin-top: 37px; }
-.story-page-callout { display: inline-flex; gap: 12px; align-items: flex-start; margin-top: 30px; padding: 17px 0 17px 18px; border-left: 2px solid #c99a4a; color: #435847; font-size: 14px; line-height: 1.55; }
+.story-page-callout { display: inline-flex; gap: 12px; align-items: flex-start; margin-top: 30px; padding: 17px 32px 17px 18px; border-left: 2px solid #c99a4a; color: #435847; font-size: 14px; line-height: 1.55; }
 .story-page-callout svg { color: #c99a4a; flex: none; }
 .story-page-callout strong { color: #9f2f2a; }
 .story-values { background: #e9dfd2; }
