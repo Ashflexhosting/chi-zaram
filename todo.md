@@ -188,3 +188,8 @@
 - [x] Verify image loading and visual presentation on Home, Story, Contact, and Packs & Pricing desktop pages.
 - [ ] Save a checkpoint for the branded image refresh.
 
+
+- [x] Rewrite Gallery captions in the Harvest Editorial voice to communicate the CHI-ZARAM brand story.
+- [x] Verify gallery rendering, lightbox metadata, and responsive layout.
+- [ ] Save a checkpoint for the Gallery caption update.
+
