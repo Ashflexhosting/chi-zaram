@@ -84,10 +84,30 @@ export default function BulkSupply() {
           </div>
         </section>
 
+        <section className="pricing-section section-pad" id="pricing">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div><p className="eyebrow">Wholesale price guide</p><h2>More volume,<br /><em>better value.</em></h2></div>
+              <p className="section-heading__aside">Choose a product to view the supply tiers. Final rates are confirmed on enquiry because pack availability, location, and logistics can affect the delivered price.</p>
+            </div>
+            <div className="pricing-switcher" role="tablist" aria-label="Wholesale product selector">
+              <button className={pricingProduct === "redPalm" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("redPalm")} role="tab" aria-selected={pricingProduct === "redPalm"}>Red Palm Oil</button>
+              <button className={pricingProduct === "vegetable" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("vegetable")} role="tab" aria-selected={pricingProduct === "vegetable"}>Vegetable Oil</button>
+            </div>
+            <div className="pricing-table-wrap">
+              <table className="pricing-table">
+                <thead><tr><th>Supply Tier</th><th>Order Volume</th><th>{pricingProduct === "redPalm" ? "Red Palm Oil" : "Vegetable Oil"}</th><th>What it suits</th><th /></tr></thead>
+                <tbody>{pricingTiers.map((tier) => <tr className={`${tier.featured ? "is-featured" : ""} ${pricingVolume === tier.volume ? "is-selected" : ""}`} key={tier.tier} onClick={() => setPricingVolume(tier.volume)}><td><strong>{tier.tier}</strong>{tier.featured && <span className="pricing-table__badge">Best value</span>}</td><td>{tier.volume}</td><td><span className="pricing-table__rate">{pricingProduct === "redPalm" ? tier.redPalm : tier.vegetable}</span><small>Confirm on WhatsApp</small></td><td>{tier.note}</td><td><button className="pricing-table__cta" type="button" onClick={(e) => { e.stopPropagation(); openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", tier.volume); }}>Enquire <ArrowUpRight size={14} /></button></td></tr>)}</tbody>
+              </table>
+            </div>
+            <div className="pricing-note"><span><Check size={16} /> Selected tier: <strong>{pricingVolume}</strong></span><button className="text-link" type="button" onClick={() => openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", pricingVolume)}>Request this tier on WhatsApp <ArrowUpRight size={16} /></button></div>
+          </div>
+        </section>
+
         <section className="bulk-details section-pad">
           <div className="container bulk-details__grid">
             <div className="bulk-details__copy">
-              <div className="section-kicker"><span className="section-kicker__number">01</span><span>Coverage &amp; logistics</span></div>
+              <div className="section-kicker"><span className="section-kicker__number">02</span><span>Coverage &amp; logistics</span></div>
               <p className="eyebrow">Built around real supply needs</p>
               <h2>Quality + value +<br /><em>convenience.</em></h2>
               <p className="body-copy">Local delivery, regional transport, and direct pickup options are discussed according to the order and destination. Coverage and dispatch costs are confirmed on enquiry rather than assumed.</p>
@@ -134,26 +154,6 @@ export default function BulkSupply() {
               </button>
               <small className="enquiry-card__fineprint">Current pricing and delivery terms are confirmed directly with the CHI-ZARAM team.</small>
             </form>
-          </div>
-        </section>
-
-        <section className="pricing-section section-pad" id="pricing">
-          <div className="container">
-            <div className="section-heading section-heading--split">
-              <div><p className="eyebrow">Wholesale price guide</p><h2>More volume,<br /><em>better value.</em></h2></div>
-              <p className="section-heading__aside">Choose a product to view the supply tiers. Final rates are confirmed on enquiry because pack availability, location, and logistics can affect the delivered price.</p>
-            </div>
-            <div className="pricing-switcher" role="tablist" aria-label="Wholesale product selector">
-              <button className={pricingProduct === "redPalm" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("redPalm")} role="tab" aria-selected={pricingProduct === "redPalm"}>Red Palm Oil</button>
-              <button className={pricingProduct === "vegetable" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("vegetable")} role="tab" aria-selected={pricingProduct === "vegetable"}>Vegetable Oil</button>
-            </div>
-            <div className="pricing-table-wrap">
-              <table className="pricing-table">
-                <thead><tr><th>Supply Tier</th><th>Order Volume</th><th>{pricingProduct === "redPalm" ? "Red Palm Oil" : "Vegetable Oil"}</th><th>What it suits</th><th /></tr></thead>
-                <tbody>{pricingTiers.map((tier) => <tr className={`${tier.featured ? "is-featured" : ""} ${pricingVolume === tier.volume ? "is-selected" : ""}`} key={tier.tier} onClick={() => setPricingVolume(tier.volume)}><td><strong>{tier.tier}</strong>{tier.featured && <span className="pricing-table__badge">Best value</span>}</td><td>{tier.volume}</td><td><span className="pricing-table__rate">{pricingProduct === "redPalm" ? tier.redPalm : tier.vegetable}</span><small>Confirm on WhatsApp</small></td><td>{tier.note}</td><td><button className="pricing-table__cta" type="button" onClick={(e) => { e.stopPropagation(); openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", tier.volume); }}>Enquire <ArrowUpRight size={14} /></button></td></tr>)}</tbody>
-              </table>
-            </div>
-            <div className="pricing-note"><span><Check size={16} /> Selected tier: <strong>{pricingVolume}</strong></span><button className="text-link" type="button" onClick={() => openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", pricingVolume)}>Request this tier on WhatsApp <ArrowUpRight size={16} /></button></div>
           </div>
         </section>
       </main>
