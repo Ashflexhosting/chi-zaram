@@ -198,3 +198,8 @@
 - [x] Verify typography, spacing, responsive alignment, type checking, and production build.
 - [ ] Save a checkpoint for the Gallery brand-story introduction.
 
+
+- [x] Replace the Home hero image with the user-provided palm-oil-hero.jpg asset.
+- [x] Verify the hero crop, focal point, alt text, and loading on desktop and mobile.
+- [ ] Save a checkpoint for the Home hero replacement.
+
