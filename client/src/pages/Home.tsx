@@ -21,8 +21,8 @@ import {
   Truck,
   X,
 } from "lucide-react";
-import { BackToTop } from "@/components/SiteLayout";
-import { assetPath, siteBase } from "@/lib/sitePaths";
+import { BackToTop, FloatingWhatsAppChat } from "@/components/SiteLayout";
+import { assetPath, routePath, siteBase } from "@/lib/sitePaths";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const whatsappNumber = "2348037365227";
@@ -389,7 +389,19 @@ export default function Home() {
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
               <div className="hero-visual__cta-overlay">
-                <a className="button button--gold button--sm" href={`${siteBase}/packs-pricing`}>
+                <a
+                  className="button button--gold button--sm"
+                  href={`${siteBase}/packs-pricing#calculator`}
+                  onClick={(e) => {
+                    if (window.location.pathname.replace(/\/$/, "") === routePath("/packs-pricing").replace(/\/$/, "")) {
+                      e.preventDefault();
+                      const calcEl = document.getElementById("calculator");
+                      if (calcEl) {
+                        calcEl.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
+                >
                   View Pricing &amp; Calculator <ArrowUpRight size={15} />
                 </a>
               </div>
@@ -884,9 +896,10 @@ export default function Home() {
 
       <AccessibilityWidget />
       <BackToTop />
+      <FloatingWhatsAppChat />
       <footer className="site-footer"><div className="container site-footer__top"><div className="site-footer__identity"><a className="brand-lockup brand-lockup--footer" href="#top"><img src={assetPath("/manus-storage/chizaram-logo-cz_cdd4320b.webp")} alt="CHI-ZARAM Palm Oil & More" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>CHI-ZARAM</strong><small>Palm Oil &amp; More</small></span></a><div className="footer-tagline">Pure goodness.<br /><em>Naturally better.</em></div></div><div className="footer-contact"><span>Start a conversation</span><a href="tel:+2348037365227"><Phone size={15} /> 0803 736 5227</a><span className="footer-contact__location">Isolo, Lagos <span className="footer-contact__hours">Mon–Fri, 9 AM–5 PM</span></span><div className="footer-socials" aria-label="Social media links"><a href="https://www.tiktok.com/@ogonwibe" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on TikTok"><Music2 size={15} /><span>TikTok</span></a><a href="https://web.facebook.com/ogoonwokoye/photos" target="_blank" rel="noreferrer" aria-label="CHI-ZARAM on Facebook"><Share2 size={15} /><span>Facebook</span></a><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={15} /><span>WhatsApp</span></a></div></div><div className="footer-enquiry"><span className="footer-enquiry__eyebrow">Quick enquiry</span><form onSubmit={submitFooterEnquiry}><div className="footer-enquiry__row"><label><span className="sr-only">Your name</span><input required value={footerForm.name} onChange={(event) => setFooterForm((current) => ({ ...current, name: event.target.value }))} placeholder="Your name" autoComplete="name" /></label><label><span className="sr-only">Email address</span><input type="email" value={footerForm.email} onChange={(event) => setFooterForm((current) => ({ ...current, email: event.target.value }))} placeholder="Email (optional)" autoComplete="email" /></label></div><label><span className="sr-only">Your message</span><textarea required value={footerForm.message} onChange={(event) => setFooterForm((current) => ({ ...current, message: event.target.value }))} placeholder="How can we help?" rows={2} /></label><button className="footer-enquiry__submit" type="submit">Send on WhatsApp <ArrowUpRight size={14} /></button></form></div></div><div className="container site-footer__bottom"><span>© 2026 CHI-ZARAM Palm Oil &amp; More Enterprises</span><span>Retail &amp; Bulk Supply</span><span>Built by <a href="https://ashflexwebdesign.com" target="_blank" rel="noreferrer">Ashflex Web Design</a></span><a href="#top">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></footer>
 
-      <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
+      {/* replaced by FloatingWhatsAppChat */}
     </div>
   );
 }

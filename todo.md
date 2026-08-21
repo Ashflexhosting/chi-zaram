@@ -209,3 +209,15 @@
 - [x] Update site-wide SEO metadata to use the new palm-oil hero image for OpenGraph and WhatsApp sharing previews.
 - [ ] Save a checkpoint for the hero enhancements.
 
+
+- [x] Implement smooth scrolling navigation from the hero 'View Pricing' CTA to the cost estimator section.
+- [x] Apply a subtle fade-in and slide-up motion to the hero headline and CTA button on first load.
+- [x] Add a shared floating WhatsApp chat widget to the bottom right of all pages with reduced-motion support.
+- [ ] Save a checkpoint for the interaction enhancements.
+
+
+- [x] Verify the hero CTA route and hash-aware estimator scroll behavior.
+- [x] Verify floating WhatsApp widget placement on Home and shared pages at desktop and mobile widths.
+- [x] Verify reduced-motion CSS fallbacks and successful type checking/production build.
+- [ ] Save a checkpoint for the interaction enhancements.
+

@@ -2,7 +2,7 @@
  * Harvest Editorial packs and pricing page: pack-size clarity, interactive multi-pack calculator
  * with customer contact fields, phone validation, zone-based delivery fees, printable order summary, and WhatsApp export.
  */
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ArrowUpRight, Check, Calculator, MessageCircle, MapPin, Truck, User, Phone, Printer, FileText, X, AlertCircle } from "lucide-react";
 import { assetPath } from "@/lib/sitePaths";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
@@ -50,6 +50,14 @@ export default function PacksPricing() {
   const [customerPhone, setCustomerPhone] = useState<string>("");
   const [phoneTouched, setPhoneTouched] = useState<boolean>(false);
   const [showSummaryModal, setShowSummaryModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.location.hash !== "#calculator") return;
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const handleQtyChange = (key: PackKey, val: string) => {
     const num = parseInt(val, 10);

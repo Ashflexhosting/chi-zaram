@@ -65,6 +65,26 @@ export function BackToTop() {
   );
 }
 
+export function FloatingWhatsAppChat() {
+  return (
+    <a
+      className="floating-whatsapp-widget"
+      href={whatsappHref("Hello CHI-ZARAM, I have a question about products, pack sizes, or pricing. Please assist.")}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat with CHI-ZARAM on WhatsApp"
+    >
+      <div className="floating-whatsapp-widget__icon">
+        <MessageCircle size={22} />
+      </div>
+      <div className="floating-whatsapp-widget__tooltip">
+        <strong>Chat with sales</strong>
+        <span>Ask about pricing &amp; orders</span>
+      </div>
+    </a>
+  );
+}
+
 export default function SiteLayout({ children, activePath }: { children: ReactNode; activePath?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [footerForm, setFooterForm] = useState({ name: "", email: "", message: "" });
@@ -111,6 +131,7 @@ export default function SiteLayout({ children, activePath }: { children: ReactNo
       {children}
       <AccessibilityWidget />
       <BackToTop />
+      <FloatingWhatsAppChat />
       <footer className="site-footer page-footer">
         <div className="container site-footer__top">
           <div className="site-footer__identity">
