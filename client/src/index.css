@@ -1100,7 +1100,7 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 }
 @media (max-width: 760px) {
   .brand-lockup__mark { width: 148px; height: 48px; }
-  .brand-lockup--footer .brand-lockup__mark { width: 135px; height: 56px; }
+  .brand-lockup--footer .brand-lockup__mark { width: 122px; height: 48px; }
 }
 
 /* Harvest Editorial brand story: an asymmetric rail, measured fact cards, and layered pantry imagery create a more ownable CHI-ZARAM narrative moment. */

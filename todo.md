@@ -232,3 +232,9 @@
 - [x] Verify the corrected footer plate on full-page desktop and mobile previews.
 - [ ] Save a checkpoint for the corrected footer logo artwork spacing.
 
+
+- [x] Add a subtle 12% opacity dimming effect on footer logo hover without changing the plate dimensions.
+- [x] Scale the footer wordmark down proportionally at the mobile breakpoint.
+- [x] Verify desktop/mobile presentation, type checking, and production build.
+- [ ] Save a checkpoint for the footer logo refinement.
+
