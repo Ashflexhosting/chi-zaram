@@ -264,6 +264,11 @@ export default function Gallery() {
 
         <section className="gallery-page section-pad">
           <div className="container">
+            <div className="gallery-intro-story">
+              <div className="section-kicker"><span className="section-kicker__number">01</span><span>Curated collection</span></div>
+              <h2>Rooted in nature, <em>styled for everyday life.</em></h2>
+              <p className="body-copy">From our flagship unrefined red palm oil and Delta State yellow garri to lifestyle apparel and home essentials, every image in our collection tells a story of quality, care, and direct connection. Select a category below to explore specific pack sizes, pricing guides, and brand chapters.</p>
+            </div>
             <div className="gallery-filter-bar" role="tablist" aria-label="Gallery category filters">
               {categories.map((cat) => (
                 <button

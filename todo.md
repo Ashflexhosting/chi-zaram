@@ -193,3 +193,8 @@
 - [x] Verify gallery rendering, lightbox metadata, and responsive layout.
 - [ ] Save a checkpoint for the Gallery caption update.
 
+
+- [x] Add Harvest Editorial brand-story introduction above the Gallery filter bar.
+- [x] Verify typography, spacing, responsive alignment, type checking, and production build.
+- [ ] Save a checkpoint for the Gallery brand-story introduction.
+

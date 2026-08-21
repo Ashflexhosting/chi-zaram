@@ -2268,3 +2268,30 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   margin-top: 5px;
   font-weight: 600;
 }
+
+
+/* Gallery Intro Story Section */
+.gallery-intro-story {
+  max-width: 44rem;
+  margin-bottom: 2.5rem;
+}
+.gallery-intro-story .section-kicker {
+  margin-bottom: 0.75rem;
+}
+.gallery-intro-story h2 {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #1a1917;
+  margin-bottom: 1rem;
+}
+.gallery-intro-story h2 em {
+  font-style: italic;
+  color: #8b2612;
+}
+.gallery-intro-story .body-copy {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a4843;
+}
