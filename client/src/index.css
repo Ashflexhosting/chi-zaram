@@ -198,17 +198,25 @@ button { cursor: pointer; }
 
 @media (prefers-reduced-motion: no-preference) {
   .cooking-inspiration .section-heading { animation: inspireFadeIn 700ms var(--ease-out) both; }
-  .cooking-card--1 { animation: inspireCardIn 700ms var(--ease-out) 150ms both; }
-  .cooking-card--2 { animation: inspireCardIn 700ms var(--ease-out) 280ms both; }
-  .cooking-card--3 { animation: inspireCardIn 700ms var(--ease-out) 410ms both; }
+  .cooking-card--1 { animation: inspireCardLeft 750ms var(--ease-out) 150ms both; }
+  .cooking-card--2 { animation: inspireCardBottom 750ms var(--ease-out) 280ms both; }
+  .cooking-card--3 { animation: inspireCardRight 750ms var(--ease-out) 410ms both; }
 
   @keyframes inspireFadeIn {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes inspireCardIn {
-    from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  @keyframes inspireCardLeft {
+    from { opacity: 0; transform: translateX(-36px) scale(0.98); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  @keyframes inspireCardBottom {
+    from { opacity: 0; transform: translateY(36px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes inspireCardRight {
+    from { opacity: 0; transform: translateX(36px) scale(0.98); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
   }
 }
 
