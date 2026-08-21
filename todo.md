@@ -267,3 +267,24 @@
 - [x] Verify type checking and production build.
 - [ ] Save a checkpoint for the founder attribution update.
 
+
+
+## Homepage hero CTA repositioning — current task
+
+- [ ] Confirm the homepage hero pricing CTA no longer overlaps or constrains the hero image.
+- [ ] Verify the pricing CTA remains prominent and usable on desktop and mobile.
+
+### Verification notes
+
+- Desktop preview at 1280px: the hero image displays without the former right-side CTA overlay; the CTA now sits in the left hero copy area beneath the primary actions.
+- Mobile preview at 375px: the hero image remains unobstructed and the pricing CTA is visible as a full-width secondary action beneath the main buttons.
+- Type checking and production build completed successfully; only the project’s existing asset-resolution and chunk-size warnings remain.
+
+### Style reminder
+
+Harvest Editorial: preserve the warm cream ground, deep leaf-green utility accents, Palm Crimson conversion actions, warm-gold secondary actions, asymmetric editorial rhythm, and clear image-first composition.
+
+
+### Final responsive verification
+
+The final desktop preview at 1280px shows the palm-oil hero image fully unobstructed, with the “View Pricing & Calculator” button moved into the left copy column below the primary actions. The mobile preview at 375px keeps the image clear and presents the pricing action as a distinct gold button beneath the two primary hero actions. The former visual-column overlay and its animation selector were removed from active markup and updated to target the relocated CTA.

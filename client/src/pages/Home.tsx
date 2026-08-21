@@ -374,6 +374,21 @@ export default function Home() {
                 <a className="button button--crimson" href="#palm-oil">Shop Palm Oil <ArrowUpRight size={17} /></a>
                 <a className="button button--quiet" href="#supply">Buy in bulk <MoveRight size={18} /></a>
               </div>
+              <a
+                className="button button--gold hero-pricing-cta"
+                href={`${siteBase}/packs-pricing#calculator`}
+                onClick={(e) => {
+                  if (window.location.pathname.replace(/\/$/, "") === routePath("/packs-pricing").replace(/\/$/, "")) {
+                    e.preventDefault();
+                    const calcEl = document.getElementById("calculator");
+                    if (calcEl) {
+                      calcEl.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }
+                }}
+              >
+                View Pricing &amp; Calculator <ArrowUpRight size={17} />
+              </a>
               <div className="hero-note">
                 <span className="hero-note__dot" />
                 <span>Retail &amp; bulk supply across everyday needs</span>
@@ -388,23 +403,7 @@ export default function Home() {
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
-              <div className="hero-visual__cta-overlay">
-                <a
-                  className="button button--gold button--sm"
-                  href={`${siteBase}/packs-pricing#calculator`}
-                  onClick={(e) => {
-                    if (window.location.pathname.replace(/\/$/, "") === routePath("/packs-pricing").replace(/\/$/, "")) {
-                      e.preventDefault();
-                      const calcEl = document.getElementById("calculator");
-                      if (calcEl) {
-                        calcEl.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }
-                  }}
-                >
-                  View Pricing &amp; Calculator <ArrowUpRight size={15} />
-                </a>
-              </div>
+
               <div className="hero-visual__leaf" aria-hidden="true"><Leaf size={112} strokeWidth={0.65} /></div>
             </div>
           </div>

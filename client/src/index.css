@@ -145,6 +145,7 @@ button { cursor: pointer; }
 .hero-copy h1 em, h2 em { color: #9f2f2a; font-style: italic; }
 .hero-copy__intro { max-width: 410px; margin: 30px 0 26px; color: #746f64; font-size: 16px; line-height: 1.7; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; }
+.hero-pricing-cta { width: fit-content; margin-top: 13px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 48px; padding: 0 19px; border: 1px solid transparent; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; transition: transform 160ms var(--ease-out), background 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out; }
 .button--crimson { background: #9f2f2a; color: #fffaf3; }
 .button--crimson:hover { background: #7f2420; transform: translateY(-2px); }
@@ -2305,7 +2306,7 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-copy h1 { animation: heroHeadlineIn 700ms var(--ease-out) 100ms both; }
-  .hero-visual__cta-overlay { animation: heroCtaIn 600ms var(--ease-out) 280ms both; }
+  .hero-pricing-cta { animation: heroCtaIn 600ms var(--ease-out) 280ms both; }
   @keyframes heroHeadlineIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes heroCtaIn { from { opacity: 0; transform: scale(0.96) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 }
