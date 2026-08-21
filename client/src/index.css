@@ -2331,3 +2331,19 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
 .story-page-section--dark .story-page-callout { background: rgba(255,255,255,0.06); border-left-color: #c99a4a; color: #fffaf3; }
 .story-page-section--dark .story-page-callout strong { color: #fffaf3; }
 .story-page-section--dark .story-page-callout svg { color: #c99a4a; }
+
+/* Subtle palm-leaf texture and CTA for dark story section */
+.story-page-section--dark {
+  position: relative;
+  overflow: hidden;
+}
+.story-page-section--dark::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background-image: radial-gradient(circle at 85% 20%, rgba(224,180,95,0.08) 0%, transparent 45%), radial-gradient(circle at 15% 85%, rgba(255,250,243,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.story-page-actions {
+  margin-top: 26px;
+}

@@ -42,6 +42,11 @@ export default function Story() {
                 <Sparkles size={19} />
                 <span>One master brand.<br /><strong>Many ways to live well.</strong></span>
               </div>
+              <div className="story-page-actions">
+                <Link className="button button--gold button--sm" href="/catalogue">
+                  Explore our products <ArrowUpRight size={15} />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

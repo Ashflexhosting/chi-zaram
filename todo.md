@@ -255,3 +255,9 @@
 - [x] Verify contrast, section transitions, type checking, production build, desktop, and mobile layouts.
 - [ ] Save a checkpoint for the Story section styling update.
 
+
+- [x] Add a restrained palm-leaf-inspired texture treatment to the dark What we believe background.
+- [x] Add an Explore our products CTA linking to the catalogue page.
+- [x] Verify texture subtlety, CTA contrast, type checking, production build, and desktop/mobile Story layouts.
+- [ ] Save a checkpoint for the Story section enhancement.
+
