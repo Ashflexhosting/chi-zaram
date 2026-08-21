@@ -203,3 +203,9 @@
 - [x] Verify the hero crop, focal point, alt text, and loading on desktop and mobile.
 - [ ] Save a checkpoint for the Home hero replacement.
 
+
+- [x] Add 'View Pricing & Calculator' button linking directly to Packs & Pricing.
+- [x] Implement subtle, reduced-motion-safe parallax scroll effect on the hero visual.
+- [x] Update site-wide SEO metadata to use the new palm-oil hero image for OpenGraph and WhatsApp sharing previews.
+- [ ] Save a checkpoint for the hero enhancements.
+

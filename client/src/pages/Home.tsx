@@ -388,6 +388,11 @@ export default function Home() {
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
               <div className="hero-visual__caption"><span>From the palm</span><span className="caption-rule" /><span>To your table</span></div>
+              <div className="hero-visual__cta-overlay">
+                <a className="button button--gold button--sm" href={`${siteBase}/packs-pricing`}>
+                  View Pricing &amp; Calculator <ArrowUpRight size={15} />
+                </a>
+              </div>
               <div className="hero-visual__leaf" aria-hidden="true"><Leaf size={112} strokeWidth={0.65} /></div>
             </div>
           </div>
@@ -884,4 +889,14 @@ export default function Home() {
       <a className="whatsapp-float" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Chat with CHI-ZARAM on WhatsApp"><MessageCircle size={21} /><span>Chat with us</span></a>
     </div>
   );
+}
+
+// Parallax scroll effect for hero visual
+if (typeof window !== "undefined") {
+  window.addEventListener("scroll", () => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+    const scrollY = window.scrollY;
+    document.documentElement.style.setProperty("--scroll-y", String(scrollY));
+  }, { passive: true });
 }

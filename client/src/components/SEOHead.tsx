@@ -12,7 +12,7 @@ interface SEOProps {
   image?: string;
 }
 
-export default function SEOHead({ title, description, path, image = "/social-preview.png?v=1" }: SEOProps) {
+export default function SEOHead({ title, description, path, image = "/manus-storage/palm-oil-hero_b2969ba2.jpg" }: SEOProps) {
   useEffect(() => {
     document.title = `${title} | CHI-ZARAM Palm Oil & More Enterprises`;
 
