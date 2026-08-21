@@ -8,8 +8,23 @@ import { FormEvent, useState } from "react";
 import SiteLayout, { whatsappHref } from "@/components/SiteLayout";
 import SEOHead from "@/components/SEOHead";
 
+const pricingTiers = [
+  { tier: "Retail", volume: "1–4 units", redPalm: "Standard rate", vegetable: "Standard rate", note: "Single-unit household orders" },
+  { tier: "Reseller", volume: "5–19 units", redPalm: "Volume rate", vegetable: "Volume rate", note: "For shops, vendors & small resellers" },
+  { tier: "Wholesale", volume: "20–49 units", redPalm: "Preferred rate", vegetable: "Preferred rate", note: "Best value for regular bulk buyers", featured: true },
+  { tier: "Distributor", volume: "50+ units", redPalm: "Custom quote", vegetable: "Custom quote", note: "Dedicated pricing & logistics" },
+];
+
 export default function BulkSupply() {
   const [sent, setSent] = useState(false);
+  const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
+  const [pricingVolume, setPricingVolume] = useState("20–49 units");
+
+  const openProductWhatsApp = (productName: string, vol: string) => {
+    const text = `Hello CHI-ZARAM Wholesale Desk, I am interested in ordering ${productName} at the "${vol}" wholesale tier. Please confirm current rates, packing, and delivery availability.`;
+    window.open(whatsappHref(text), "_blank", "noopener,noreferrer");
+  };
+
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -119,6 +134,26 @@ export default function BulkSupply() {
               </button>
               <small className="enquiry-card__fineprint">Current pricing and delivery terms are confirmed directly with the CHI-ZARAM team.</small>
             </form>
+          </div>
+        </section>
+
+        <section className="pricing-section section-pad" id="pricing">
+          <div className="container">
+            <div className="section-heading section-heading--split">
+              <div><p className="eyebrow">Wholesale price guide</p><h2>More volume,<br /><em>better value.</em></h2></div>
+              <p className="section-heading__aside">Choose a product to view the supply tiers. Final rates are confirmed on enquiry because pack availability, location, and logistics can affect the delivered price.</p>
+            </div>
+            <div className="pricing-switcher" role="tablist" aria-label="Wholesale product selector">
+              <button className={pricingProduct === "redPalm" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("redPalm")} role="tab" aria-selected={pricingProduct === "redPalm"}>Red Palm Oil</button>
+              <button className={pricingProduct === "vegetable" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("vegetable")} role="tab" aria-selected={pricingProduct === "vegetable"}>Vegetable Oil</button>
+            </div>
+            <div className="pricing-table-wrap">
+              <table className="pricing-table">
+                <thead><tr><th>Supply Tier</th><th>Order Volume</th><th>{pricingProduct === "redPalm" ? "Red Palm Oil" : "Vegetable Oil"}</th><th>What it suits</th><th /></tr></thead>
+                <tbody>{pricingTiers.map((tier) => <tr className={`${tier.featured ? "is-featured" : ""} ${pricingVolume === tier.volume ? "is-selected" : ""}`} key={tier.tier} onClick={() => setPricingVolume(tier.volume)}><td><strong>{tier.tier}</strong>{tier.featured && <span className="pricing-table__badge">Best value</span>}</td><td>{tier.volume}</td><td><span className="pricing-table__rate">{pricingProduct === "redPalm" ? tier.redPalm : tier.vegetable}</span><small>Confirm on WhatsApp</small></td><td>{tier.note}</td><td><button className="pricing-table__cta" type="button" onClick={(e) => { e.stopPropagation(); openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", tier.volume); }}>Enquire <ArrowUpRight size={14} /></button></td></tr>)}</tbody>
+              </table>
+            </div>
+            <div className="pricing-note"><span><Check size={16} /> Selected tier: <strong>{pricingVolume}</strong></span><button className="text-link" type="button" onClick={() => openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", pricingVolume)}>Request this tier on WhatsApp <ArrowUpRight size={16} /></button></div>
           </div>
         </section>
       </main>

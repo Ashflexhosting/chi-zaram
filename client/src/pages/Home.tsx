@@ -116,8 +116,6 @@ export default function Home() {
   const [selectedQuantity, setSelectedQuantity] = useState("5L family pack");
   const [activePackVariant, setActivePackVariant] = useState(packVariants[2]);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState<number | null>(null);
-  const [pricingProduct, setPricingProduct] = useState<"redPalm" | "vegetable">("redPalm");
-  const [pricingVolume, setPricingVolume] = useState("20–49 units");
   const [rateCardOpen, setRateCardOpen] = useState(false);
   const [rateCardSuccess, setRateCardSuccess] = useState(false);
   const [rateCardCountdown, setRateCardCountdown] = useState(3);
@@ -676,25 +674,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="pricing-section section-pad" id="pricing">
-          <div className="container">
-            <div className="section-heading section-heading--split">
-              <div><p className="eyebrow">Wholesale price guide</p><h2>More volume,<br /><em>better value.</em></h2></div>
-              <p className="section-heading__aside">Choose a product to view the supply tiers. Final rates are confirmed on enquiry because pack availability, location, and logistics can affect the delivered price.</p>
-            </div>
-            <div className="pricing-switcher" role="tablist" aria-label="Wholesale product selector">
-              <button className={pricingProduct === "redPalm" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("redPalm")} role="tab" aria-selected={pricingProduct === "redPalm"}>Red Palm Oil</button>
-              <button className={pricingProduct === "vegetable" ? "is-active" : ""} type="button" onClick={() => setPricingProduct("vegetable")} role="tab" aria-selected={pricingProduct === "vegetable"}>Vegetable Oil</button>
-            </div>
-            <div className="pricing-table-wrap">
-              <table className="pricing-table">
-                <thead><tr><th>Supply Tier</th><th>Order Volume</th><th>{pricingProduct === "redPalm" ? "Red Palm Oil" : "Vegetable Oil"}</th><th>What it suits</th><th /></tr></thead>
-                <tbody>{pricingTiers.map((tier) => <tr className={`${tier.featured ? "is-featured" : ""} ${pricingVolume === tier.volume ? "is-selected" : ""}`} key={tier.tier} onClick={() => setPricingVolume(tier.volume)}><td><strong>{tier.tier}</strong>{tier.featured && <span className="pricing-table__badge">Best value</span>}</td><td>{tier.volume}</td><td><span className="pricing-table__rate">{pricingProduct === "redPalm" ? tier.redPalm : tier.vegetable}</span><small>Confirm on WhatsApp</small></td><td>{tier.note}</td><td><button className="pricing-table__cta" type="button" onClick={(e) => { e.stopPropagation(); openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", tier.volume); }}>Enquire <ArrowUpRight size={14} /></button></td></tr>)}</tbody>
-              </table>
-            </div>
-            <div className="pricing-note"><span><Check size={16} /> Selected tier: <strong>{pricingVolume}</strong></span><button className="text-link" type="button" onClick={() => openProductWhatsApp(pricingProduct === "redPalm" ? "CHI-ZARAM Red Palm Oil" : "CHI-ZARAM Vegetable Oil", pricingVolume)}>Request this tier on WhatsApp <ArrowUpRight size={16} /></button></div>
-          </div>
-        </section>
+
 
         <section className="supply-section section-pad" id="supply">
           <div className="container supply-section__inner">
