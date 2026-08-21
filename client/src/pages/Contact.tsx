@@ -59,7 +59,7 @@ export default function Contact() {
               <p className="inner-hero__intro">Ask about products, pack sizes, pricing, delivery coverage, wholesale supply, or the next item on your list.</p>
             </div>
             <div className="inner-hero__visual">
-              <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="CHI-ZARAM natural product world" />
+              <img src={assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg")} alt="CHI-ZARAM 3L red palm oil packs with palm fruits in a warm editorial setting" />
               <span className="inner-hero__stamp">Start a<br /><strong>conversation.</strong></span>
             </div>
           </div>

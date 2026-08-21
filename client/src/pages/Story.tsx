@@ -25,7 +25,7 @@ export default function Story() {
               <p className="inner-hero__intro">CHI-ZARAM is a Nigerian consumer-products and retail/bulk-supply brand focused on bringing quality everyday products closer to customers.</p>
             </div>
             <div className="inner-hero__visual">
-              <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="Warm editorial still life representing the CHI-ZARAM product world" />
+              <img src={assetPath("/manus-storage/story-team-palm-oil-sharp_103a02c5.jpeg")} alt="CHI-ZARAM team member presenting palm oil pack sizes alongside retail and bulk containers" />
               <span className="inner-hero__stamp">Rooted<br /><strong>here.</strong></span>
             </div>
           </div>

@@ -181,3 +181,10 @@
 - [x] Verify valid/invalid phone states and responsive layout on desktop and mobile.
 - [ ] Save a checkpoint for the phone validation update.
 
+
+- [x] Audit existing verified CHI-ZARAM image references across key pages.
+- [x] Replace repeated generic visuals with product-led and people-led CHI-ZARAM imagery.
+- [x] Update Home story/showcase/flagship imagery, Story hero imagery, and Contact hero imagery.
+- [x] Verify image loading and visual presentation on Home, Story, Contact, and Packs & Pricing desktop pages.
+- [ ] Save a checkpoint for the branded image refresh.
+

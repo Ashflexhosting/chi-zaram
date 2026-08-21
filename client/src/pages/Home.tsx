@@ -423,7 +423,7 @@ export default function Home() {
               <div className="story-editorial__footer"><div className="story-callout"><Sparkles size={19} /><span>One master brand.<br /><strong>Many ways to live well.</strong></span></div><a className="text-link" href="#portfolio">Explore our collection <ArrowUpRight size={17} /></a></div>
             </div>
             <div className="story-editorial__visual" aria-label="CHI-ZARAM products and point of view">
-              <div className="story-editorial__image story-editorial__image--main"><img src={assetPath("/manus-storage/chi-zaram-gen-vegetable_e13416ab.jpg")} alt="CHI-ZARAM vegetable oil and palm fruits arranged in a warm natural setting" loading="lazy" /></div>
+              <div className="story-editorial__image story-editorial__image--main"><img src={assetPath("/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg")} alt="CHI-ZARAM 5L red palm oil value pack styled with fresh palm fruits" loading="lazy" /></div>
               <div className="story-editorial__image story-editorial__image--inset"><img src={assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg")} alt="CHI-ZARAM 3L palm oil bottles with palm fruits and the Palm Oil product backdrop" loading="lazy" /></div>
               <div className="story-editorial__seal"><span>CHI-ZARAM</span><strong>Good things<br /><em>worth sharing.</em></strong></div>
             </div>
@@ -441,7 +441,7 @@ export default function Home() {
             </div>
             <div className="brand-showcase__grid">
               <div className="brand-showcase__card">
-                <img src={assetPath("/manus-storage/chi-zaram-gen-hero_3991ab64.jpg")} alt="CHI-ZARAM brand presentation with verified pack sizes" loading="lazy" />
+                <img src={assetPath("/manus-storage/brand-story-palm-oil-3l_e75b6dec.jpeg")} alt="CHI-ZARAM 3L red palm oil packs with palm fruits in a warm editorial setting" loading="lazy" />
                 <div className="brand-showcase__tag">Direct Representation</div>
                 <h4>Trusted quality from our hands to yours</h4>
                 <p>We take pride in transparent presentation, consistent pack sizes, and direct customer engagement.</p>
@@ -487,7 +487,7 @@ export default function Home() {
 
         <section className="palm-section section-pad" id="palm-oil">
           <div className="container palm-section__inner">
-            <div className="palm-section__visual"><img src={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} alt="CHI-ZARAM 5 Litre Palm Oil container with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src={assetPath("/manus-storage/chizaram-logo-cz-mark_6dff130a.webp")} alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
+            <div className="palm-section__visual"><img src={assetPath("/manus-storage/chi-zaram-pack-5l_b3198c6e.jpg")} alt="CHI-ZARAM 5 Litre red palm oil value pack with palm fruits" loading="lazy" /><img className="palm-section__brand-stamp" src={assetPath("/manus-storage/chizaram-logo-cz-mark_6dff130a.webp")} alt="" /><div className="palm-section__badge"><span>Family size</span><strong>5L</strong><small>lasting value</small></div></div>
             <div className="palm-section__copy"><div className="section-kicker section-kicker--light"><span className="section-kicker__number">02</span><span>The flagship</span></div><p className="eyebrow eyebrow--gold">CHI-ZARAM Foods</p><h2>Pure, fresh,<br /><em>naturally better.</em></h2><p className="body-copy body-copy--light">Our red palm oil is available in 1L, 2L, 3L, 4L, and 5L containers as well as bulk jerrycans. Rich in vitamins A and E with no artificial additives.</p><div className="palm-points"><span><Check size={16} /> 100% pure &amp; natural red palm oil</span><span><Check size={16} /> Multiple pack sizes (1L to 5L &amp; Bulk)</span><span><Check size={16} /> Hygienically processed for soups &amp; stews</span></div><button className="button button--gold" type="button" onClick={() => openWhatsApp("Hello CHI-ZARAM, I would like to enquire about palm oil pack sizes (1L to 5L and bulk). Please share current pricing and availability.")}>Enquire about Palm Oil <ArrowUpRight size={17} /></button><p className="micro-note">Current availability and pricing are confirmed on enquiry.</p></div>
           </div>
         </section>
