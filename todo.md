@@ -288,3 +288,8 @@ Harvest Editorial: preserve the warm cream ground, deep leaf-green utility accen
 ### Final responsive verification
 
 The final desktop preview at 1280px shows the palm-oil hero image fully unobstructed, with the “View Pricing & Calculator” button moved into the left copy column below the primary actions. The mobile preview at 375px keeps the image clear and presents the pricing action as a distinct gold button beneath the two primary hero actions. The former visual-column overlay and its animation selector were removed from active markup and updated to target the relocated CTA.
+
+
+## Cooking inspiration mobile refinement — verification
+
+At 375px, the cooking inspiration cards now stack into a single readable column with reduced body padding, a tighter image ratio, comfortable text spacing, and full-width WhatsApp actions suitable for touch interaction. At 1280px, the three-card editorial grid remains balanced with equal visual hierarchy and consistent card heights. Type checking and the production build pass; existing non-blocking asset-resolution and bundle-size warnings remain.

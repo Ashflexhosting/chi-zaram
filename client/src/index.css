@@ -190,6 +190,13 @@ button { cursor: pointer; }
 .cooking-card h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 23px; font-weight: 400; color: #292a25; letter-spacing: -0.03em; }
 .cooking-card p { margin: 0 0 22px; color: #746f64; font-size: 14px; line-height: 1.65; flex: 1; }
 .cooking-card .button { align-self: flex-start; }
+
+@media (max-width: 980px) {
+  .cooking-inspiration-grid { grid-template-columns: 1fr; gap: 20px; }
+  .cooking-card__body { padding: 20px; }
+  .cooking-card h3 { font-size: 21px; }
+  .cooking-card .button { width: 100%; justify-content: center; }
+}
 .brand-strip__intro { display: flex; align-items: center; gap: 13px; color: #e9dfd2; font-family: var(--serif); font-size: 16px; line-height: 1.05; }
 .brand-strip__mark { color: #c99a4a; font-family: Georgia, serif; font-size: 23px; }
 .brand-strip__item { min-height: 39px; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding-left: 26px; border-left: 1px solid rgba(255,250,243,0.18); }
