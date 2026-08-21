@@ -503,7 +503,7 @@ export default function Home() {
             <div className="section-heading section-heading--split">
               <div>
                 <p className="eyebrow">The CHI-ZARAM standard</p>
-                <h2>From nature’s pure source,<br /><em>built for your family table.</em></h2>
+                <h2>From nature's source<br /><em>to your family table.</em></h2>
               </div>
               <p className="section-heading__aside">Every CHI-ZARAM product is selected and packaged with care. Whether you are buying single retail units or wholesale bulk supplies, our commitment to purity and value remains constant.</p>
             </div>
