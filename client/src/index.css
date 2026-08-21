@@ -2345,5 +2345,16 @@ html { font-size: calc(100% * var(--a11y-scale, 1)); }
   pointer-events: none;
 }
 .story-page-actions {
-  margin-top: 26px;
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+@media (max-width: 640px) {
+  .story-page-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }

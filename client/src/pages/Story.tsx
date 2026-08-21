@@ -38,11 +38,11 @@ export default function Story() {
               <p className="eyebrow">Good goods, honestly presented</p>
               <h2>Quality everyday goods, <em>closer to home.</em></h2>
               <p className="body-copy">Our range begins with products people use, share, and return to: red palm oil, vegetable oil, groundnut oil, fabrics, cleaning essentials, and oil perfumes. We are building a master brand that makes everyday buying feel more considered without making it complicated.</p>
-              <div className="story-page-callout">
-                <Sparkles size={19} />
-                <span>One master brand.<br /><strong>Many ways to live well.</strong></span>
-              </div>
               <div className="story-page-actions">
+                <div className="story-page-callout" style={{ marginTop: 0 }}>
+                  <Sparkles size={19} />
+                  <span>One master brand.<br /><strong>Many ways to live well.</strong></span>
+                </div>
                 <Link className="button button--gold button--sm" href="/catalogue">
                   Explore our products <ArrowUpRight size={15} />
                 </Link>
