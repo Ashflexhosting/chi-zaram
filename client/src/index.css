@@ -160,6 +160,16 @@ button { cursor: pointer; }
 .hero-visual__image-wrap { position: relative; width: min(100%, 630px); height: 490px; overflow: hidden; border-radius: 52% 0 48% 0; background: #d9c7a6; box-shadow: 22px 20px 0 rgba(159,47,42,0.1); }
 .hero-visual__image-wrap::after { position: absolute; content: ""; inset: 0; background: linear-gradient(90deg, rgba(244,239,230,0.18), transparent 60%); }
 .hero-visual__image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: 54% center; transform: scale(1.02); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual__image-wrap img {
+    animation: heroZoomIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+  @keyframes heroZoomIn {
+    from { transform: scale(1.12); }
+    to { transform: scale(1.02); }
+  }
+}
 .hero-visual__stamp { position: absolute; z-index: 2; right: 22px; bottom: 24px; width: 95px; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(255,250,243,0.72); border-radius: 50%; background: rgba(159,47,42,0.92); color: #fffaf3; text-align: center; transform: rotate(8deg); }
 .hero-visual__stamp span { font-family: var(--serif); font-size: 25px; line-height: 0.9; }
 .hero-visual__stamp small { margin-top: 7px; font-size: 8px; font-weight: 800; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; }
