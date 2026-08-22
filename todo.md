@@ -298,3 +298,16 @@ At 375px, the cooking inspiration cards now stack into a single readable column 
 ## Dark recipe cards & imagery update — verification
 
 The cooking inspiration section has been restyled with a deep charcoal background (`#292a25`) and warm light card surfaces (`#353630`) featuring light headings (`#fffaf3`), muted descriptions (`#b5ada1`), and gold metadata highlights (`#e0b45f`). All three recipe images have been replaced with fresh editorial food photography (authentic Nigerian stew, crispy fried yam and plantain, and traditional Delta palm oil rice) generated and integrated via persistent webdev storage assets. Responsive layouts and touch actions remain fully optimized.
+
+
+## Transparent category emblem — current task
+
+- [ ] Produce a true transparent-background emblem asset.
+- [ ] Update the homepage category-card icon reference without changing the card layout.
+- [ ] Verify the icon asset in the production build and on responsive cards.
+- [ ] Save the completed transparent emblem update.
+
+
+## Transparent category emblem — verification
+
+The supplied emblem now uses a true transparent-background PNG in the homepage “What we carry” category cards. Desktop verification shows the gold frame, green leaves, and red fruits read cleanly over the card imagery without the former white circular plate. Mobile verification keeps the emblem visible at the top-right of each stacked card without clipping. Type checking and production build pass, and the transparent asset is present in `dist/public/manus-storage`.
