@@ -541,7 +541,7 @@ export default function Home() {
                 >
                   <div className="category-card__image"><img src={category.image} alt="" loading="lazy" /></div>
                   <div className="category-card__overlay" />
-                  <img className="category-card__mark" src={assetPath("/manus-storage/category-emblem_3c8f1e92.png")} alt="" />
+                  <img className="category-card__mark" src={assetPath("/manus-storage/category-emblem_3c8f1e92.webp")} alt="" />
                   <div className="category-card__content"><span className="category-card__label">{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><span className="category-card__link">View product details <ArrowUpRight size={16} /></span></div>
                 </button>
               ))}
