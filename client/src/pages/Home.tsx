@@ -381,8 +381,8 @@ export default function Home() {
             <div className="hero-visual">
               <div className="hero-visual__image-wrap">
                 <picture>
-                  <source media="(min-width: 1280px)" srcSet={assetPath("/manus-storage/hero-showcase_9b82c1a4.jpg")} />
-                  <img src={assetPath("/manus-storage/hero-showcase_9b82c1a4.jpg")} alt="CHI-ZARAM product showcase featuring 5L red palm oil, vegetable oil, yellow garri, and fresh palm fruits" fetchPriority="high" decoding="async" />
+                  <source media="(min-width: 1280px)" srcSet={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} />
+                  <img src={assetPath("/manus-storage/chi-zaram-gen-palmoil_d61695e1.jpg")} alt="CHI-ZARAM product showcase featuring pure red palm oil and fresh palm fruits" fetchPriority="high" decoding="async" />
                 </picture>
                 <div className="hero-visual__stamp"><span>100%</span><small>Pure<br />natural</small></div>
               </div>
