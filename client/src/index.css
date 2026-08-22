@@ -373,7 +373,7 @@ h2 { font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.94; color: #292a25; }
 .category-card__image img { object-fit: cover; transition: transform 600ms var(--ease-out); }
 .category-card:hover .category-card__image img { transform: scale(1.06); }
 .category-card__overlay { background: linear-gradient(180deg, rgba(41,42,37,0.06) 20%, rgba(41,42,37,0.8) 100%); }
-.category-card__mark { position: absolute; z-index: 4; top: 20px; right: 20px; width: 42px; height: 42px; padding: 8px; border: 1px solid rgba(255, 250, 243, 0.65); border-radius: 50%; background: rgba(255, 250, 243, 0.94); box-shadow: 0 4px 16px rgba(41, 42, 37, 0.18); object-fit: contain; opacity: 0.98; transition: transform 260ms var(--ease-out), background 180ms ease-out, box-shadow 180ms ease-out; }
+.category-card__mark { position: absolute; z-index: 4; top: 18px; right: 18px; width: 46px; height: 46px; padding: 5px; border: 1px solid rgba(255, 250, 243, 0.7); border-radius: 50%; background: rgba(255, 250, 243, 0.96); box-shadow: 0 6px 20px rgba(41, 42, 37, 0.22); object-fit: contain; opacity: 1; transition: transform 260ms var(--ease-out), background 180ms ease-out, box-shadow 180ms ease-out; }
 .category-card:hover .category-card__mark { background: #c99a4a; transform: rotate(12deg); }
 .category-card__content { position: absolute; inset: auto 25px 24px; }
 .category-card--cleaning .category-card__content, .category-card--fabrics .category-card__content { inset: auto 19px 18px; }
