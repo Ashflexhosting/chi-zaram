@@ -410,7 +410,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="cooking-inspiration section-pad" id="inspiration">
+        <section className="cooking-inspiration section-pad" id="inspiration" style={{ display: "none" }}>
           <div className="container">
             <div className="section-heading section-heading--split">
               <div>
